@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  color:violet;
+}
+
+p {
+  color: darkgreen;
+}
+
+
+input {
+  color:black;
+  background-color:lightgray;
+}

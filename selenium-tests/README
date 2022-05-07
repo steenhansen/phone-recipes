@@ -1,0 +1,14 @@
+
+
+
+
+
+  terminal 1:
+    cd /
+    npm run dev ../selenium-config.js
+
+  terminal 2:
+    cd selenium-tests
+    node create-recipe
+
+

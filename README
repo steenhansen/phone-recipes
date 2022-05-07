@@ -1,0 +1,55 @@
+
+Compile and launch 
+  Dev 
+    npm run dev ../dev-config.js
+  
+  Prod 
+    npm run prod ../prod-config.js
+
+Launch already compiled ssr jsx server
+  Dev
+    npm run server-launch ../dev-config.js
+
+  Prod
+    npm run server-launch ../prod-config.js
+
+Launch on Internet server using online Heroku environment vars
+    npm run server-prod
+
+TESTS
+  Selenium
+    terminal 1:  cd /
+                 npm run dev /selenium-tests/selenium-config.js
+
+    terminal 2:  cd /selenium-tests
+                 node all-selenium-tests
+
+
+  Vitest
+    npx vitest /test-jsx-browser               --silent
+
+  
+  Mocha
+    npm run test-node
+
+  
+  Storybook
+    npm run storybook
+
+
+NB 
+  All config files are outside of deleteRecipeMongo
+
+
+
+
+
+
+
+
+
+
+
+
+
+

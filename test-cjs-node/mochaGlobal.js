@@ -1,0 +1,15 @@
+const MOCHA_CONFIG = {
+  G_SELENIUM_TESTING: false,
+  G_RECIPES_COLLECTION: 'un-initialized',
+  G_COMMENTS_COLLECTION: 'un-initialized',
+  G_UNCAUGHT_COLLECTION: 'un-initialized',
+  G_DATABASE_NAME: 'local-ui',
+  G_TYPE_CZECH_ON: true,
+  G_TYPE_CZECH_OPTIONS: ['LOG-ERRORS'],
+  //G_TYPE_CZECH_OPTIONS: ['NO-ERROR-MESSAGES'],
+  //G_TYPE_CZECH_OPTIONS: ['CONSOLE-COUNT', 'LOG-ERRORS']
+}
+
+
+module.exports = { MOCHA_CONFIG}
+
