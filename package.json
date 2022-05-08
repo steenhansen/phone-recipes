@@ -1,18 +1,18 @@
 {
   "scripts": {
-    "start": "node /server-app/index.js",
+    "start": "node /app/index.js",
     "dev": "node ./import-2-require/prepare_DEV_type_czech.js && npm run server-launch",
     "prod": "node ./import-2-require/prepare_PROD_type_czech.js && npm run build && npm run server-prod",
     "build": "vite build && vite build --ssr",
-    "server-launch": "node ./server-app",
-    "server-prod": "cross-env NODE_ENV=production node ./server-app",
+    "server-launch": "node ./app/index.js",
+    "server-prod": "cross-env NODE_ENV=production node ./app/index.js",
     "test-node": "mocha test-cjs-node/**/*.spec.cjs",
     "test-single": "mocha",
     "storybook": "node ./import-2-require/prepare_PROD_type_czech.js && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "engines": {
-    "node": "18.x"
+    "node": "16.14.0"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.2.0",
