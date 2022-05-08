@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "node ./server-app",
     "dev": "node ./import-2-require/prepare_DEV_type_czech.js && npm run server-launch",
     "prod": "node ./import-2-require/prepare_PROD_type_czech.js && npm run build && npm run server-prod",
     "build": "vite build && vite build --ssr",
@@ -9,6 +10,9 @@
     "test-single": "mocha",
     "storybook": "node ./import-2-require/prepare_PROD_type_czech.js && start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^1.2.0",
