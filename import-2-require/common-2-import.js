@@ -145,7 +145,7 @@ function herokuEnvOrConfigFile(prog_root) {
     const running_path = process.argv[1];
     const path_parts = running_path.split(path.sep);
     const run_prog = path_parts.pop();
-    if (run_prog !== 'app') {
+    if (run_prog !== 'server-app') {
       throw 'You forgot the credentials file, like ../prod-config.js';
     }
     the_config = DEFAULT_CONFIG;

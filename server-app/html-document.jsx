@@ -1,5 +1,5 @@
 import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
-import { ROOT_ELEMENT_ID } from './shared-client-server'
+import { ROOT_ELEMENT_ID } from '../server-app/shared-client-server'
 
 export { htmlDocument }
 

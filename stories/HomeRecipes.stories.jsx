@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux'
 import { HomeRecipes } from './HomeRecipes';
 import { makeReduxStore } from '../redux-store/recipe-store'
-import { CreateContextProvider, FilterContextProvider, ServerContextProvider } from '../app/serverBrowserContext'
+import { CreateContextProvider, FilterContextProvider, ServerContextProvider } from '../server-app/serverBrowserContext'
 
 export default {
   title: 'Main/HomeRecipes',

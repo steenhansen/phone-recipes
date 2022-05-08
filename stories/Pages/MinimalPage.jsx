@@ -4,7 +4,7 @@ import { withErrorBoundary } from 'react-error-boundary'
 
 import { RecipeSingleBoundary } from '../RecipeDisplay/RecipeSingle'
 
-import { useServerContext } from '../../app/serverBrowserContext'
+import { useServerContext } from '../../server-app/serverBrowserContext'
 import { TitleMinimal } from '../ViewParts/TitleMinimal'
 import { StopWatch } from '../ViewParts/StopWatch'
 import { FatHorz } from '../HorzBar'

@@ -1,7 +1,7 @@
 import { FilterMenu } from '../stories/MenuParts/FilterMenu'
 import { FakeTest } from '../stories/FakeTest'
 
-import { useServerContext } from '../app/serverBrowserContext'
+import { useServerContext } from '../server-app/serverBrowserContext'
 export { PageWithMenu }
 
 function PageWithMenu() {

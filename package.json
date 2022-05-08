@@ -1,11 +1,10 @@
 {
   "scripts": {
-    "start": "node index.js",
     "dev": "node ./import-2-require/prepare_DEV_type_czech.js && npm run server-launch",
     "prod": "node ./import-2-require/prepare_PROD_type_czech.js && npm run build && npm run server-prod",
     "build": "vite build && vite build --ssr",
-    "server-launch": "node ./app/index.js",
-    "server-prod": "cross-env NODE_ENV=production node ./app/index.js",
+    "server-launch": "node ./server-app",
+    "server-prod": "cross-env NODE_ENV=production node ./server-app",
     "test-node": "mocha test-cjs-node/**/*.spec.cjs",
     "test-single": "mocha",
     "storybook": "node ./import-2-require/prepare_PROD_type_czech.js && start-storybook -p 6006",

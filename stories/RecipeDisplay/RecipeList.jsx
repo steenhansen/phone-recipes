@@ -10,7 +10,7 @@ import { EditButton } from '../EditParts/EditButton'
 import { RecipeSingleBoundary } from './RecipeSingle'
 import { CommentList } from '../ViewParts/CommentList'
 import { ID_SEPARATOR, SELF_COMMENTS_ALLOWED, userToUrl } from "../../import-2-require/common-2-import";
-import { useServerContext } from '../../app/serverBrowserContext'
+import { useServerContext } from '../../server-app/serverBrowserContext'
 import { PRE_RecipeList, type_czech } from '../../type-czech-jsx/RecipeDisplay/tc_RecipeList'
 //import { vanillaPageContext } from '../../import-2-require/common-2-import.js'
 

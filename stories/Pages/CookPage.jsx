@@ -4,7 +4,7 @@ import { withErrorBoundary } from 'react-error-boundary'
 import { CookRecipes } from '../CookRecipes'
 import { CookRemarks } from '../ViewParts/CookRemarks'
 import { useSelector } from 'react-redux'
-import { useServerContext, useCreateContext } from '../../app/serverBrowserContext'
+import { useServerContext, useCreateContext } from '../../server-app/serverBrowserContext'
 import {  userToUrl } from "../../import-2-require/common-2-import";
 
 import { possibleErrorBoundary , recordErrorBoundary } from '../ErrorBoundaries'

@@ -1,6 +1,6 @@
 import { MenuHeader } from '../stories/MenuParts/MenuHeader'
 import { FakeTest } from '../stories/FakeTest'
-import { useServerContext } from '../app/serverBrowserContext'
+import { useServerContext } from '../server-app/serverBrowserContext'
 
 export { PageSansMenu }
 

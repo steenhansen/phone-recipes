@@ -1,6 +1,6 @@
 import React from 'react';
 import { FilterMenu } from './FilterMenu';
-import { ServerContextProvider } from '../../app/serverBrowserContext'
+import { ServerContextProvider } from '../../server-app/serverBrowserContext'
 
 export default {
   title: 'Menu/FilterMenu',

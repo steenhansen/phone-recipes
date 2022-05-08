@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { useFilterContext, useServerContext, useCreateContext } from '../app/serverBrowserContext'
+import { useFilterContext, useServerContext, useCreateContext } from '../server-app/serverBrowserContext'
 import { RecipeListBoundary } from './RecipeDisplay/RecipeList'
 import { RecipeEditBoundary } from './RecipeDisplay/RecipeEdit'
 import { matchingRecipes, CookOnOwnPage, ONLY_ONE_RECIPE_UNFURLED } from "../import-2-require/common-2-import";

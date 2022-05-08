@@ -1,4 +1,4 @@
-import { useServerContext } from '../../app/serverBrowserContext'
+import { useServerContext } from '../../server-app/serverBrowserContext'
 
 export { MenuFooter }
 
