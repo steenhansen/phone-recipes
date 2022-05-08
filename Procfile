@@ -1,1 +1,1 @@
-web: node --expose-gc run server-prod
+web:  npm run server-launch
