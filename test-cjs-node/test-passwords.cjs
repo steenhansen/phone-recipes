@@ -4,10 +4,6 @@
 
 const GLOBAL_CONFIG = {
   G_SELENIUM_TESTING: false,     
-  G_RECIPES_COLLECTION: 'un-initialized',
-  G_COMMENTS_COLLECTION: 'un-initialized',
-  G_UNCAUGHT_COLLECTION: 'un-initialized',
-  G_DATABASE_NAME: 'local-test',
   G_TYPE_CZECH_ON: true,
   G_TYPE_CZECH_OPTIONS: ['LOG-ERRORS'],
   //G_TYPE_CZECH_OPTIONS: ['NO-ERROR-MESSAGES'],
@@ -18,9 +14,7 @@ const GLOBAL_CONFIG = {
 
 
 var HIDDEN_CREDENTIALS = {
-  MONGO_URI : "mongodb://localhost:27017/" + GLOBAL_CONFIG.G_DATABASE_NAME,
-  MONGO_USERNAME: 'local-test-mongo-name',
-  MONGO_PASSWORD: 'local-test-mongo-pass',
+  MONGO_URI : "mongodb://localhost:27017/local-test",
 
 	GOOGLE_CLIENT_ID:'google-client-id.apps.googleusercontent.com',
 	GOOGLE_CLIENT_SECRET:'google-client-secret',

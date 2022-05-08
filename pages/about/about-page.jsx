@@ -5,7 +5,6 @@ import '../../tail-wind.css'
 export { Page }
 
 function Page(my_vars) {
-  console.log("about-page", my_vars)
   return (
     <div>
       This program exists to help prepare multiple dishes for a meal using a phone

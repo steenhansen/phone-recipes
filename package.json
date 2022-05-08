@@ -1,13 +1,19 @@
 {
   "scripts": {
-    "dev": "node ./import-2-require/prepare_DEV_type_czech.js && npm run server-launch",
-    "prod": "node ./import-2-require/prepare_PROD_type_czech.js && npm run build && npm run server-prod",
+    "start": "npm run heroku-init",
+    "build-prod" : "node ./make_PROD.js && npm run build",
+    "heroku-init": "npm run build-prod && cross-env NODE_ENV=production node server-app/heroku-start.js",
+
+    "dev": "node ./make_DEV && node server-app/index.js",
+    "prod": "npm run build-prod && npm run server-test",
+
     "build": "vite build && vite build --ssr",
-    "server-launch": "node ./server-app",
-    "server-prod": "cross-env NODE_ENV=production node ./server-app",
+    "server-test": "cross-env NODE_ENV=production node server-app/index.js",
+    
     "test-node": "mocha test-cjs-node/**/*.spec.cjs",
     "test-single": "mocha",
-    "storybook": "node ./import-2-require/prepare_PROD_type_czech.js && start-storybook -p 6006",
+
+    "storybook": "node ./make_DEV && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "engines": {

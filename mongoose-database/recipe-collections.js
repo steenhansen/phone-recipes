@@ -1,7 +1,6 @@
 
 
-
-Recipes_coll = global.GLOBAL_CONFIG.G_RECIPES_COLLECTION; 
+Recipes_coll = 'un-defined';
 
 const { MAX_RECIPES_SHOWN, REMOVE_RECORD_VERSION, ID_SEPARATOR, safeEmail, safeReturns, safeStrip } = require("../import-2-require/common-2-require");
 

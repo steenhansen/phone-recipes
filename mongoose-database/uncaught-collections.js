@@ -1,4 +1,4 @@
-Uncaught_coll = global.GLOBAL_CONFIG.G_UNCAUGHT_COLLECTION;
+Uncaught_coll = 'un-defined';
 
 
 

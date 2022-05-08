@@ -20,7 +20,7 @@
 
 const { safeInitSelenium, waitForLoad, stopDriver, buildRecipe, startDriver, assertRecipeCount, waitThenClick, clickId, waitThenText } = require("../load-db-selenium");
 
-const { testIdStrip } = require('../../import-2-require/common-2-require');
+const { print, testIdStrip } = require('../../import-2-require/common-2-require');
 
 
 
@@ -61,7 +61,7 @@ if (!global.en_masse_selenium) {
   (async function () {
     await safeInitSelenium();
     await create2Minimal();
-    console.log("Finished - " + TEST_TITLE_ID_0);
+    print("Finished - " + TEST_TITLE_ID_0);
   })();
 }
 

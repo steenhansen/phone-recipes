@@ -1,7 +1,7 @@
 var path = import('path');
 
 
-
+const HEROKU_START = 'heroku-start.js';
 
 
 const HTTP_PORT = 3000;
@@ -21,10 +21,6 @@ const VALID_REDUCERS = ['record-error', 're-title-recipe', 'change-recipe', 'new
   'delete-recipe', 'filtered-recipes', 'add-comment', 'remove-comment'];
 const DEFAULT_CONFIG = {
   G_SELENIUM_TESTING: false,
-  G_RECIPES_COLLECTION: 'default-un-initialized-recipes',
-  G_COMMENTS_COLLECTION: 'default-un-initialized-comments',
-  G_UNCAUGHT_COLLECTION: 'default-un-initialized-uncaughts',
-  G_DATABASE_NAME: 'local-ui',
   G_TYPE_CZECH_ON: false,
   G_TYPE_CZECH_OPTIONS: []
 }
@@ -134,30 +130,36 @@ function vanillaPageContext(server_varname) {
   }
   return false;   // storybook always exits here as no pageContext exists
 }
-
 function herokuEnvOrConfigFile(prog_root) {
   const credentials_file = process.argv[2];
   let the_config;
   if (credentials_file) {
     const { GLOBAL_CONFIG } = rootAppRequire(prog_root, credentials_file);
-    the_config = GLOBAL_CONFIG;
+    if (GLOBAL_CONFIG) {
+      the_config = GLOBAL_CONFIG;
+    } else {
+      the_config = { G_TYPE_CZECH_ON: false, G_TYPE_CZECH_OPTIONS: ['NO-CHECKING'] }
+    }
   } else {
     const running_path = process.argv[1];
     const path_parts = running_path.split(path.sep);
     const run_prog = path_parts.pop();
-    // if (run_prog !== 'server-app') {
-    //   throw 'You forgot the credentials file, like ../prod-config.js';
-    // }
+    if (run_prog !== HEROKU_START) {
+      throw 'You forgot the credentials file, like ../dev-config.js';
+    }
     the_config = DEFAULT_CONFIG;
   }
   return the_config;
 }
 
+function print(...args){
+  console.log(...args)
+}
 
 
 
 export {
-  FAKE_TEST_GMAIL, FILTER_FIRST_SECTION, HTTP_PORT, ID_SEPARATOR, MAX_RECIPES_SHOWN,
+  print, DEFAULT_CONFIG, FAKE_TEST_GMAIL, FILTER_FIRST_SECTION, HTTP_PORT, ID_SEPARATOR, MAX_RECIPES_SHOWN,
   MAX_TEST_AJAX_DELAY_SEC, MONGO_AUTO_INDEX, MONGO_CONNECT_TIMEOUT,
   NOP_TYPE_CZECH, ONLY_ONE_RECIPE_UNFURLED, REMOVE_RECORD_VERSION,
   SELF_COMMENTS_ALLOWED, SHORTEST_STRING_LEN, VALID_REDUCERS,

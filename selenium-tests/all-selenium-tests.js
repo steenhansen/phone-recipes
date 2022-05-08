@@ -14,6 +14,9 @@
 
 global.en_masse_selenium = true;
 
+
+const { print } = require('../import-2-require/common-2-require');
+
 const { createRecipe } = require("./create-recipe/createRecipe.sel");
 const { createRecipe_delRecipe } = require("./create-recipe/createRecipe_delRecipe.sel");
 const { createRecipe_addComment_delRecipe } = require("./create-recipe/createRecipe_addComment_delRecipe.sel");
@@ -32,30 +35,30 @@ const { safeInitSelenium } = require("./load-db-selenium");
 
 
 (async function () {
-  console.log(".");
+  print(".");
   await safeInitSelenium();
 
-  console.log(".");
+  print(".");
   await createRecipe();
-  console.log(".");
+  print(".");
   await createRecipe_delRecipe();
-  console.log(".");
+  print(".");
   await createRecipe_addComment_delRecipe();
-  console.log("   .");
+  print("   .");
 
   await create2Minimal();
 
 
 
-  console.log("   .");
+  print("   .");
   await reTitle();
-  console.log("   .");
+  print("   .");
   await reTitle_delete();
-  console.log("   .");
+  print("   .");
   await reTitle_comment_delete();
 
 
-  console.log("   .");
-  console.log("   .");
-  console.log("Finished - all-selenium-tests");
+  print("   .");
+  print("   .");
+  print("Finished - all-selenium-tests");
 })();

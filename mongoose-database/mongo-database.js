@@ -1,54 +1,40 @@
 const mongoose = require('mongoose');
 const { RECIPES_SCHEMA, COMMENTS_SCHEMA, UNCAUGHT_SCHEMA } = require('./db-schemas');
 
-const { MONGO_AUTO_INDEX, MONGO_CONNECT_TIMEOUT, rootAppRequire } = require('../import-2-require/common-2-require');
+const { print , MONGO_AUTO_INDEX, MONGO_CONNECT_TIMEOUT, rootAppRequire } = require('../import-2-require/common-2-require');
 
 
 const { type_czech,
-
-   PRE_readConfig, POST_readConfig,
-   PRE_connctionUri,POST_connctionUri,
-   PRE_getMongoCred,POST_getMongoCred,
-   PRE_dbConnect,POST_dbConnect, 
-   PRE_deVersionMongo,POST_deVersionMongo,} = require('./tc-mongo-database');
+  PRE_readConfig, POST_readConfig,
+  PRE_getMongoCred, POST_getMongoCred,
+  PRE_dbConnect, POST_dbConnect,
+  PRE_deVersionMongo, POST_deVersionMongo, } = require('./tc-mongo-database');
 
 readConfig = type_czech.linkUp(readConfig, PRE_readConfig, POST_readConfig);
-function readConfig(the_dirname, credentials_file) { 
-  const {HIDDEN_CREDENTIALS, GLOBAL_CONFIG} = rootAppRequire(the_dirname, credentials_file);
+function readConfig(the_dirname, credentials_file) {
+  const { HIDDEN_CREDENTIALS, GLOBAL_CONFIG } = rootAppRequire(the_dirname, credentials_file);
   return { HIDDEN_CREDENTIALS, GLOBAL_CONFIG }
 }
 
-connctionUri = type_czech.linkUp(connctionUri, PRE_connctionUri, POST_connctionUri);
-function connctionUri(MONGO_URI, MONGO_USERNAME, MONGO_PASSWORD) {
-  const with_mongo_name = MONGO_URI.replace('<MONGO-USERNAME>', MONGO_USERNAME)
-  const with_mongo_pass = with_mongo_name.replace('<MONGO-PASSWORD>', MONGO_PASSWORD)
-  return with_mongo_pass
-}
-
-getMongoCred = type_czech.linkUp(getMongoCred, PRE_getMongoCred,POST_getMongoCred);
+getMongoCred = type_czech.linkUp(getMongoCred, PRE_getMongoCred, POST_getMongoCred);
 function getMongoCred(the_dirname, credentials_file) {
-  var MONGO_URI, MONGO_USERNAME, MONGO_PASSWORD;
+  let MONGO_URI = process.env.MONGO_URI;
   if (credentials_file) {
-    const {HIDDEN_CREDENTIALS} =  readConfig(the_dirname, credentials_file);
-    MONGO_URI = HIDDEN_CREDENTIALS.MONGO_URI;
-    MONGO_USERNAME = HIDDEN_CREDENTIALS.MONGO_USERNAME;
-    MONGO_PASSWORD = HIDDEN_CREDENTIALS.MONGO_PASSWORD;
-  } else {
-    MONGO_URI = process.env.MONGO_URI;
-    MONGO_USERNAME = process.env.MONGO_USERNAME;            // for Heroku
-    MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+    const { HIDDEN_CREDENTIALS } = readConfig(the_dirname, credentials_file);
+    if (HIDDEN_CREDENTIALS) {
+      MONGO_URI = HIDDEN_CREDENTIALS.MONGO_URI;
+    }
   }
-  const connection_string = connctionUri(MONGO_URI, MONGO_USERNAME, MONGO_PASSWORD);
-  return connection_string;
+  return MONGO_URI;
 }
 
-dbConnect = type_czech.linkUp(dbConnect, PRE_dbConnect,POST_dbConnect);
-function dbConnect(prog_root, credentials_file=false) {
-  console.log('dbConnect', prog_root, credentials_file);
+dbConnect = type_czech.linkUp(dbConnect, PRE_dbConnect, POST_dbConnect);
+function dbConnect(prog_root, credentials_file = false) {
+  print('dbConnect', prog_root, credentials_file);
   const connection_string = getMongoCred(prog_root, credentials_file);
   const db_options = { serverSelectionTimeoutMS: MONGO_CONNECT_TIMEOUT };
   mongoose.connect(connection_string, db_options).
-    catch(error => console.log(error));
+    catch(error => print(error));
   const recipes_schema = new mongoose.Schema(RECIPES_SCHEMA);
   recipes_schema.set('autoIndex', MONGO_AUTO_INDEX);
   recipes_schema.index({ "meal": 1, "cuisine": 1, "diet": 1 })  // meal,[meal,cuisine],[meal,cuisine,diet]
@@ -64,7 +50,7 @@ function dbConnect(prog_root, credentials_file=false) {
   const uncaught_schema = new mongoose.Schema(UNCAUGHT_SCHEMA);
   Uncaught_coll = mongoose.model('uncaught', uncaught_schema);
 
-  console.log('Database has live models')
+  print('Database has live models')
   return { Recipes_coll, Comments_coll, Uncaught_coll }
 }
 
@@ -142,8 +128,7 @@ async function clearDb() {
   await Recipes_coll.deleteMany({});
   await Comments_coll.deleteMany({});
   await Uncaught_coll.deleteMany({});
- // console.log('db cleared')
 }
 
-module.exports = {clearDb, deVersionMongo, dbConnect, readConfig, BASE_BLANK_RECIPE };
+module.exports = { clearDb, deVersionMongo, dbConnect, readConfig, BASE_BLANK_RECIPE };
 

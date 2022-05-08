@@ -1,6 +1,7 @@
 
 
-Comments_coll = global.GLOBAL_CONFIG.G_COMMENTS_COLLECTION;
+
+Comments_coll = 'un-defined';
 
 
 

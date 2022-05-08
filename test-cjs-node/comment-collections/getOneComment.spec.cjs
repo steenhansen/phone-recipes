@@ -7,6 +7,8 @@
 const { MOCHA_CONFIG } = require('../mochaGlobal');
 global.GLOBAL_CONFIG = MOCHA_CONFIG;
 
+const { newRecipe } = require('../../mongoose-database/recipe-collections');
+const { addComment, getOneComment } = require('../../mongoose-database/comment-collections');
 
 
 require('../load-db.cjs');
@@ -17,8 +19,6 @@ const { expect } = chai;
 
 
 
-const { newRecipe } = require('../../mongoose-database/recipe-collections');
-const { addComment, getOneComment } = require('../../mongoose-database/comment-collections');
 
 const new_recipe = {
   _id: 'yyy333@gmail.com~OLD-TITLE~',

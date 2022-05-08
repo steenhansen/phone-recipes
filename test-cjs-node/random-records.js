@@ -4,7 +4,7 @@
 // node random-records.js ./test-passwords
 // node random-records.js ../dev-passwords
 
-
+const { print } = require("../import-2-require/common-2-require");
 const { dbConnect, clearDb } = require('../mongoose-database/mongo-database');
 
 const credentials_file = './test-passwords.cjs';
@@ -26,7 +26,7 @@ const THE_CUISINES = ['chinese', 'indian', 'japanese', 'mexican', 'italian', 'fr
 
 async function randomRecipes(number_recipes, number_cooks) {
   for (i = 0; i < number_recipes; i++) {
-    if (i%100 ===0  ) console.log(i)
+    if (i%100 ===0  ) print(i)
     const random_cook = Math.floor(Math.random() * number_cooks);
     const the_cook = 'cook-' + random_cook + '@gmail.com';
     const random_meal = Math.floor(Math.random() * 6);
@@ -76,14 +76,16 @@ async function randomRecipes(number_recipes, number_cooks) {
 
 
 
+
+
 async function createBigDb(num_recipes, number_cooks){
   await clearDb();
   await randomRecipes(num_recipes, number_cooks);
-  console.log(`There are ${num_recipes} recipes`);
-  console.log(`There are ${number_cooks} cooks`);
-  console.log(` -- Search 00 - 99`);
-  console.log(` -- http://localhost:3000`);
-  console.log(` -- http://localhost:3000/cook-51/gmail.com`);
+  print(`There are ${num_recipes} recipes`);
+  print(`There are ${number_cooks} cooks`);
+  print(` -- Search 00 - 99`);
+  print(` -- http://localhost:3000`);
+  print(` -- http://localhost:3000/cook-51/gmail.com`);
   process.exit();
 }
 

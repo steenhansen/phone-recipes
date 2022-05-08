@@ -9,6 +9,9 @@ const { MOCHA_CONFIG } = require('../mochaGlobal');
 global.GLOBAL_CONFIG = MOCHA_CONFIG;
 
 
+const { newRecipe } = require('../../mongoose-database/recipe-collections');
+const { addComment, removeComment } = require('../../mongoose-database/comment-collections');
+
 
 require('../load-db.cjs');
 const chai = require('chai');
@@ -18,9 +21,6 @@ const { expect } = chai;
 
 
 
-
-const { newRecipe } = require('../../mongoose-database/recipe-collections');
-const { addComment, removeComment } = require('../../mongoose-database/comment-collections');
 
 const new_recipe = {
   _id: 'uyd349@gmail.com~OLD-TITLE~',
@@ -49,7 +49,7 @@ const expected_result = {
   internal: "145c",
   meal: "Lunch",
   minutes: 12,
-  search: " OLD-TITLE steps ",
+  search: " old-title steps ",
   serves: "serves",
   steps: "steps",
   time: "time",

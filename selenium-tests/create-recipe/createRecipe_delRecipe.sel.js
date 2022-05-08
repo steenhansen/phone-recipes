@@ -14,7 +14,7 @@
     node all-selenium-tests
 
 */
-
+const { print } = require('../../import-2-require/common-2-require');
 const { safeInitSelenium, stopDriver, deleteRecipe, buildRecipe, startDriver, assertRecipeCount } = require("../load-db-selenium");
 
 const TEST_RECIPE_NAME = 'selenium_createRecipe_delRecipe';
@@ -36,7 +36,7 @@ if (!global.en_masse_selenium) {
   (async function () {
     await safeInitSelenium();
     await createRecipe_delRecipe();
-    console.log("Finished - " + TEST_RECIPE_NAME);
+    print("Finished - " + TEST_RECIPE_NAME);
   })();
 }
 

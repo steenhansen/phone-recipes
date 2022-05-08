@@ -8,20 +8,10 @@ const NUM_SLUG_PARTS = 3;
 
 // in selenium ===> /fake-test/gmail.com/selenium_createRecipe_0    !!!!!!! no localhost
 async function multiUrlRecipes(url) {
-  console.log('mulitUrls ',url)
   const no_lead_slash = url.substring(1);
   const slug_array = no_lead_slash.split('/');
-
-  console.log('mulitUrls no_lead_slash',no_lead_slash)
-
-  console.log('mulitUrls slug_array',slug_array)
-
-
   let shared_store_recipes = [];
   for (let i = 0; i < slug_array.length; i += NUM_SLUG_PARTS) {
-    console.log('muliti-ulrs i ', i)
-    console.log('i + NUM_SLUG_PARTS ', i + NUM_SLUG_PARTS)
-    console.log('slug_array.length ', slug_array.length)
     if (i + NUM_SLUG_PARTS <= slug_array.length) {
       const start_gmail = slug_array[i];
       const end_gmail = slug_array[i + 1];

@@ -18,7 +18,7 @@
 */
 
 const { safeInitSelenium, stopDriver, deleteRecipe, changeRecipeTitle, buildRecipe, idAlive, makeComment, startDriver, assertRecipeCount, assertCommentCount, waitThenClick, clickId, textId, waitThenText } = require("../load-db-selenium");
-const { testIdStrip } = require('../../import-2-require/common-2-require');
+const { print, testIdStrip } = require('../../import-2-require/common-2-require');
 const TEST_RECIPE_NAME = 's_r_title';
 const TEST_NEW_NAME = 's_r_title--changed';
 const TEST_TITLE_ID = testIdStrip(TEST_RECIPE_NAME);     //test-id-s_r_title
@@ -61,7 +61,7 @@ if (!global.en_masse_selenium) {
   (async function () {
     await safeInitSelenium();
     await reTitle_comment_delete();
-    console.log("Finished - " + TEST_RECIPE_NAME);
+    print("Finished - " + TEST_RECIPE_NAME);
   })();
 }
 

@@ -6,6 +6,8 @@
 const { MOCHA_CONFIG } = require('../mochaGlobal');
 global.GLOBAL_CONFIG = MOCHA_CONFIG;
 
+const { newRecipe } = require('../../mongoose-database/recipe-collections');
+let { addComment, getRecipeComments } = require('../../mongoose-database/comment-collections');
 
 
 require('../load-db.cjs');
@@ -15,8 +17,6 @@ chai.use(deepEqualInAnyOrder);
 const { expect } = chai;
 
 
-const { newRecipe } = require('../../mongoose-database/recipe-collections');
-let { addComment, getRecipeComments } = require('../../mongoose-database/comment-collections');
 
 const new_recipe = {
   _id: 'nfy374@gmail.com~OLD-TITLE~',

@@ -147,7 +147,6 @@ function reduxAjaxError(state, action) {
 
 const recipeReducer = (state, action) => {
   let next_state;
-  //console.log("recipeRecuer action.type==", action.type)
   if (action.type === 're-title-recipe') {
     next_state = reduxReTitleRecipe(state, action);
   } else if (action.type === 'change-recipe') {
@@ -165,7 +164,6 @@ const recipeReducer = (state, action) => {
   } else if (action.type === 'ajax-error') {     
     next_state = reduxAjaxError(state, action);     
   } else {
-    //console.log(" unknown dispatch error !!", action.type)
     next_state = state;  // Selenium calls here for some reason
   }
   return next_state;

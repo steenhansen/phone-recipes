@@ -1,24 +1,22 @@
 
-Compile and launch 
+NB
+  All real config files are outside of the repo
+  /sample-configs/ are copies
+
+
+Heroku
+  Heroku automatic server initialization, crashes locally 
+    npm run start
+
+  Heroku local environment test
+    npm run prod ../heroku-config.js
+
+Local compile and launch
   Dev 
-    npm run dev ../dev-config.js
+    npm run dev ../dev-config.js 
   
   Prod 
     npm run prod ../prod-config.js
-
-Heroku
-  runs the "start" script
-
-
-Launch already compiled ssr jsx server
-  Dev
-    npm run server-launch ../dev-config.js
-
-  Prod
-    npm run server-launch ../prod-config.js
-
-Launch on Internet server using online Heroku environment vars
-    npm run server-prod
 
 TESTS
   Selenium
@@ -28,21 +26,21 @@ TESTS
     terminal 2:  cd /selenium-tests
                  node all-selenium-tests
 
+                 node create-recipe/createRecipe_addComment_delRecipe.sel
+
 
   Vitest
-    npx vitest /test-jsx-browser               --silent
+    npx vitest /test-jsx-browser
 
-  
+    npx vitest /test-jsx-browser/redux-store/reduxChangeRecipe.test.mjs
+
   Mocha
     npm run test-node
 
+    npm run test-single -- test-cjs-node/**/addComment.spec.cjs
   
   Storybook
     npm run storybook
-
-
-NB 
-  All config files are outside of deleteRecipeMongo
 
 
 

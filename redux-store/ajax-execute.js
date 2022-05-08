@@ -58,12 +58,10 @@ async function addServerComment(auth_email, req_body) {
   if (auth_email && req_body.by === auth_email) {
     try {
       const result = await addComment(req_body);
-      console.log('add server comment no error')
       return result;
     } catch (e) {
       console.log('add server comment exception ' + e)
       return e;
-
     }
   }
   return 'comment error email error';

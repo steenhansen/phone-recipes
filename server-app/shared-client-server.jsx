@@ -3,7 +3,7 @@ import ReactDOMServer from 'react-dom/server'
 import { EncaseStore } from '../pages/EncaseStore'
 import { Provider } from 'react-redux'
 import { makeReduxStore } from '../redux-store/recipe-store'
-import { vanillaPageContext, isNode } from '../import-2-require/common-2-import.js'
+import { print, vanillaPageContext, isNode } from '../import-2-require/common-2-import.js'
 
 import TypeCzech_obj from '../import-2-require/TypeCzech-2-import';
 import { databasePost } from '../redux-store/ajax-calls.js'
@@ -16,25 +16,19 @@ function saveExceptionsToDb() {
     let type_czech = TypeCzech(...global.GLOBAL_CONFIG.G_TYPE_CZECH_OPTIONS)
     if (global.GLOBAL_CONFIG.G_TYPE_CZECH_ON) {
       if (type_czech.isPruned()) {
-        console.log('~~~~')
-        console.log('~~~~')
-        console.log('~~~~ TypeCzech-2-import.js IS NOT large 4700 line development file for type checking.')
-        console.log('~~~~')
-        console.log('~~~~ ./prod_or_dev_type_czech.js has an error and used prodcution version.')
-        console.log('~~~~')
-        console.log('~~~~ start with  :::  npm run dev ../dev-config.js  ?')
-        console.log('~~~~')
+        print('~~~~')
+        print('~~~~')
+        print('~~~~ TypeCzech-2-import.js IS NOT large 4700 line development file for type checking.')
+        print('~~~~')
+        print('~~~~')
       }
     } else {
       if (!type_czech.isPruned()) {
-        console.log('****')
-        console.log('****')
-        console.log('**** TypeCzech-2-import.js IS NOT small 30 line pruned file for Type-Czech to be turned off in browser.')
-        console.log('****')
-        console.log('**** ./prod_or_dev_type_czech.js has an error and used development version.')
-        console.log('****')
-        console.log('**** start with  :::  npm run prod ../prod-config.js  ?')
-        console.log('****')
+        print('****')
+        print('****')
+        print('**** TypeCzech-2-import.js IS NOT small 30 line pruned file for Type-Czech to be turned off in browser.')
+        print('****')
+        print('****')
       }
     }
   } else {
@@ -55,7 +49,6 @@ function saveExceptionsToDb() {
         ].join(' - ');
       }
       const non_react_error = { browser_error };
-      console.log('non_react_error error - ', non_react_error);
       databasePost('record-error', browser_csrfToken, non_react_error);
       return false;
     };

@@ -8,14 +8,14 @@
 const { MOCHA_CONFIG } = require('../mochaGlobal');
 global.GLOBAL_CONFIG = MOCHA_CONFIG;
 
-
+const { newRecipe, reTitleRecipe } = require('../../mongoose-database/recipe-collections');
 
 require('../load-db.cjs');
 const chai = require('chai');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 chai.use(deepEqualInAnyOrder);
 const { expect } = chai;
-const { newRecipe, reTitleRecipe } = require('../../mongoose-database/recipe-collections');
+
 
 const start_recipe = {
   old_title: '',
@@ -42,7 +42,7 @@ const changed_recipe = {
   _id: 'ahr348@gmail.com~-CHANGE-TITLE-~',
   cook: 'ahr348@gmail.com',
   comments: [],
-  search: " -CHANGE-TITLE- steps ",
+  search: " -change-title- steps ",
   title: '-CHANGE-TITLE-',
   steps: 'steps', serves: 'serves', time: 'time', meal: 'Lunch', cuisine: 'French', diet: 'Vegan',
   ingredients: [], internal: '145c', minutes: 12

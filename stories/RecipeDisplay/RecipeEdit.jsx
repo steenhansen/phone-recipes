@@ -80,7 +80,6 @@ async function saveTheRecipe(old_title, csrf_token, edited_values) {
           dispatch_type = 're-title-recipe';
         }
       } else {
-        console.log("Edidit-recipt", edited_recipe)
         db_save_result = await databasePost('change-recipe', csrf_token, edited_recipe);
         dispatch_payload = { edited_recipe };
         if (!(edited_recipe instanceof Error)) {

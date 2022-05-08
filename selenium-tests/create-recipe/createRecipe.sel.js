@@ -21,7 +21,7 @@
 
 const { safeInitSelenium, stopDriver, buildRecipe, startDriver, assertRecipeCount, waitThenClick, clickId, waitThenText } = require("../load-db-selenium");
 
-const { testIdStrip } = require('../../import-2-require/common-2-require');
+const { print, testIdStrip } = require('../../import-2-require/common-2-require');
 const TEST_RECIPE_NAME = 'selenium_createRecipe';
 const TEST_TITLE_ID = testIdStrip(TEST_RECIPE_NAME);     //test-id-selenium_createRecipe
 
@@ -41,7 +41,7 @@ if (!global.en_masse_selenium) {
   (async function () {
     await safeInitSelenium();
     await createRecipe();
-    console.log("Finished - " + TEST_RECIPE_NAME);
+    print("Finished - " + TEST_RECIPE_NAME);
   })();
 }
 

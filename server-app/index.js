@@ -1,5 +1,9 @@
 
-const { herokuEnvOrConfigFile, FAKE_TEST_GMAIL, HTTP_PORT} = require("../import-2-require/common-2-require");
+const { print, herokuEnvOrConfigFile, FAKE_TEST_GMAIL, HTTP_PORT, DEFAULT_CONFIG} = require("../import-2-require/common-2-require");
+
+
+global.GLOBAL_CONFIG =DEFAULT_CONFIG;
+
 const prog_root = `${__dirname}/..`;
 global.GLOBAL_CONFIG = herokuEnvOrConfigFile(prog_root);
 
@@ -18,7 +22,7 @@ const { PageContextInit } = require('./server-to-client-vars');
 try {
   var appUseAuth = require('../passport-auth/app-auth');
 } catch (e) {
-  throw 'You forgot to set the Heroku env vars';
+  throw 'Heroku env vars are not set. (MONGO_URI/GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET/SESSION_SECRET) ' + e;
 }
 
 const { getLoggedIn } = require('../passport-auth/auth-consts');
@@ -27,9 +31,10 @@ const { FILTER_FIRST_SECTION } = require('../import-2-require/common-2-require')
 
 const isProduction = process.env.NODE_ENV === 'production'
 const the_collections = dbConnect(prog_root, process.argv[2]);
-GLOBAL_CONFIG.G_RECIPES_COLLECTION = the_collections.Recipes_coll;
-GLOBAL_CONFIG.G_COMMENTS_COLLECTION = the_collections.Comments_coll;
-GLOBAL_CONFIG.G_UNCAUGHT_COLLECTION = the_collections.Uncaught_coll;
+
+global.GLOBAL_CONFIG.G_RECIPES_COLLECTION = the_collections.Recipes_coll;
+global.GLOBAL_CONFIG.G_COMMENTS_COLLECTION = the_collections.Comments_coll;
+global.GLOBAL_CONFIG.G_UNCAUGHT_COLLECTION = the_collections.Uncaught_coll;
 
 startServer()
 
@@ -86,7 +91,7 @@ async function startServer() {
       res.send(the_json)
     } catch (err) {
       // catches errors both in fetch and response.json
-      console.log('xxx', err)
+     print('xxx', err)
       next();
     }
   });
@@ -111,5 +116,5 @@ async function startServer() {
 
   const port = process.env.PORT || HTTP_PORT;
   app.listen(port)
-  console.log(`Server running at http://localhost:${port}`)
+  print(`Server running at http://localhost:${port}`)
 }

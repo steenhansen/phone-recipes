@@ -13,7 +13,7 @@
     node all-selenium-tests
 
 */
-const { testIdStrip } = require('../../import-2-require/common-2-require');
+const { print, testIdStrip } = require('../../import-2-require/common-2-require');
 const TEST_RECIPE_NAME = 'selenium_createRecipe_addComment_delRecipe';
 const TEST_TITLE_ID = testIdStrip(TEST_RECIPE_NAME);     //test-id-selenium_createRecipe_addComment_delRecipe
 
@@ -56,7 +56,7 @@ if (!global.en_masse_selenium) {
   (async function () {
     await safeInitSelenium();
     await createRecipe_addComment_delRecipe();
-    console.log("Finished - " + TEST_RECIPE_NAME);
+    print("Finished - " + TEST_RECIPE_NAME);
   })();
 }
 

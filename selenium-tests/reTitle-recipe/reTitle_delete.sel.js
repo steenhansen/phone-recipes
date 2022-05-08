@@ -16,7 +16,7 @@
     node all-selenium-tests
 
 */
-const { testIdStrip } = require('../../import-2-require/common-2-require');
+const { print, testIdStrip } = require('../../import-2-require/common-2-require');
 
 const {safeInitSelenium, stopDriver, changeRecipeTitle,  buildRecipe, deleteRecipe, startDriver, assertRecipeCount, waitThenClick, clickId,textId, waitThenText} = require("../load-db-selenium");
 const TEST_RECIPE_NAME = 's_r_title';
@@ -45,7 +45,7 @@ if (!global.en_masse_selenium) {
   (async function () {
     await safeInitSelenium();
     await reTitle_delete();
-    console.log("Finished - " + TEST_RECIPE_NAME);
+    print("Finished - " + TEST_RECIPE_NAME);
   })();
 }
 
