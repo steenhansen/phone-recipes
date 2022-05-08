@@ -6,6 +6,10 @@ Compile and launch
   Prod 
     npm run prod ../prod-config.js
 
+Heroku
+  runs the "start" script
+
+
 Launch already compiled ssr jsx server
   Dev
     npm run server-launch ../dev-config.js

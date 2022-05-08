@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useFilterContext } from '../server-app/serverBrowserContext'
+import { useFilterContext } from '../app/serverBrowserContext'
 import { databaseGet } from '../redux-store/ajax-calls.js'
 
 import { matchingRecipes, ONLY_ONE_RECIPE_UNFURLED } from "../import-2-require/common-2-import";

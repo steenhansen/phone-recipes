@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux'
 import { HomePageBoundary } from './HomePage';
 import { makeReduxStore } from '../../redux-store/recipe-store'
-import { CreateContextProvider, ServerContextProvider } from '../../server-app/serverBrowserContext'
+import { CreateContextProvider, ServerContextProvider } from '../../app/serverBrowserContext'
 
 export default {
   title: 'Pages/HomePage',

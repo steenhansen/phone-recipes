@@ -1,5 +1,5 @@
 import React from 'react';
-import { useServerContext } from '../server-app/serverBrowserContext'
+import { useServerContext } from '../app/serverBrowserContext'
 
 import { FAKE_TEST_GMAIL } from '../import-2-require/common-2-import'
 

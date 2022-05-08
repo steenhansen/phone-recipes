@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { CreateContextProvider, useServerContext, FilterContextProvider } from '../../server-app/serverBrowserContext'
+import { CreateContextProvider, useServerContext, FilterContextProvider } from '../../app/serverBrowserContext'
 import { MenuHeader } from './MenuHeader'
 import { MenuFooter } from './MenuFooter'
 import { TextFilter } from '../FilterParts/TextFilter'

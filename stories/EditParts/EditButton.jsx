@@ -1,5 +1,5 @@
 import { ButtonBase } from '../ButtonBase'
-//import { useServerContext } from '../../../server-app/serverBrowserContext'
+//import { useServerContext } from '../../../app/serverBrowserContext'
 
 export { EditButton }
 

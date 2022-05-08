@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux'
-import { ServerContextProvider } from '../../server-app/serverBrowserContext'
+import { ServerContextProvider } from '../../app/serverBrowserContext'
 import { makeReduxStore } from '../../redux-store/recipe-store'
 import {  RecipeListBoundary } from './RecipeList';
 

@@ -1,5 +1,5 @@
 import { userToUrl } from "../../import-2-require/common-2-import";
-import { useServerContext } from '../../server-app/serverBrowserContext'
+import { useServerContext } from '../../app/serverBrowserContext'
 export { MenuHeader }
 
 function MenuHeader({ is_minimal }) {

@@ -2,7 +2,7 @@
 import { PageSansMenu } from './PageSansMenu'
 import { PageWithMenu } from './PageWithMenu'
 export { EncaseStore}
-import { ServerContextProvider } from '../server-app/serverBrowserContext'
+import { ServerContextProvider } from '../app/serverBrowserContext'
 
 import {objectLength} from "../import-2-require/common-2-import";
 

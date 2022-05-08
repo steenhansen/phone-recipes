@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 
-import { useServerContext } from '../../server-app/serverBrowserContext'
+import { useServerContext } from '../../app/serverBrowserContext'
 import { databasePost } from '../../redux-store/ajax-calls.js'
 import { TypeDiet } from '../FilterParts/TypeDiet'
 import { TypeCuisine } from '../FilterParts/TypeCuisine'

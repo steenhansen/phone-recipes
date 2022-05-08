@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ButtonBase } from '../ButtonBase'
-import { useServerContext } from '../../server-app/serverBrowserContext'
+import { useServerContext } from '../../app/serverBrowserContext'
 import { SHORTEST_STRING_LEN, safeStrip } from "../../import-2-require/common-2-import";
 import { useDispatch } from 'react-redux'
 import { databasePost } from '../../redux-store/ajax-calls.js'

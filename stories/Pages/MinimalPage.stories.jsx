@@ -1,6 +1,6 @@
 import React from 'react';
 import { MinimalPageBoundary } from './MinimalPage';
-import { ServerContextProvider } from '../../server-app/serverBrowserContext'
+import { ServerContextProvider } from '../../app/serverBrowserContext'
 
 export default {
   title: 'Pages/MinimalPage',

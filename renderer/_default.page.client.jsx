@@ -1,5 +1,5 @@
 import { getPage } from 'vite-plugin-ssr/client'
-import { clientRender, ROOT_ELEMENT_ID } from '../server-app/shared-client-server'
+import { clientRender, ROOT_ELEMENT_ID } from '../app/shared-client-server'
 
 browserHydrate(ROOT_ELEMENT_ID)
 
