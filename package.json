@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node .app/index.js",
+    "start": "node index.js",
     "dev": "node ./import-2-require/prepare_DEV_type_czech.js && npm run server-launch",
     "prod": "node ./import-2-require/prepare_PROD_type_czech.js && npm run build && npm run server-prod",
     "build": "vite build && vite build --ssr",
