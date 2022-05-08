@@ -11,6 +11,8 @@ var auth_router = require('../passport-auth/routes-auth');
 function appUseAuth(){
   var app = express()
 
+  app.enable("trust proxy");
+
   app.set('views', __dirname);
   app.set('view engine', 'ejs');
   app.use(compression())
