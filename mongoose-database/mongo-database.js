@@ -43,7 +43,7 @@ function getMongoCred(the_dirname, credentials_file) {
 }
 
 dbConnect = type_czech.linkUp(dbConnect, PRE_dbConnect,POST_dbConnect);
-function dbConnect(prog_root, credentials_file='false') {
+function dbConnect(prog_root, credentials_file=false) {
   console.log('dbConnect', prog_root, credentials_file);
   const connection_string = getMongoCred(prog_root, credentials_file);
   const db_options = { serverSelectionTimeoutMS: MONGO_CONNECT_TIMEOUT };
