@@ -1,20 +1,20 @@
-var path = import('path');
 
+const APP_TITLE = 'Phone Recipes';
+const APP_DESCRIPTION = 'Use your phone to view recipes with timers in the kitchen';
+
+const MAX_RECIPES_SHOWN = 10;
+const ID_SEPARATOR = '~';
 
 const HEROKU_START = 'heroku-start.js';
-
-
 const HTTP_PORT = 3000;
-
 const FAKE_TEST_GMAIL = "fake-test@gmail.com";
 const ONLY_ONE_RECIPE_UNFURLED = false;
 const SELF_COMMENTS_ALLOWED = true;
 const MAX_TEST_AJAX_DELAY_SEC = 3007;
 const SHORTEST_STRING_LEN = 3;
 const MONGO_CONNECT_TIMEOUT = 4000;
-const MAX_RECIPES_SHOWN = 10;
-const ID_SEPARATOR = '~';
 const REMOVE_RECORD_VERSION = '-__v';
+const NON_URL_CHAR_REPLACE = '-';
 const MONGO_AUTO_INDEX = true;
 const FILTER_FIRST_SECTION = 'get-api';
 const VALID_REDUCERS = ['record-error', 're-title-recipe', 'change-recipe', 'new-recipe',
@@ -25,7 +25,6 @@ const DEFAULT_CONFIG = {
   G_TYPE_CZECH_OPTIONS: []
 }
 const NOP_TYPE_CZECH = { linkUp: (nop) => nop, isActive: (x) => false, isPruned: (y) => false };
-
 
 function rootAppRequire(prog_root, name = '') {
   if (name === '') {
@@ -55,20 +54,23 @@ function safeEmail(an_email) {
 function safeReturns(steps_lines) {
   const newline_windows = steps_lines.replace(/\r\n/g, "\n");
   const newline_apple = newline_windows.replace(/\r/g, "\n");
-  const safe_string = newline_apple.replace(/[^a-zA-Z0-9_ \n-]/g, " ");
-  return safe_string;
+  const safe_string = newline_apple.replace(/[^-_a-zA-Z0-9 \n]/g, NON_URL_CHAR_REPLACE);
+  const safe_trimmed = safe_string.trim();
+  return safe_trimmed;
 }
 
 function safeStrip(title_or_comment) {
-  const safe_string = title_or_comment.replace(/[^a-zA-Z0-9_ -]/g, " ");
-  return safe_string;
+  const safe_string = title_or_comment.replace(/[^-_a-zA-Z0-9 ]/g, NON_URL_CHAR_REPLACE);
+  const single_spaces = safe_string.replace(/\s\s+/g, ' ');
+  const safe_trimmed = single_spaces.trim();
+  return safe_trimmed;
 }
 
-// "My-Title_22" => "test-id-my-title_22" for easy testing
 function testIdStrip(title_or_comment) {
-  const safe_string = title_or_comment.replace(/[^a-zA-Z0-9_-]/g, "");
+  const safe_string = safeStrip(title_or_comment);
   const lower_safe = safe_string.toLowerCase();
-  const test_id_strip = 'test-id-' + lower_safe;
+  const no_spaces = lower_safe.replace(/ /g, "");
+  const test_id_strip = 'test-id-' + no_spaces;
   return test_id_strip;
 }
 
@@ -91,7 +93,8 @@ function CookOnOwnPage(shared_auth_email, url) {
 
 function urlToRecipeId(start_gmail, end_gmail, recipe_name) {
   const recipe_id = start_gmail + '@' + end_gmail + ID_SEPARATOR + recipe_name + ID_SEPARATOR;
-  return recipe_id;
+  const lower_id = recipe_id.toLowerCase();
+  return lower_id;
 }
 
 function objectLength(an_object) {
@@ -130,6 +133,7 @@ function vanillaPageContext(server_varname) {
   }
   return false;   // storybook always exits here as no pageContext exists
 }
+
 function herokuEnvOrConfigFile(prog_root) {
   const credentials_file = process.argv[2];
   let the_config;
@@ -151,15 +155,24 @@ function herokuEnvOrConfigFile(prog_root) {
   }
   return the_config;
 }
-
-function print(...args){
+function print(...args) {
   console.log(...args)
 }
+
+//  https://www.npmjs.com/package/replaceall
+function replaceall(replaceThis, withThis, inThis) {
+  withThis = withThis.replace(/\$/g, "$$$$");
+  return inThis.replace(new RegExp(replaceThis.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|<>\-\&])/g, "\\$&"), "g"), withThis);
+};
+
+
+
 
 
 
 export {
-  print, DEFAULT_CONFIG, FAKE_TEST_GMAIL, FILTER_FIRST_SECTION, HTTP_PORT, ID_SEPARATOR, MAX_RECIPES_SHOWN,
+  APP_TITLE, APP_DESCRIPTION,
+  replaceall, print, DEFAULT_CONFIG, FAKE_TEST_GMAIL, FILTER_FIRST_SECTION, HTTP_PORT, ID_SEPARATOR, MAX_RECIPES_SHOWN,
   MAX_TEST_AJAX_DELAY_SEC, MONGO_AUTO_INDEX, MONGO_CONNECT_TIMEOUT,
   NOP_TYPE_CZECH, ONLY_ONE_RECIPE_UNFURLED, REMOVE_RECORD_VERSION,
   SELF_COMMENTS_ALLOWED, SHORTEST_STRING_LEN, VALID_REDUCERS,
@@ -167,3 +180,5 @@ export {
   matchingRecipes, objectLength, rootAppRequire, safeEmail, safeReturns,
   safeStrip, testIdStrip, urlToRecipeId, userToUrl, vanillaPageContext,
 };
+
+var path = import('path');

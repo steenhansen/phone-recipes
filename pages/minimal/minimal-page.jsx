@@ -1,8 +1,6 @@
 import React from 'react'
 import '../../tail-wind.css'
-import { MinimalPageBoundary } from '../../stories/Pages/MinimalPage'
-
-
+import { MinimalPageBoundary } from '../../component-stories/Pages/MinimalPage'
 
 export { Page }
 

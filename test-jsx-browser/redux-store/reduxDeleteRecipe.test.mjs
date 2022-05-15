@@ -7,16 +7,10 @@
 // To see Type-Czech messages
 // npx vitest /test-jsx-browser
 
-
-
 import { VITEST_CONFIG } from '../vitestGlobal';
 global.GLOBAL_CONFIG = VITEST_CONFIG;
-
 import { reduxDeleteRecipe } from "../../redux-store/recipe-store.js";
-
-
-
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from 'vitest';
 
 const state = {
   current_recipes: [{
@@ -45,7 +39,7 @@ describe('Recipe-Collections', () => {
   describe('#changeRecipe', () => {
     it('#changeRecipe', () => {
       expect(actual_state).toEqual(expected_state);
-    })
-  })
-})
+    });
+  });
+});
 

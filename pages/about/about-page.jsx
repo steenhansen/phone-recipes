@@ -1,10 +1,9 @@
 import React from 'react'
 import '../../tail-wind.css'
 
-
 export { Page }
 
-function Page(my_vars) {
+function Page(_my_vars) {
   return (
     <div>
       This program exists to help prepare multiple dishes for a meal using a phone
@@ -20,19 +19,11 @@ function Page(my_vars) {
       my <a href='/steenhansen1942/gmail.com/Rice/steenhansen1942/gmail.com/Whole%20Chicken/'
         className="base-link">whole chicken with rice</a> meal.
 
-
-
-
       <img className='mx-auto' src="phone.png" alt="Phone View" width="280" height="480" />
-
-
-
 
       <br />
 
-
-
-      <div id="filter-bottom-" className="flex   justify-between clear-left ">
+      <div id="filter-bottom-" className="flex justify-between clear-left ">
         <div>
           <a href="https://github.com/steenhansen/phone-recipes" className="base-link">Program on GitHub</a>
         </div>
@@ -42,14 +33,11 @@ function Page(my_vars) {
         </span>
       </div>
 
-
-
-
       <br />
 
       <div className="flex flex-wrap">
 
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="cow.png" alt="https://www.flaticon.com/free-icons/cow"
             title="Cow icons created by Freepik - Flaticon"
             width="68" height="68" />
@@ -61,10 +49,7 @@ function Page(my_vars) {
           </div>
         </div>
 
-
-
-
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="hen.png" alt="www.flaticon.com/free-icons/chicken"
             title="Chicken icons created by Freepik - Flaticon"
             width="68" height="68" />
@@ -73,8 +58,7 @@ function Page(my_vars) {
           </div>
         </div>
 
-
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="pig.png" alt="www.flaticon.com/free-icons/pig"
             title="Pig icons created by justicon - Flaticon"
             width="68" height="68" />
@@ -86,8 +70,7 @@ function Page(my_vars) {
           </div>
         </div>
 
-
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="rabbit.png" alt="www.flaticon.com/free-icons/rabbit"
             title="Rabbit icons created by Freepik - Flaticon"
             width="68" height="68" />
@@ -96,9 +79,7 @@ function Page(my_vars) {
           </div>
         </div>
 
-
-
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="sheep.png" alt="www.flaticon.com/free-icons/sheep"
             title="Sheep icons created by Freepik - Flaticon"
             width="68" height="68" />
@@ -110,10 +91,7 @@ function Page(my_vars) {
           </div>
         </div>
 
-
-
-
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="deer.png" alt="www.flaticon.com/free-icons/deer"
             title="Deer icons created by Chattapat - Flaticon"
             width="68" height="68" />
@@ -125,7 +103,7 @@ function Page(my_vars) {
           </div>
         </div>
 
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="bison.png" alt="www.flaticon.com/free-icons/bison"
             title="Bison icons created by Freepik - Flaticon"
             width="68" height="68" />
@@ -137,7 +115,7 @@ function Page(my_vars) {
           </div>
         </div>
 
-        <div className="flex-auto text-xs font-thin mb-2">
+        <div className="flex-auto mb-2 text-xs font-thin">
           <img src="fish.png" alt="www.flaticon.com/free-icons/fish"
             title="Fish icons created by Those Icons - Flaticon"
             width="68" height="68" />
@@ -147,16 +125,10 @@ function Page(my_vars) {
             Lobster 140f
             Scallops 130f
             Shrimp 120f
-
-
           </div>
         </div>
 
       </div>
-
-
-
-
     </div>
   )
 }

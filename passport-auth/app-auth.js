@@ -5,13 +5,13 @@ var csrf = require('csurf');
 var passport = require('passport');
 const compression = require('compression')
 var SQLiteStore = require('connect-sqlite3')(session);
-var {google_auth_dir, google_auth_file} = require('./auth-consts');
+var { google_auth_dir, google_auth_file } = require('./auth-consts');
 var auth_router = require('../passport-auth/routes-auth');
 
-function appUseAuth(){
+function appUseAuth() {
   var app = express()
 
-  app.enable("trust proxy");
+  app.enable("trust proxy");   // for Heroku's http to https proxy issue
 
   app.set('views', __dirname);
   app.set('view engine', 'ejs');
@@ -28,14 +28,14 @@ function appUseAuth(){
   }));
   app.use(csrf());
   app.use(passport.authenticate('session'));
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     var msgs = req.session.messages || [];
     res.locals.messages = msgs;
-    res.locals.hasMessages = !! msgs.length;
+    res.locals.hasMessages = !!msgs.length;
     req.session.messages = [];
     next();
   });
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     res.locals.shared_csrfToken = req.csrfToken();
     next();
   });

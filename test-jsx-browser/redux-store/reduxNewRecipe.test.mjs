@@ -7,17 +7,10 @@
 // To see Type-Czech messages
 // npx vitest /test-jsx-browser
 
-
-
 import { VITEST_CONFIG } from '../vitestGlobal';
 global.GLOBAL_CONFIG = VITEST_CONFIG;
-
-
 import { reduxNewRecipe } from "../../redux-store/recipe-store.js";
-
-
-
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from 'vitest';
 
 const state = {
   current_recipes: [],
@@ -44,7 +37,7 @@ const expected_state = {
     cook: 'eij442@gmail.com',
     title: 'the-title',
     steps: 'str', serves: 'str', time: 'str', meal: 'str',
-    cuisine: 'str', diet: 'str', internal: 'str', search: 'str',
+    cuisine: 'str', diet: 'str', internal: 'str', search: ' the-title str ',
     minutes: 17, ingredients: [], comments: []
   }],
   current_remarks: []
@@ -54,7 +47,7 @@ describe('Recipe-Collections', () => {
   describe('#changeRecipe', () => {
     it('#changeRecipe', () => {
       expect(actual_state).toEqual(expected_state);
-    })
-  })
-})
+    });
+  });
+});
 

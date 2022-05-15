@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../tail-wind.css'
-import { CookPageBoundary } from '../../stories/Pages/CookPage'
+import { CookPageBoundary } from '../../component-stories/Pages/CookPage'
 
 export { Page }
 

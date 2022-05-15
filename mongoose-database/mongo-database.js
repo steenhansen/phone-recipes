@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 const { RECIPES_SCHEMA, COMMENTS_SCHEMA, UNCAUGHT_SCHEMA } = require('./db-schemas');
-
-const { print , MONGO_AUTO_INDEX, MONGO_CONNECT_TIMEOUT, rootAppRequire } = require('../import-2-require/common-2-require');
-
-
-const { type_czech,
-  PRE_readConfig, POST_readConfig,
+const { print, MONGO_AUTO_INDEX, MONGO_CONNECT_TIMEOUT, rootAppRequire } = require('../import-2-require/common-2-require');
+const { type_czech } = require('../import-2-require/make-Type-Czech-require.js');
+const { PRE_readConfig, POST_readConfig,
   PRE_getMongoCred, POST_getMongoCred,
   PRE_dbConnect, POST_dbConnect,
   PRE_deVersionMongo, POST_deVersionMongo, } = require('./tc-mongo-database');
@@ -54,7 +51,6 @@ function dbConnect(prog_root, credentials_file = false) {
   return { Recipes_coll, Comments_coll, Uncaught_coll }
 }
 
-
 const BASE_BLANK_RECIPE = {
   _id: '',
   cook: '',
@@ -71,50 +67,6 @@ const BASE_BLANK_RECIPE = {
   comments: [],
   search: ''
 }
-
-
-
-async function testRecipes() {
-  //https://mongoosejs.com/docs/api/model.html#model_Model.create
-  await Recipes_coll.create(
-    {
-      _id: "email@gmail.com~green eggs and ham~",
-      cook: "email@gmail.com",
-      title: 'green eggs and ham',
-      steps: "step -A tep--b",
-      meal: 'lunch',
-      cuisine: 'thai',
-      diet: 'meat',
-      ingredients: [{ ingredient: 'egg', amount: '2' }]
-    });
-
-  await Recipes_coll.create(
-    {
-      _id: "email@gmail.com~green eggs and hamX~",
-      cook: "email@gmail.com",
-      title: 'green eggs and ham',
-      steps: "step -A step--b",
-      meal: 'lunch',
-      cuisine: 'sichuan',
-      diet: 'vegan',
-      ingredients: [{ ingredient: 'egg', amount: '2' }]
-    });
-
-  await Comments_coll.create(
-    {
-      _id: "email@gmail.com~green eggs and ham~bilbobaggins@facebook.com~cut the sugar",
-      by: 'bilbobaggins@facebook.com',         // index 2
-    });
-
-  await Comments_coll.create(
-    {
-      _id: "email@gmail.com~green eggs and hamX~bilbobaggins@facebook.com~cut the spice",
-      by: 'bilbobaggins@facebook.com',         // index 2
-    });
-
-
-}
-
 
 deVersionMongo = type_czech.linkUp(deVersionMongo, PRE_deVersionMongo, POST_deVersionMongo);
 function deVersionMongo(classified_object) {

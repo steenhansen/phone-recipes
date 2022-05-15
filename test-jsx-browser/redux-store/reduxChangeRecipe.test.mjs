@@ -7,23 +7,16 @@
 // To see Type-Czech messages
 // npx vitest /test-jsx-browser
 
-
-
 import { VITEST_CONFIG } from '../vitestGlobal';
 global.GLOBAL_CONFIG = VITEST_CONFIG;
-
-
 import { reduxChangeRecipe } from "../../redux-store/recipe-store.js";
-
-
-
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from 'vitest';
 
 const state = {
   current_recipes: [{
     _id: 'ewq142@gmail.com~the-title~',
     cook: 'ewq142@gmail.com',
-    title: 'the-title',
+    title: 'the-TITLE',
     steps: 'str', serves: 'str', time: 'str', meal: 'str',
     cuisine: 'str', diet: 'str', internal: 'str', search: 'str',
     minutes: 17, ingredients: [], comments: []
@@ -40,7 +33,7 @@ const action = {
     edited_recipe: {
       _id: 'ewq142@gmail.com~the-title~',
       cook: 'ewq142@gmail.com',
-      title: 'the-title',
+      title: 'the-TITLE',
       steps: 'str', serves: 'str', time: 'str', meal: 'str',
       cuisine: 'str', diet: 'str', internal: 'str', search: 'str',
       minutes: 17, ingredients: [], comments: []
@@ -53,7 +46,7 @@ const expected_state = {
   current_recipes: [{
     _id: 'ewq142@gmail.com~the-title~',
     cook: 'ewq142@gmail.com',
-    title: 'the-title',
+    title: 'the-TITLE',
     steps: 'str', serves: 'str', time: 'str', meal: 'str',
     cuisine: 'str', diet: 'str', internal: 'str', search: 'str',
     minutes: 17, ingredients: [], comments: []
@@ -68,7 +61,7 @@ describe('Recipe-Collections', () => {
   describe('#changeRecipe', () => {
     it('#changeRecipe', () => {
       expect(actual_state).toEqual(expected_state);
-    })
-  })
-})
+    });
+  });
+});
 

@@ -1,4 +1,3 @@
-
 //  cd rs
 //  npx vitest /test-jsx-browser/redux-store/reduxReTitleRecipe_no_comments.test.mjs  --silent
 
@@ -7,13 +6,9 @@
 // To see Type-Czech messages
 // npx vitest /test-jsx-browser
 
-
-
 import { VITEST_CONFIG } from '../vitestGlobal';
 global.GLOBAL_CONFIG = VITEST_CONFIG;
-
-
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it } from 'vitest';
 import { reduxReTitleRecipe } from "../../redux-store/recipe-store.js";
 
 const state = {
@@ -50,20 +45,18 @@ const expected_state = {
     cook: 'abc194@gmail.com',
     title: 'new-title',
     steps: 'str', serves: 'str', time: 'str', meal: 'str',
-    cuisine: 'str', diet: 'str', internal: 'str', search: 'str',
+    cuisine: 'str', diet: 'str', internal: 'str', search: ' new-title str ',
     minutes: 17, ingredients: [], comments: []
   }],
   current_remarks: []
 };
 
-
-
 describe('Recipe-Collections', () => {
   describe('#changeRecipe', () => {
     it('#changeRecipe', () => {
       expect(actual_state).toEqual(expected_state);
-    })
-  })
-})
+    });
+  });
+});
 
 

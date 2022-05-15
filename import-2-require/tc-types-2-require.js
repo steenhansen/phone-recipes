@@ -13,8 +13,8 @@ const SPEC_RECIPE_EMPTIES = {
 const SPEC_TITLE_TYPES = Object.assign({}, { 'old_title': 'string' }, SPEC_RECIPE_TYPES);
 const SPEC_TITLE_EMPTY = Object.assign({}, { 'old_title': 'IG' }, SPEC_RECIPE_EMPTIES);
 
-const SPEC_NEW_COMMENT_TYPE = { recipe_id: 'string', by: 'string', remark: 'string' };
-const SPEC_NEW_COMMENT_EMPTY = { recipe_id: 'EMPTY-ERROR', by: 'EMPTY-ERROR', remark: 'EMPTY-ERROR' };
+const SPEC_NEW_COMMENT_TYPE = { recipe_id: 'string', by: 'string', remark: 'string', title: 'string' };
+const SPEC_NEW_COMMENT_EMPTY = { recipe_id: 'EMPTY-ERROR', by: 'EMPTY-ERROR', remark: 'EMPTY-ERROR', title: 'EMPTY-ERROR' };
 
 const SPEC_COMMENT_ID_TYPE = { _id: 'string' };
 const SPEC_COMMENT_ID_EMPTY = { _id: 'EMPTY-ERROR' };
@@ -29,8 +29,11 @@ const SPEC_RETITLED_EMPTY = { re_titled_recipe: SPEC_RECIPE_EMPTIES, old_title: 
 const SPEC_POST_TO_DB_TYPE = [SPEC_RECIPE_TYPES, SPEC_TITLE_TYPES, SPEC_NEW_COMMENT_TYPE, SPEC_COMMENT_ID_TYPE, SPEC_RETITLED_TYPE, SPEC_ERROR_ID_TYPE];
 const SPEC_POST_TO_DB_EMPTY = [SPEC_RECIPE_EMPTIES, SPEC_TITLE_EMPTY, SPEC_NEW_COMMENT_EMPTY, SPEC_COMMENT_ID_EMPTY, SPEC_RETITLED_EMPTY, SPEC_ERROR_ID_EMPTY];
 
-const SPEC_RECIPE_COMMENTS_TYPE = { _id: 'string', by: 'string' };
-const SPEC_RECIPE_COMMENTS_EMPTY = { _id: 'EMPTY-ERROR', by: 'EMPTY-ERROR' };
+const SPEC_RECIPE_COMMENTS_TYPE = { _id: 'string', by: 'string', title: 'string' };
+const SPEC_RECIPE_COMMENTS_EMPTY = { _id: 'EMPTY-ERROR', by: 'EMPTY-ERROR', title: 'EMPTY-ERROR' };
+
+const SPEC_RECIPE_ARRAY_COMMENTS_TYPE = { _id: 'string', by: 'string' };
+const SPEC_RECIPE_ARRAY_COMMENTS_EMPTY = { _id: 'EMPTY-ERROR', by: 'EMPTY-ERROR' };
 
 const SPEC_DELETE_COUNT = { acknowledged: 'boolean', deletedCount: 'number' };
 
@@ -47,14 +50,10 @@ module.exports = {
   SPEC_POST_TO_DB_TYPE, SPEC_POST_TO_DB_EMPTY,
   SPEC_RETITLED_TYPE, SPEC_RETITLED_EMPTY,
   SPEC_RECIPE_COMMENTS_TYPE, SPEC_RECIPE_COMMENTS_EMPTY,
+  SPEC_RECIPE_ARRAY_COMMENTS_TYPE, SPEC_RECIPE_ARRAY_COMMENTS_EMPTY,
   SPEC_RECIPE_TYPES, SPEC_RECIPE_EMPTIES,
-
   SPEC_TITLE_TYPES, SPEC_TITLE_EMPTY,
-
   SPEC_NEW_COMMENT_TYPE, SPEC_NEW_COMMENT_EMPTY,
-
-
-
   SPEC_DELETE_COUNT,
   SPEC_COMMENT_ID_TYPE
 };

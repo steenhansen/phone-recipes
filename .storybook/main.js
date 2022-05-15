@@ -1,7 +1,7 @@
 module.exports = {
   "stories": [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)"
+    "../component-stories/**/*.stories.mdx",
+    "../component-stories/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
     '@storybook/addon-postcss',

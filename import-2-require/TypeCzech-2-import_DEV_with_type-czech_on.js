@@ -1474,10 +1474,16 @@ type_czech._ParametersCheck(type_czech.TYPE_CZECH_EVENTS);
         }
 
         function reviveUndefNullNanInfin(shape_str) {
-          const shape_str_1 = shape_str.replaceAll(PLAIN_UNDEFINED_STR_VALUE, UNDEFINED_AS_STR);
-          const shape_str_2 = shape_str_1.replaceAll(PLAIN_NULL_STR_VALUE, NULL_AS_STR);
-          const shape_str_3 = shape_str_2.replaceAll(PLAIN_NAN_STR_VALUE, NAN_AS_STR);
-          const shape_str_4 = shape_str_3.replaceAll(PLAIN_INFINITY_STR_VALUE, INFINITY_AS_STR);
+          //  https://www.npmjs.com/package/replaceall
+          function replaceall(replaceThis, withThis, inThis) {
+            withThis = withThis.replace(/\$/g,"$$$$");
+            return inThis.replace(new RegExp(replaceThis.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|<>\-\&])/g,"\\$&"),"g"), withThis);
+          };
+
+          const shape_str_1 = replaceall(PLAIN_UNDEFINED_STR_VALUE, UNDEFINED_AS_STR, shape_str);
+          const shape_str_2 = replaceall(PLAIN_NULL_STR_VALUE, NULL_AS_STR, shape_str_1);
+          const shape_str_3 = replaceall(PLAIN_NAN_STR_VALUE, NAN_AS_STR, shape_str_2);
+          const shape_str_4 = replaceall(PLAIN_INFINITY_STR_VALUE, INFINITY_AS_STR, shape_str_3);
           return shape_str_4;
         }
 

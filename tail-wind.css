@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-https://jfly.uni-koeln.de/color/#pallet
-  orange_41      230,159,0
-  sky_blue_202   86,180,233
-  cud_bluish-green 0,158,115       009e73
-  yellow_56      240,228,66
-  blue_202       0,114,178
-  vermillion_27  213,94,0
-  red_purple_326 204,121,167
-*/
-
-
-
 @layer components {
   .base-button { 
     @apply
@@ -29,30 +16,9 @@ https://jfly.uni-koeln.de/color/#pallet
   }
 }
 
-button.base-button.cut-red>a:hover {
-  @apply 
-  text-delete-colour
-}
-
-
-
-button.base-button>a.delete-hover-red:hover {
-  @apply 
-  text-delete-colour
-}
-
-
-
-button.base-button>a#cancel-yellow:hover {
-  @apply 
-  text-cancel-colour
-}
-
-
-
 button.base-button>a{
-ZZbackground-color: yellow;
-ZZopacity:0.50;
+      TEST_background-color: yellow;
+      TEST_opacity:0.50;
   display: inline-block;    
    position: relative;  
    z-index: 1;   
@@ -66,59 +32,10 @@ ZZopacity:0.50;
    margin-right:-1px;
 }
 
-button.base-button>a:hover {
-  color: rgba(0,158,115,1.0);
-}
-
-
-
-/*     .-base-input-   */
-.-input-text- {
-}
-
-
-
-/* background-color:rgba(0,158,115,0.3); */
-
-.color-input-active {
-  @apply 
-
-
-
-  bg-[#00ffb6]     /* hsv 163,100,100 */
-  
- /* bg-[#00e5a4]  */   /* hsv 163,100,90 */
-
-  /* bg-[#009e73] */   /* hsv 163,100,61 */
-
-}
-
-
-/*     .-colour-href-   */
-.base-link {
-  @apply 
-  text-blue-600
-  hover:text-blue-800
-    underline
-}
-
-
-
 .base-view {
   @apply
   bg-gray-200
 }
-
-
-/*     .-colour-input-change-   */
-
-.base-edit {
-  @apply
-  bg-green-100
-}
-
-
-/*     .-offset-radio-   */
 
 .base-radio-label {
   @apply 
@@ -126,45 +43,40 @@ button.base-button>a:hover {
     inline-block
 }
 
+/*      https://jfly.uni-koeln.de/color/#pallet
+  orange_41         230,159,0
+  sky_blue_202      86,180,233
+  bluish-green_164  0,158,115
+  yellow_56         240,228,66
+  blue_202          0,114,178
+  vermillion_27     213,94,0
+  red_purple_326    204,121,167
+*/
 
-/*     .-size-w-interface-   */
-
-.base-max-width {
-  @apply 
-    max-w-[350px]
+button.base-button>a:hover {
+   color: rgb(0,158,115);  /* bluish-green_164 */
 }
 
-
-
-.base-phone-width {
-  @apply 
-    w-[350px]
+.base-edit {
+  background-color: rgba(0,158,115,0.2);  /* bluish-green_164  x 0.2 */
 }
 
-.base-cut-add-w {
-  @apply 
-    w-[40px]
+.base-link {
+  color: rgba(0,114,178, 0.8);  /* blue_202 x 0.8*/
+  text-decoration: underline;
 }
 
-.base-cut-add-ingred-w {
-  @apply 
-    w-[210px]
+.base-link:hover {
+  color: rgb(0,114,178);  /* blue_202 */
 }
 
-.base-cut-add-amount-w {
-  @apply 
-    w-[100px]
+button.base-button.cut-red>a:hover {
+  color: rgb(204,121,167); /* red_purple_326 */
 }
 
-.base-list-input-ingred-w {
-  @apply 
-    w-[240px]
-}
+button.base-button>a.delete-hover-red:hover {
+  color: rgb(204,121,167);  /* red_purple_326 */
+  }
 
-/*     .-size-w-input-amount-   */
-.base-list-input-amount-w {
-  @apply 
-    w-[110px]
-}
 
 

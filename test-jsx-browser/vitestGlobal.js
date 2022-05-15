@@ -6,6 +6,5 @@ const VITEST_CONFIG = {
   //G_TYPE_CZECH_OPTIONS: ['CONSOLE-COUNT', 'LOG-ERRORS']
 }
 
-
 export { VITEST_CONFIG}
 

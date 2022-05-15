@@ -1,26 +1,11 @@
+const { type_czech } = require('../import-2-require/make-Type-Czech-require.js');
 
-
-
-const  {TypeCzech} = require ('../import-2-require/TypeCzech-2-require');
-
-
-
-const { NOP_TYPE_CZECH } =require( '../import-2-require/common-2-require');
-
-
-
-let type_czech = NOP_TYPE_CZECH;
-
-
-
-if (global.GLOBAL_CONFIG.G_TYPE_CZECH_ON) {
-  const { TypeCzech } = require('../import-2-require/TypeCzech-2-require');
-  type_czech = TypeCzech(...global.GLOBAL_CONFIG.G_TYPE_CZECH_OPTIONS)
-}
-
-
-
-
+module.exports = {
+  PRE_readConfig, POST_readConfig,
+  PRE_getMongoCred, POST_getMongoCred,
+  PRE_dbConnect, POST_dbConnect,
+  PRE_deVersionMongo, POST_deVersionMongo,
+};
 
 function PRE_readConfig(the_dirname, credentials_file) {
   const the_params = [the_dirname, credentials_file]
@@ -37,11 +22,11 @@ function POST_readConfig(the_result) {
     GLOBAL_CONFIG: {
       G_SELENIUM_TESTING: 'boolean',
       G_TYPE_CZECH_OPTIONS: ['strings'],
-      G_TYPE_CZECH_ON:'boolean',
+      G_TYPE_CZECH_ON: 'boolean',
       G_TYPE_CZECH_OPTIONS: ['strings'],
     },
     HIDDEN_CREDENTIALS: {
-      MONGO_URI: 'string',  GOOGLE_CLIENT_ID: 'string', GOOGLE_CLIENT_SECRET: 'string', SESSION_SECRET: 'string'
+      MONGO_URI: 'string', GOOGLE_CLIENT_ID: 'string', GOOGLE_CLIENT_SECRET: 'string', SESSION_SECRET: 'string'
     }
   };
   const type_issue = type_czech.checkParam_type(the_result, result_types)
@@ -52,18 +37,17 @@ function POST_readConfig(the_result) {
     GLOBAL_CONFIG: {
       G_SELENIUM_TESTING: 'IG',
       G_TYPE_CZECH_OPTIONS: ['IG'],
-      G_TYPE_CZECH_ON:'IG',
+      G_TYPE_CZECH_ON: 'IG',
       G_TYPE_CZECH_OPTIONS: ['IG'],
     },
     HIDDEN_CREDENTIALS: {
-      MONGO_URI: 'EMPTY-ERROR',  GOOGLE_CLIENT_ID: 'EMPTY-ERROR', GOOGLE_CLIENT_SECRET: 'EMPTY-ERROR', SESSION_SECRET: 'EMPTY-ERROR'
+      MONGO_URI: 'EMPTY-ERROR', GOOGLE_CLIENT_ID: 'EMPTY-ERROR', GOOGLE_CLIENT_SECRET: 'EMPTY-ERROR', SESSION_SECRET: 'EMPTY-ERROR'
     }
   };
   const empty_issue = type_czech.checkParam_empty(the_result, result_empties)
   if (empty_issue)
     return empty_issue
 }
-
 
 function PRE_getMongoCred(the_dirname, credentials_file) {
   const the_params = [the_dirname, credentials_file]
@@ -120,11 +104,3 @@ function POST_deVersionMongo(the_result) {
     return type_issue
 }
 
-
-module.exports = {
-  type_czech,
-  PRE_readConfig, POST_readConfig,
-  PRE_getMongoCred, POST_getMongoCred,
-  PRE_dbConnect, POST_dbConnect,
-  PRE_deVersionMongo, POST_deVersionMongo,
-};

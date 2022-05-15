@@ -1,8 +1,4 @@
-
-
 const { readConfig } = require('../mongoose-database/mongo-database');
-
-
 
 function googleCreds(prog_root, credentials_file) {
   if (credentials_file) {

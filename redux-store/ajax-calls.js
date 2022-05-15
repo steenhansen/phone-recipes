@@ -1,16 +1,11 @@
-
-
 import { FILTER_FIRST_SECTION } from '../import-2-require/common-2-import.js';
-
-
 import {
   PRE_databasePost, POST_databasePost,
-  PRE_databaseGet, POST_databaseGet,
-  type_czech
+  PRE_databaseGet, POST_databaseGet
 } from './tc-ajax-calls'
+import { type_czech } from '../import-2-require/make-Type-Czech-import.js';
 
 export { databasePost, databaseGet }
-
 
 databasePost = type_czech.linkUp(databasePost, PRE_databasePost, POST_databasePost)
 async function databasePost(db_request, shared_csrfToken, json_data) {
@@ -22,11 +17,9 @@ async function databasePost(db_request, shared_csrfToken, json_data) {
     },
     body: JSON.stringify(json_data)
   };
-
   // if (db_request !=='record-error'){
   //   db_request = db_request +"test-404-POST-is-recorded";
   // }
-
   const post_response = await fetch('/' + db_request, requestOptions)
   if (post_response.status === 404) {
     const command_error = new Error('databasePost 404, request = "' + db_request + '"');

@@ -1,4 +1,8 @@
 
+
+
+
+
 NB
   All real config files are outside of the repo
   /sample-configs/ are copies
@@ -21,9 +25,9 @@ Local compile and launch
 TESTS
   Selenium
     terminal 1:  cd /
-                 npm run dev /selenium-tests/selenium-config.js
+                 npm run dev /test-selenium/selenium-config.js
 
-    terminal 2:  cd /selenium-tests
+    terminal 2:  cd /test-selenium
                  node all-selenium-tests
 
                  node create-recipe/createRecipe_addComment_delRecipe.sel
@@ -41,6 +45,10 @@ TESTS
   
   Storybook
     npm run storybook
+
+
+
+
 
 
 

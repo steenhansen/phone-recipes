@@ -1,0 +1,19 @@
+
+
+
+
+
+
+
+
+
+  terminal 1:
+    cd /
+    npm run dev ../selenium-config.js
+
+  terminal 2:
+    cd test-selenium
+    node all-test-selenium
+
+    node minimal-deleted/Recipe_20_multiple_blanks.sel.js
+

@@ -1,18 +1,14 @@
 {
   "scripts": {
     "start": "npm run heroku-init",
-    "build-prod" : "node ./make_PROD.js && npm run build",
+    "build-prod": "node ./make_PROD.js && npm run build",
     "heroku-init": "npm run build-prod && cross-env NODE_ENV=production node server-app/heroku-start.js",
-
     "dev": "node ./make_DEV && node server-app/index.js",
     "prod": "npm run build-prod && npm run server-test",
-
     "build": "vite build && vite build --ssr",
     "server-test": "cross-env NODE_ENV=production node server-app/index.js",
-    
     "test-node": "mocha test-cjs-node/**/*.spec.cjs",
     "test-single": "mocha",
-
     "storybook": "node ./make_DEV && start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

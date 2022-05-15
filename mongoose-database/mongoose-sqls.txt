@@ -1,0 +1,11 @@
+
+
+
+Click on   >_MONGOSH
+
+use local-ui
+ 
+ 
+db.uncaughts.deleteMany({})
+
+

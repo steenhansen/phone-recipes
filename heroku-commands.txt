@@ -1,0 +1,16 @@
+
+
+
+
+heroku
+git add .
+git commit -am 'abc'
+git push heroku main
+
+
+https://phone-recipes.herokuapp.com/
+
+
+
+heroku logs --tail
+

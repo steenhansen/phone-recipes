@@ -1,5 +1,5 @@
-import { FilterMenu } from '../stories/MenuParts/FilterMenu'
-import { FakeTest } from '../stories/FakeTest'
+import { FilterMenu } from '../component-stories/MenuParts/FilterMenu'
+import { FakeTest } from '../component-stories/FakeTest'
 
 import { useServerContext } from '../server-app/serverBrowserContext'
 export { PageWithMenu }
@@ -23,7 +23,7 @@ function PageWithMenu() {
             <FilterMenu  >
                 <Page />
             </FilterMenu>
-            <FakeTest/>
+            <FakeTest />
         </div>
     )
 }
