@@ -2,7 +2,8 @@
 multiple dishes for a meal using a phone in the kitchen. A list of my online 
 <a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com'>recipes</a>.
 Phone-recipes shows mulitple dishes along with timers. Log in with a
-Google Account. Below are screen shots of of my Pork Roast with rice recipes.
+Google Account. Below are screen shots of of my
+<a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com/Pork%20Roast/steenhansen1942/gmail.com/Rice'>Pork Roast with rice</a> recipes.
 
 ![User to kitchen](pages/images/readme-arrow.png) 
 
@@ -73,3 +74,4 @@ Mocha Node.js tests
 Storybook
 
     npm run storybook
+
