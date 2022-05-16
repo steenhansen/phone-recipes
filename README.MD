@@ -59,7 +59,8 @@ Selenium Tests
 
 
 Vitest JSX tests
-  -  npx vitest /test-jsx-browser
+
+    npx vitest /test-jsx-browser
 
 Mocha Node.js tests
   -  npm run test-node
