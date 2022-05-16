@@ -62,7 +62,7 @@ async function waitThenClick(sel_driver, click_id) {
   await waitForLoad(sel_driver, click_id);
   print("    202 waitThenClick - clickId()", click_id);
   await clickId(sel_driver, click_id);
-  print("    203 waitThenClick - finsihed");
+  print("    203 waitThenClick - finished");
 }
 
 async function waitThenText(sel_driver, text_id, typed_text) {

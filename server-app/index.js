@@ -1,4 +1,4 @@
-const { print, herokuEnvOrConfigFile, FAKE_TEST_GMAIL, HTTP_PORT, DEFAULT_CONFIG } = require("../import-2-require/common-2-require");
+const { print, herokuEnvOrConfigFile, FAKE_TEST_GMAIL, HTTP_PORT, DEFAULT_CONFIG, FAVICON_FLATICON } = require("../import-2-require/common-2-require");
 global.GLOBAL_CONFIG = DEFAULT_CONFIG;
 const prog_root = `${__dirname}/..`;
 global.GLOBAL_CONFIG = herokuEnvOrConfigFile(prog_root);
@@ -27,7 +27,7 @@ global.GLOBAL_CONFIG.G_UNCAUGHT_COLLECTION = the_collections.Uncaught_coll;
 startServer();
 
 //   <a href="https://www.flaticon.com/free-icons/food" title="food icons">Food icons created by Freepik - Flaticon</a>
-app.use(favicon('./pages/restaurant_5.png'));
+app.use(favicon(FAVICON_FLATICON));
 
 process.on('uncaughtException', function (err) {
   const { recordException } = require('../mongoose-database/uncaught-collections');

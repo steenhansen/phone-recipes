@@ -43,7 +43,7 @@ async function createRecipe_addComment_delRecipe() {
     await checkDbCommentCount(1);
 
     print("7 createRecipe_addComment_delRecipe - goto cook page");
-    await clickId(sel_driver, '_my-recipes_');
+    await clickId(sel_driver, '--my--recipes--');
 
     print("8 createRecipe_addComment_delRecipe - delete recipe");
     await deleteRecipe(sel_driver, 'test-id-selenium_createrecipe_addcomment_delrecipe--title--toggle--');

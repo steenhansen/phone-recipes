@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ButtonBase } from '../ButtonBase'
 import { useServerContext } from '../../server-app/serverBrowserContext'
-import { SHORTEST_STRING_LEN, safeStrip } from "../../import-2-require/common-2-import";
+import { SHORTEST_STRING_LEN } from "../../import-2-require/common-2-import";
 import { useDispatch } from 'react-redux'
 import { databasePost } from '../../redux-store/ajax-calls.js'
 
@@ -12,10 +12,9 @@ function CommentAdd({ _id, used_comments, title }) {
   const recipe_id = _id
   const server_variables = useServerContext()
   const { shared_auth_email, shared_csrfToken } = server_variables;
-  const [remark_text, setRemarkText] = useState('');
+  const [remark, setRemarkText] = useState('');
   const commentChange = (event) => setRemarkText(event.target.value);
   const onCommentClick = async (event) => {
-    const remark = safeStrip(remark_text);
     if (remark.length > 0) {
       const comment_data = { recipe_id, by: shared_auth_email, remark, title };
       const comment_add = await databasePost('add-comment', shared_csrfToken, comment_data);
@@ -29,7 +28,7 @@ function CommentAdd({ _id, used_comments, title }) {
   };
 
   let is_disabled = true;
-  const trimmed_remark = remark_text.trim();
+  const trimmed_remark = remark.trim();
   if (shared_auth_email === '') {
     return (
       <ButtonBase className="float-left mt-2 mr-2 ">
@@ -48,7 +47,7 @@ function CommentAdd({ _id, used_comments, title }) {
         <a id="--new--comment--add--" onClick={onCommentClick}>Add Comment</a>
       </ButtonBase>
       <input id="--new--comment--text--" onChange={commentChange} className='w-7/12 base-edit' type="text"
-        value={remark_text} placeholder="New recipe comment ..." />
+        value={remark} placeholder="New recipe comment ..." />
     </div>
   )
 }

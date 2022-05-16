@@ -1,5 +1,6 @@
-import { safeEmail, safeStrip, ID_SEPARATOR, safeReturns } from "./common-2-import";
+import { safeEmail, safeStrip, ID_SEPARATOR } from "./common-2-import";
 import { type_czech } from '../import-2-require/make-Type-Czech-import';
+
 
 import {
   PRE_safeIngredients, POST_safeIngredients,
@@ -19,13 +20,15 @@ function safeIngredients(ingredients) {
 }
 
 safeSearch = type_czech.linkUp(safeSearch, PRE_safeSearch, POST_safeSearch);
-function safeSearch(safe_title, steps, safe_ingredients) {
+function safeSearch(safe_title, steps, ingredients) {
+  const safe_ingredients = safeIngredients(ingredients);
   const title_steps = ' ' + safe_title + ' ' + safeStrip(steps) + ' ';
   const safe_search = safe_ingredients.reduce((acc, curr) =>
     (acc + curr.ingredient + ' ' + curr.amount + ' ')
     , title_steps)
   return safe_search;
 }
+
 
 safeRecipe = type_czech.linkUp(safeRecipe, PRE_safeRecipe, POST_safeRecipe);
 function safeRecipe(new_recipe) {
@@ -34,32 +37,23 @@ function safeRecipe(new_recipe) {
   const safe_title = safeStrip(title);
   const safe_id = safe_cook + ID_SEPARATOR + safe_title + ID_SEPARATOR;
   const id_lower = safe_id.toLowerCase();
-  const safe_steps = safeReturns(steps);
-  const safe_serves = safeStrip(serves);
-  const safe_time = safeStrip(time);
-  const safe_meal = safeStrip(meal);
-  const safe_cuisine = safeStrip(cuisine);
-  const safe_diet = safeStrip(diet);
-  const safe_ingredients = safeIngredients(ingredients)
-  const safe_internal = safeStrip(internal);
-  const safe_minutes = 0 + minutes;
-  const safe_search = safeSearch(safe_title, steps, safe_ingredients);
+  const int_minutes = 0 + minutes;
+  const safe_search = safeSearch(safe_title, steps, ingredients);
   const safe_lower_search = safe_search.toLowerCase();
-
   const safe_recipe = {
     _id: id_lower,
     cook: safe_cook,
     title: safe_title,
-    steps: safe_steps,
-    serves: safe_serves,
-    time: safe_time,
-    meal: safe_meal,
-    cuisine: safe_cuisine,
-    diet: safe_diet,
-    ingredients: safe_ingredients,
+    steps: steps,
+    serves: serves,
+    time: time,
+    meal: meal,
+    cuisine: cuisine,
+    diet: diet,
+    ingredients: ingredients,
     comments: [],
-    internal: safe_internal,
-    minutes: safe_minutes,
+    internal: internal,
+    minutes: int_minutes,
     search: safe_lower_search
   }
   if (new_recipe.old_title) {

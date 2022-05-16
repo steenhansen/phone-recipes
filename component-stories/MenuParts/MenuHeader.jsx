@@ -42,7 +42,7 @@ function MenuHeader({ is_minimal }) {
           <div>
             <a href="/" className="base-link">All Recipes</a>
           </div>
-          <a id="_my-recipes_" className="base-link" href={user_url}>My Recipes</a>
+          <a id="--my--recipes--" className="base-link" href={user_url}>My Recipes</a>
         </div>
       )
     } else if (url === user_url) {  // user looking at own
@@ -53,7 +53,7 @@ function MenuHeader({ is_minimal }) {
       return (
         <div id="-filter-top-" className="flex justify-between ">
           &nbsp;
-          <a id="_my-recipes_" className="base-link" href={user_url}>My Recipes</a>
+          <a id="--my--recipes--" className="base-link" href={user_url}>My Recipes</a>
         </div>
       )
     }

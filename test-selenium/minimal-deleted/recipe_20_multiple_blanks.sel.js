@@ -15,7 +15,7 @@
 */
 
 const { testRecipes, testComments, changeRecipeTitle, idText, safeInitSelenium, stopDriver, deleteRecipe, idAlive, makeComment, buildRecipe, startDriver,
-  checkDbRecipeCount, checkDbCommentCount, waitThenClick } = require("../load-db-selenium");
+  checkDbRecipeCount, checkDbCommentCount, waitThenClick, clickId } = require("../load-db-selenium");
 var assert = require('assert');
 const { print, testIdStrip, safeStrip } = require('../../import-2-require/common-2-require');
 
@@ -56,6 +56,9 @@ const FIRST_COMMENT = 'fake-test@gmail.com~' + FIRST_LOWER_TITLE + '~fake-test@g
 const SECOND_COMMENT = 'fake-test@gmail.com~' + SECOND_LOWER_TITLE + '~fake-test@gmail.com~' + CASED_COMMENT;
 // fake-test@gmail.com~x rec-ipe with blanks--~fake-test@gmail.com~a -- COMMENT -
 
+const FIRST_RECIPE_TOGGLE_ID = testIdStrip(FIRST_LOWER_TITLE) + '--title--toggle--';
+// test-id-rec-ipewithblanks----title--toggle--
+
 const SECOND_RECIPE_TOGGLE_ID = testIdStrip(SECOND_LOWER_TITLE) + '--title--toggle--';
 // test-id-xrec-ipewithblanks----title--toggle--
 
@@ -89,10 +92,13 @@ async function recipe_20_multiple_blanks() {
     print("7 recipe_20_multiple_blanks - assert 1 comment");
     await checkDbCommentCount(1);
 
-    print("8 recipe_20_multiple_blanks - check correct comment", THE_COMMENT_ID);
+    print("8 recipe_20_multiple_blanks - goto cook page");
+    await clickId(sel_driver, '--my--recipes--');
+
+    print("9 recipe_20_multiple_blanks - check correct comment", THE_COMMENT_ID);
     await idAlive(sel_driver, THE_COMMENT_ID);
 
-    print("9 recipe_20_multiple_blanks - check correct comment");
+    print("10 recipe_20_multiple_blanks - check correct comment");
     const first_comment = await testComments();
     var { _id, by, title } = first_comment[0];
     assert(_id === FIRST_COMMENT);
@@ -101,10 +107,13 @@ async function recipe_20_multiple_blanks() {
 
     ///////////////////
 
-    print("10 recipe_20_multiple_blanks - change recipe titlee", SECOND_RECIPE_NAME);
+    print("11  waitThenClick()", FIRST_RECIPE_TOGGLE_ID);
+    await waitThenClick(sel_driver, FIRST_RECIPE_TOGGLE_ID);
+
+    print("12 recipe_20_multiple_blanks - change recipe titlee", SECOND_RECIPE_NAME);
     await changeRecipeTitle(sel_driver, SECOND_RECIPE_NAME);
 
-    print("11 recipe_20_multiple_blanks - check changed recipe title");
+    print("13 recipe_20_multiple_blanks - check changed recipe title");
     const second_recipe = await testRecipes();
     var { _id, cook, title, comments } = second_recipe[0];
     assert(_id === SECOND_RECIPE_ID);
@@ -113,23 +122,23 @@ async function recipe_20_multiple_blanks() {
     assert(comments[0] === SECOND_COMMENT);
     assert(comments.length === 1);
 
-    print("12 recipe_20_multiple_blanks - check changed recipe comment");
+    print("14 recipe_20_multiple_blanks - check changed recipe comment");
     const second_comment = await testComments();
     var { _id, by, title } = second_comment[0];
     assert(_id === SECOND_COMMENT);
     assert(by === 'fake-test@gmail.com');
     assert(title === SECOND_CASED_TITLE);
 
-    print("13 recipe_20_multiple_blanks - delete recipe");
+    print("15 recipe_20_multiple_blanks - delete recipe");
     await deleteRecipe(sel_driver, SECOND_RECIPE_TOGGLE_ID);
 
-    print("14 recipe_20_multiple_blanks - assert no recipes");
+    print("16 recipe_20_multiple_blanks - assert no recipes");
     await checkDbRecipeCount(0);
     await checkDbCommentCount(0);
 
   } finally {
-    await stopDriver(sel_driver);
-    print("15 recipe_20_multiple_blanks - finished");
+      await stopDriver(sel_driver);
+    print("17 recipe_20_multiple_blanks - finished");
   }
 }
 

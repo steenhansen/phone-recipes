@@ -1,9 +1,5 @@
-import {  isNode } from '../import-2-require/common-2-import.js';
-
+import { isNode } from '../import-2-require/common-2-import.js';
 import { type_czech } from '../import-2-require/make-Type-Czech-import';
-
-
-
 
 export { PRE_HomeRecipes };
 

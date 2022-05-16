@@ -26,6 +26,7 @@ function PRE_safeIngredients(ingredients) {
   }
   const type_issue = type_czech.checkArray_objType0n(id_less_ingredients, SPEC_INGREDIENT_TYPE);
 
+
   if (type_issue)
     return type_issue
 
@@ -53,7 +54,6 @@ function PRE_safeSearch(safe_title, steps, safe_ingredients) {
   const type_issue_ing = type_czech.checkArray_objType0n(safe_ingredients, SPEC_INGREDIENT_TYPE);
   if (type_issue_ing)
     return type_issue_ing
-
 
   const empty_issue = type_czech.checkParam_empty(the_params, ['EMPTY-ERROR', 'IG', 'IG'])
   if (empty_issue)

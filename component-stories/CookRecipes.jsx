@@ -81,7 +81,7 @@ function CookRecipes({ is_visible_array, setVisibleRecipes }) {
     return (
       <>
         <div className="font-semibold text-center text-gray-800 ">
-          Edit Recipe  xx
+          Edit Recipe
         </div>
         <RecipeEditBoundary filtered_recipes={filtered_recipes} the_recipe={the_recipe} setEditRecipe={setEditRecipe} ></RecipeEditBoundary>
       </>

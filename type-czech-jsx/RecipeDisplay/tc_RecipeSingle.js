@@ -1,22 +1,12 @@
-
 import { isNode } from '../../import-2-require/common-2-import.js';
-
 import { SPEC_RECIPE_TYPES } from '../../import-2-require/tc-types-2-import';
-
 import { type_czech } from '../../import-2-require/make-Type-Czech-import';
 
-
-
-
 export { PRE_RecipeSingle }
-
-
 
 if (typeof symbol_does_not_exist === 'symbol') {
   throw 'tc_RecipeSingle.js';
 }
-
-
 
 function PRE_RecipeSingle(the_props, _extra_react_obj_1, _extra_react_obj_2) {
   const the_params = [the_props, _extra_react_obj_1, _extra_react_obj_2];

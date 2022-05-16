@@ -15,7 +15,7 @@
 */
 const { print } = require('../../import-2-require/common-2-require');
 
-const { safeInitSelenium, changeRecipeTitle, buildRecipe, deleteRecipe, startDriver,
+const { safeInitSelenium, changeRecipeTitle, buildRecipe, deleteRecipe, startDriver, stopDriver,
   checkDbRecipeCount, clickId } = require("../load-db-selenium");
 const TEST_RECIPE_NAME = 's_r_title';
 const TEST_NEW_NAME = 's_r_title--changed';

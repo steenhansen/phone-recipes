@@ -4,7 +4,7 @@ const APP_DESCRIPTION = 'Use your phone to view recipes with timers in the kitch
 
 const MAX_RECIPES_SHOWN = 10;
 const ID_SEPARATOR = '~';
-
+const FAVICON_FLATICON = './pages/fork-knife.png';
 const HEROKU_START = 'heroku-start.js';
 const HTTP_PORT = 3000;
 const FAKE_TEST_GMAIL = "fake-test@gmail.com";
@@ -49,14 +49,6 @@ function safeEmail(an_email) {
     return safe_email;
   }
   return '';
-}
-
-function safeReturns(steps_lines) {
-  const newline_windows = steps_lines.replace(/\r\n/g, "\n");
-  const newline_apple = newline_windows.replace(/\r/g, "\n");
-  const safe_string = newline_apple.replace(/[^-_a-zA-Z0-9 \n]/g, NON_URL_CHAR_REPLACE);
-  const safe_trimmed = safe_string.trim();
-  return safe_trimmed;
 }
 
 function safeStrip(title_or_comment) {
@@ -168,17 +160,15 @@ function replaceall(replaceThis, withThis, inThis) {
 
 
 
-
-
 export {
-  APP_TITLE, APP_DESCRIPTION,
+  APP_TITLE, APP_DESCRIPTION, FAVICON_FLATICON,
   replaceall, print, DEFAULT_CONFIG, FAKE_TEST_GMAIL, FILTER_FIRST_SECTION, HTTP_PORT, ID_SEPARATOR, MAX_RECIPES_SHOWN,
   MAX_TEST_AJAX_DELAY_SEC, MONGO_AUTO_INDEX, MONGO_CONNECT_TIMEOUT,
   NOP_TYPE_CZECH, ONLY_ONE_RECIPE_UNFURLED, REMOVE_RECORD_VERSION,
   SELF_COMMENTS_ALLOWED, SHORTEST_STRING_LEN, VALID_REDUCERS,
   commentIdToRecipeId, CookOnOwnPage, herokuEnvOrConfigFile, isNode,
-  matchingRecipes, objectLength, rootAppRequire, safeEmail, safeReturns,
-  safeStrip, testIdStrip, urlToRecipeId, userToUrl, vanillaPageContext,
+  matchingRecipes, objectLength, rootAppRequire, safeEmail,
+  safeStrip, testIdStrip, urlToRecipeId, userToUrl, vanillaPageContext
 };
 
 var path = import('path');

@@ -51,7 +51,6 @@ function PRE_reduxChangeRecipe(state, action) {
     };
     return type_czech.checkParam_type(state, change_sig);
   }
-
   function checkStateEmpty() {
     const empty_sig = {
       current_recipes: [SPEC_RECIPE_EMPTIES],
@@ -59,7 +58,6 @@ function PRE_reduxChangeRecipe(state, action) {
     };
     return type_czech.checkParam_empty(state, empty_sig);
   }
-
   function checkActionType() {
     const redux_action_sig = {
       type: 'string',
