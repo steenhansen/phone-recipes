@@ -33,16 +33,20 @@ Credentials Needed (examples in /sample-configs/)
   -  Google [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2/openid-connect#appsetup) credentials
 
 Run on Heroku
-  -  npm run start, no Proc file needed
+
+    npm run start, no Proc file needed
 
 Test Heroku environment locally with Atlas DB
-  -  npm run prod ../heroku-config.js
+
+    npm run prod ../heroku-config.js
 
 Local Dev Run
-  -  npm run dev ../dev-config.js 
+
+    npm run dev ../dev-config.js 
   
 Local Prod Run
-  -  npm run prod ../prod-config.js
+
+    npm run prod ../prod-config.js
 
 Selenium Tests
   -  terminal 1:
@@ -59,12 +63,13 @@ Selenium Tests
 
 
 Vitest JSX tests
-
+          
     npx vitest /test-jsx-browser
 
 Mocha Node.js tests
-  -  npm run test-node
+
+    npm run test-node
 
 Storybook
-  -  npm run storybook
 
+    npm run storybook
