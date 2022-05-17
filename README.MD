@@ -2,7 +2,8 @@
 multiple dishes for a meal using a phone in the kitchen. A list of my online 
 <a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com'>recipes</a>.
 Phone-recipes shows mulitple dishes along with timers. Log in with a
-Google Account. Below are screen shots of of my Pork Roast with rice recipes.
+Google Account. Below are screen shots of of my
+<a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com/Pork%20Roast/steenhansen1942/gmail.com/Rice'>Pork Roast with rice</a> recipes.
 
 ![User to kitchen](pages/images/readme-arrow.png) 
 
@@ -33,16 +34,20 @@ Credentials Needed (examples in /sample-configs/)
   -  Google [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2/openid-connect#appsetup) credentials
 
 Run on Heroku
-  -  npm run start, no Proc file needed
+
+    npm run start, no Proc file needed
 
 Test Heroku environment locally with Atlas DB
-  -  npm run prod ../heroku-config.js
+
+    npm run prod ../heroku-config.js
 
 Local Dev Run
-  -  npm run dev ../dev-config.js 
+
+    npm run dev ../dev-config.js 
   
 Local Prod Run
-  -  npm run prod ../prod-config.js
+
+    npm run prod ../prod-config.js
 
 Selenium Tests
   -  terminal 1:
@@ -59,11 +64,13 @@ Selenium Tests
 
 
 Vitest JSX tests
-  -  npx vitest /test-jsx-browser
+          
+    npx vitest /test-jsx-browser
 
 Mocha Node.js tests
-  -  npm run test-node
+
+    npm run test-node
 
 Storybook
-  -  npm run storybook
 
+    npm run storybook

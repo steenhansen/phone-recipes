@@ -17,10 +17,11 @@ function TitleEdit({ the_title, setTitle }) {
   };
 
   return (
-    <div id="-time-and-serves-" className=" mt-2 ">
-      <div className="my-2">
-        <span className="w-2/12 font-semibold pr-2" >Name</span>
-        <input ref={input_ref} className='w-10/12 base-edit pl-1' type="text"
+    <div id="-time-and-serves-" className="mt-2 ">
+      <div className="my-1">
+        <span className="w-2/12 pr-2 font-semibold cursor-help hover:cursor-help" 
+        title='Alphanumeric, dash, space &amp; underscore only'>Name</span>
+        <input ref={input_ref} className='w-10/12 pl-1 base-edit' type="text"
           id="_recipe-title_"
           onChange={titleChange} value={the_title} />
       </div>

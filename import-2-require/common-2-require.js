@@ -51,6 +51,13 @@ function safeEmail(an_email) {
   return '';
 }
 
+function searchStrip(search_text) {
+  const search_string = search_text.replace(/[^-_a-zA-Z0-9]/g, ' ');
+  const search_spaces = search_string.replace(/\s\s+/g, ' ');
+  const search_trimmed = search_spaces.trim();
+  return search_trimmed;
+}
+
 function safeStrip(title_or_comment) {
   const safe_string = title_or_comment.replace(/[^-_a-zA-Z0-9 ]/g, NON_URL_CHAR_REPLACE);
   const single_spaces = safe_string.replace(/\s\s+/g, ' ');
@@ -170,7 +177,7 @@ module.exports = {
   SELF_COMMENTS_ALLOWED, SHORTEST_STRING_LEN, VALID_REDUCERS,
   commentIdToRecipeId, CookOnOwnPage, herokuEnvOrConfigFile, isNode,
   matchingRecipes, objectLength, rootAppRequire, safeEmail,
-  safeStrip, testIdStrip, urlToRecipeId, userToUrl, vanillaPageContext
+  safeStrip, testIdStrip, urlToRecipeId, userToUrl, vanillaPageContext, searchStrip
 };
 
 var path = require('path');

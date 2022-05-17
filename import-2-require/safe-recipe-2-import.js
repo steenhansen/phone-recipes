@@ -1,4 +1,4 @@
-import { safeEmail, safeStrip, ID_SEPARATOR } from "./common-2-import";
+import {searchStrip, safeEmail, safeStrip, ID_SEPARATOR } from "./common-2-import";
 import { type_czech } from '../import-2-require/make-Type-Czech-import';
 
 
@@ -12,8 +12,8 @@ from './tc-safe-recipe-2-import';
 safeIngredients = type_czech.linkUp(safeIngredients, PRE_safeIngredients, POST_safeIngredients);
 function safeIngredients(ingredients) {
   const safe_ingredients = ingredients.map(an_ingredient => {
-    const ingredient = safeStrip(an_ingredient.ingredient);
-    const amount = safeStrip(an_ingredient.amount);
+    const ingredient = searchStrip(an_ingredient.ingredient);
+    const amount = searchStrip(an_ingredient.amount);
     return { ingredient, amount };
   });
   return safe_ingredients;
@@ -22,7 +22,7 @@ function safeIngredients(ingredients) {
 safeSearch = type_czech.linkUp(safeSearch, PRE_safeSearch, POST_safeSearch);
 function safeSearch(safe_title, steps, ingredients) {
   const safe_ingredients = safeIngredients(ingredients);
-  const title_steps = ' ' + safe_title + ' ' + safeStrip(steps) + ' ';
+  const title_steps = ' ' + safe_title + ' ' + searchStrip(steps) + ' ';
   const safe_search = safe_ingredients.reduce((acc, curr) =>
     (acc + curr.ingredient + ' ' + curr.amount + ' ')
     , title_steps)
