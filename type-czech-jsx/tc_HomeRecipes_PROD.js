@@ -1,4 +1,2 @@
-var  PRE_HomeRecipes= undefined;
+var PRE_HomeRecipes = undefined;
 export { PRE_HomeRecipes };
-
-

@@ -1,13 +1,9 @@
-import React from 'react'
-import '../../tail-wind.css'
-import { CookPageBoundary } from '../../component-stories/Pages/CookPage'
+import React from "react";
+import "../../tail-wind.css";
+import { CookPageBoundary } from "../../component-stories/Pages/CookPage";
 
-export { Page }
+export { Page };
 
 function Page() {
-  return (
-    <CookPageBoundary></CookPageBoundary>
-  )
-
+  return <CookPageBoundary></CookPageBoundary>;
 }
-

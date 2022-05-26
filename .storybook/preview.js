@@ -1,7 +1,6 @@
-global.STORYBOOK_EXECUTING = 'global-storybook-executing'
+global.STORYBOOK_EXECUTING = "global-storybook-executing";
 
-
-import '../tail-wind.css';
+import "../tail-wind.css";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,4 +10,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};

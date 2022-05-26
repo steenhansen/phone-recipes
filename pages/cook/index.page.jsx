@@ -1,4 +1,3 @@
-import { Page } from './cook-page'
+import { Page } from "./cook-page";
 
-export { Page }
-
+export { Page };

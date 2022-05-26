@@ -1,16 +1,15 @@
 {
   "scripts": {
     "start": "npm run heroku-init",
-    "build-prod": "node ./make_PROD.js && npm run build",
-    "heroku-init": "npm run build-prod && cross-env NODE_ENV=production node server-app/heroku-start.js",
+    "make-prod": "node ./make_PROD.js && npm run make-rollup",
+    "heroku-init": "npm run make-prod && cross-env NODE_ENV=production node server-app/heroku-start.js",
     "dev": "node ./make_DEV && node server-app/index.js",
-    "prod": "npm run build-prod && npm run server-test",
-    "build": "vite build && vite build --ssr",
-    "server-test": "cross-env NODE_ENV=production node server-app/index.js",
+    "prod": "npm run make-prod && npm run server-start",
+    "make-rollup": "vite build && vite build --ssr",
+    "server-start": "cross-env NODE_ENV=production node server-app/index.js",
     "test-node": "mocha test-cjs-node/**/*.spec.cjs",
     "test-single": "mocha",
-    "storybook": "node ./make_DEV && start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "show-storybook": "node ./make_DEV && start-storybook -p 6006"
   },
   "engines": {
     "node": "16.14.0"
@@ -79,6 +78,7 @@
     "core-js": "^3.21.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "mocha": "^9.2.2",
+    "prettier": "2.6.2",
     "selenium-webdriver": "^4.1.2",
     "vitest": "^0.9.3"
   }

@@ -1,23 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { ButtonBase } from '../ButtonBase'
+import React, { useState, useEffect, useRef } from "react";
+import { ButtonBase } from "../ButtonBase";
 
-export { StopWatch }
+export { StopWatch };
 
 const EXTRA_TIMER_START = -0.0001;
 
 const toHHMMSS = function (sec_num) {
-  const pos_num = Math.abs(sec_num)
+  const pos_num = Math.abs(sec_num);
   const to_hours = Math.floor(pos_num / 3600);
-  let to_minutes = Math.floor((pos_num - (to_hours * 3600)) / 60);
-  let to_seconds = pos_num - (to_hours * 3600) - (to_minutes * 60);
-  if (to_minutes < 10) { to_minutes = "0" + to_minutes; }
-  if (to_seconds < 10) { to_seconds = "0" + to_seconds; }
-  let hh_mm_ss = to_minutes + ':' + to_seconds;
-  if (to_hours > 0) {
-    hh_mm_ss = to_hours + ':' + to_minutes + ':' + to_seconds;
+  let to_minutes = Math.floor((pos_num - to_hours * 3600) / 60);
+  let to_seconds = pos_num - to_hours * 3600 - to_minutes * 60;
+  if (to_minutes < 10) {
+    to_minutes = "0" + to_minutes;
   }
-  return hh_mm_ss
-}
+  if (to_seconds < 10) {
+    to_seconds = "0" + to_seconds;
+  }
+  let hh_mm_ss = to_minutes + ":" + to_seconds;
+  if (to_hours > 0) {
+    hh_mm_ss = to_hours + ":" + to_minutes + ":" + to_seconds;
+  }
+  return hh_mm_ss;
+};
 
 function startTimer(num_minutes, stopWatchClick) {
   if (num_minutes < 0) {
@@ -25,11 +29,15 @@ function startTimer(num_minutes, stopWatchClick) {
       <>
         <span>&nbsp;</span>
         <ButtonBase className="block mb-3">
-          <a onClick={stopWatchClick}>Start<br />Extra Timer</a>
+          <a onClick={stopWatchClick}>
+            Start
+            <br />
+            Extra Timer
+          </a>
         </ButtonBase>
         <span>&nbsp;</span>
       </>
-    )
+    );
     return extra_button;
   }
   const recipe_button = (
@@ -40,7 +48,7 @@ function startTimer(num_minutes, stopWatchClick) {
       </ButtonBase>
       <span>&nbsp;</span>
     </>
-  )
+  );
   return recipe_button;
 }
 
@@ -49,14 +57,22 @@ function resumeReset(num_minutes, hh_mm_ss, stopWatchClick, resetClick) {
     const extra_button = (
       <>
         <ButtonBase className="block mb-3">
-          <a onClick={stopWatchClick}>Resume<br />Extra Timer</a>
+          <a onClick={stopWatchClick}>
+            Resume
+            <br />
+            Extra Timer
+          </a>
         </ButtonBase>
         <ButtonBase className="block mb-3">
-          <a onClick={resetClick}>Reset<br />Extra Timer</a>
+          <a onClick={resetClick}>
+            Reset
+            <br />
+            Extra Timer
+          </a>
         </ButtonBase>
         <div className="text-2xl">{hh_mm_ss} </div>
       </>
-    )
+    );
     return extra_button;
   }
   const recipe_button = (
@@ -69,7 +85,7 @@ function resumeReset(num_minutes, hh_mm_ss, stopWatchClick, resetClick) {
       </ButtonBase>
       <div className="text-2xl">{hh_mm_ss} </div>
     </>
-  )
+  );
   return recipe_button;
 }
 
@@ -78,11 +94,15 @@ function pauseTimer(num_minutes, hh_mm_ss, stopWatchClick) {
     const extra_button = (
       <>
         <ButtonBase className="block mb-3">
-          <a onClick={stopWatchClick}>Pause<br />Extra Timer</a>
+          <a onClick={stopWatchClick}>
+            Pause
+            <br />
+            Extra Timer
+          </a>
         </ButtonBase>
         <div className="text-2xl font-semibold">{hh_mm_ss} </div>
       </>
-    )
+    );
     return extra_button;
   }
   const recipe_button = (
@@ -92,7 +112,7 @@ function pauseTimer(num_minutes, hh_mm_ss, stopWatchClick) {
       </ButtonBase>
       <div className="text-2xl font-semibold">{hh_mm_ss} </div>
     </>
-  )
+  );
   return recipe_button;
 }
 
@@ -102,19 +122,19 @@ function finishedClear(is_paused, num_minutes, setIsPaused, clearClick) {
   }
   const finished_clear = (
     <>
-      <span className='bg-red'>{num_minutes} Minute Timer Finished </span>
+      <span className="bg-red">{num_minutes} Minute Timer Finished </span>
       <ButtonBase className="block mb-3">
         <a onClick={clearClick}>Clear Timer</a>
       </ButtonBase>
     </>
-  )
+  );
   return finished_clear;
 }
 
 function drawTimer({ countdown_seconds, is_paused, seconds_total, num_minutes, setIsPaused, clearClick, stopWatchClick, resetClick }) {
   let stop_watch;
   const hh_mm_ss = toHHMMSS(countdown_seconds);
-  const timer_color = countdown_seconds < 60 ? 'text-rose-600' : '';
+  const timer_color = countdown_seconds < 60 ? "text-rose-600" : "";
   if (countdown_seconds >= 0 && countdown_seconds < 1) {
     stop_watch = finishedClear(is_paused, num_minutes, setIsPaused, clearClick);
   } else if (countdown_seconds === seconds_total) {
@@ -128,12 +148,12 @@ function drawTimer({ countdown_seconds, is_paused, seconds_total, num_minutes, s
     <div id="-filter-top-" className={` flex justify-between  ${timer_color} `}>
       {stop_watch}
     </div>
-  )
+  );
 }
 
 function StopWatch({ num_minutes }) {
   if (num_minutes === 0) {
-    return '';
+    return "";
   }
 
   let seconds_total = num_minutes * 60;
@@ -152,7 +172,7 @@ function StopWatch({ num_minutes }) {
     }
     const new_seconds = int_seconds - 1;
     setCountdown(new_seconds);
-  }
+  };
 
   useEffect(() => {
     if (!is_paused) {
@@ -162,7 +182,7 @@ function StopWatch({ num_minutes }) {
 
   const stopWatchClick = () => {
     if (is_paused) {
-      interval_ref.current = setTimeout(doCountDown);   // start immediately
+      interval_ref.current = setTimeout(doCountDown); // start immediately
     } else {
       clearTimeout(interval_ref.current);
     }

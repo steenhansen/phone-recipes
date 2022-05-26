@@ -1,8 +1,3 @@
-var  PRE_RecipeSingle= undefined;
+var PRE_RecipeSingle = undefined;
 
-export { PRE_RecipeSingle }
-
-
-
-
-
+export { PRE_RecipeSingle };

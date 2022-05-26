@@ -1,29 +1,30 @@
-import { FilterMenu } from '../component-stories/MenuParts/FilterMenu'
-import { FakeTest } from '../component-stories/FakeTest'
+import { FilterMenu } from "../component-stories/MenuParts/FilterMenu";
+import { FakeTest } from "../component-stories/FakeTest";
 
-import { useServerContext } from '../server-app/serverBrowserContext'
-export { PageWithMenu }
+import { useServerContext } from "../server-app/serverBrowserContext";
+export { PageWithMenu };
 
 function PageWithMenu() {
-    const server_variables = useServerContext();
-    const { Page, pageProps } = server_variables;
+  const server_variables = useServerContext();
+  const { Page, pageProps } = server_variables;
 
-    if (pageProps?.is404) {
-        return (
-            <div className="max-w-[550px]" >
-                Page does not exist.
-                <br /><br />
-                <a href="/">Home</a>
-            </div>
-        )
-    }
-
+  if (pageProps?.is404) {
     return (
-        <div className="max-w-[550px]" >
-            <FilterMenu  >
-                <Page />
-            </FilterMenu>
-            <FakeTest />
-        </div>
-    )
+      <div className="max-w-[550px]">
+        Page does not exist.
+        <br />
+        <br />
+        <a href="/">Home</a>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-[550px]">
+      <FilterMenu>
+        <Page />
+      </FilterMenu>
+      <FakeTest />
+    </div>
+  );
 }

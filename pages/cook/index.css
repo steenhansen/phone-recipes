@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 h1 {
-  color:violet;
+  color: violet;
 }
 
 p {
@@ -11,6 +11,6 @@ p {
 }
 
 input {
-  color:black;
-  background-color:lightgray;
+  color: black;
+  background-color: lightgray;
 }

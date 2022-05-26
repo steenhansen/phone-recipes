@@ -14,15 +14,30 @@
 
 */
 
-const { testRecipes, testComments, changeRecipeTitle, idText, safeInitSelenium, stopDriver, deleteRecipe, idAlive, makeComment, buildRecipe, startDriver,
-  checkDbRecipeCount, checkDbCommentCount, waitThenClick, clickId } = require("../load-db-selenium");
-var assert = require('assert');
-const { print, testIdStrip, safeStrip } = require('../../import-2-require/common-2-require');
+const {
+  testRecipes,
+  testComments,
+  changeRecipeTitle,
+  idText,
+  safeInitSelenium,
+  stopDriver,
+  deleteRecipe,
+  idAlive,
+  makeComment,
+  buildRecipe,
+  startDriver,
+  checkDbRecipeCount,
+  checkDbCommentCount,
+  waitThenClick,
+  clickId,
+} = require("../load-db-selenium");
+var assert = require("assert");
+const { print, testIdStrip, safeStrip } = require("../../import-2-require/common-2-require");
 
-const FIRST_RECIPE_NAME = '  rec~ipe  WITH blanks~~  ';
-const SECOND_RECIPE_NAME = 'X  REC~IPE  with BLANKS~~  ';
+const FIRST_RECIPE_NAME = "  rec~ipe  WITH blanks~~  ";
+const SECOND_RECIPE_NAME = "X  REC~IPE  with BLANKS~~  ";
 
-const TOGGLE_ID = testIdStrip(FIRST_RECIPE_NAME) + '--title--toggle--';
+const TOGGLE_ID = testIdStrip(FIRST_RECIPE_NAME) + "--title--toggle--";
 // test-id-rec-ipewithblanks----title--toggle--
 
 const FIRST_CASED_TITLE = safeStrip(FIRST_RECIPE_NAME);
@@ -37,35 +52,34 @@ const SECOND_CASED_TITLE = safeStrip(SECOND_RECIPE_NAME);
 const SECOND_LOWER_TITLE = SECOND_CASED_TITLE.toLowerCase();
 // x rec-ipe with blanks--
 
-const A_COMMENT = ' a ~~ COMMENT ~ '
+const A_COMMENT = " a ~~ COMMENT ~ ";
 const CASED_COMMENT = safeStrip(A_COMMENT);
 //  a -- COMMENT -
 
-const THE_COMMENT_ID = testIdStrip(A_COMMENT) + '--comment--';
+const THE_COMMENT_ID = testIdStrip(A_COMMENT) + "--comment--";
 // test-id-a--comment---comment--
 
-const FIRST_RECIPE_ID = 'fake-test@gmail.com~' + FIRST_LOWER_TITLE + '~';
+const FIRST_RECIPE_ID = "fake-test@gmail.com~" + FIRST_LOWER_TITLE + "~";
 // fake-test@gmail.com~rec-ipe with blanks--~
 
-const SECOND_RECIPE_ID = 'fake-test@gmail.com~' + SECOND_LOWER_TITLE + '~';
+const SECOND_RECIPE_ID = "fake-test@gmail.com~" + SECOND_LOWER_TITLE + "~";
 // fake-test@gmail.com~x rec-ipe with blanks--~
 
-const FIRST_COMMENT = 'fake-test@gmail.com~' + FIRST_LOWER_TITLE + '~fake-test@gmail.com~' + CASED_COMMENT;
+const FIRST_COMMENT = "fake-test@gmail.com~" + FIRST_LOWER_TITLE + "~fake-test@gmail.com~" + CASED_COMMENT;
 // fake-test@gmail.com~rec-ipe with blanks--~fake-test@gmail.com~a -- COMMENT -
 
-const SECOND_COMMENT = 'fake-test@gmail.com~' + SECOND_LOWER_TITLE + '~fake-test@gmail.com~' + CASED_COMMENT;
+const SECOND_COMMENT = "fake-test@gmail.com~" + SECOND_LOWER_TITLE + "~fake-test@gmail.com~" + CASED_COMMENT;
 // fake-test@gmail.com~x rec-ipe with blanks--~fake-test@gmail.com~a -- COMMENT -
 
-const FIRST_RECIPE_TOGGLE_ID = testIdStrip(FIRST_LOWER_TITLE) + '--title--toggle--';
+const FIRST_RECIPE_TOGGLE_ID = testIdStrip(FIRST_LOWER_TITLE) + "--title--toggle--";
 // test-id-rec-ipewithblanks----title--toggle--
 
-const SECOND_RECIPE_TOGGLE_ID = testIdStrip(SECOND_LOWER_TITLE) + '--title--toggle--';
+const SECOND_RECIPE_TOGGLE_ID = testIdStrip(SECOND_LOWER_TITLE) + "--title--toggle--";
 // test-id-xrec-ipewithblanks----title--toggle--
-
 
 async function recipe_20_multiple_blanks() {
   print("0 recipe_20_multiple_blanks - start");
-  const sel_driver = await startDriver('/#recipe_20_multiple_blanks', FIRST_RECIPE_NAME);
+  const sel_driver = await startDriver("/#recipe_20_multiple_blanks", FIRST_RECIPE_NAME);
   try {
     print("1 recipe_20_multiple_blanks - build recipe", FIRST_RECIPE_NAME);
     await buildRecipe(sel_driver, FIRST_RECIPE_NAME);
@@ -76,7 +90,7 @@ async function recipe_20_multiple_blanks() {
     const first_recipe = await testRecipes();
     var { _id, cook, title } = first_recipe[0];
     assert(_id === FIRST_RECIPE_ID);
-    assert(cook === 'fake-test@gmail.com');
+    assert(cook === "fake-test@gmail.com");
     assert(title === FIRST_CASED_TITLE);
 
     print("4 recipe_20_multiple_blanks - show recipe", TOGGLE_ID);
@@ -93,7 +107,7 @@ async function recipe_20_multiple_blanks() {
     await checkDbCommentCount(1);
 
     print("8 recipe_20_multiple_blanks - goto cook page");
-    await clickId(sel_driver, '--my--recipes--');
+    await clickId(sel_driver, "--my--recipes--");
 
     print("9 recipe_20_multiple_blanks - check correct comment", THE_COMMENT_ID);
     await idAlive(sel_driver, THE_COMMENT_ID);
@@ -102,7 +116,7 @@ async function recipe_20_multiple_blanks() {
     const first_comment = await testComments();
     var { _id, by, title } = first_comment[0];
     assert(_id === FIRST_COMMENT);
-    assert(by === 'fake-test@gmail.com');
+    assert(by === "fake-test@gmail.com");
     assert(title === FIRST_CASED_TITLE);
 
     ///////////////////
@@ -117,7 +131,7 @@ async function recipe_20_multiple_blanks() {
     const second_recipe = await testRecipes();
     var { _id, cook, title, comments } = second_recipe[0];
     assert(_id === SECOND_RECIPE_ID);
-    assert(cook === 'fake-test@gmail.com');
+    assert(cook === "fake-test@gmail.com");
     assert(title === SECOND_CASED_TITLE);
     assert(comments[0] === SECOND_COMMENT);
     assert(comments.length === 1);
@@ -126,7 +140,7 @@ async function recipe_20_multiple_blanks() {
     const second_comment = await testComments();
     var { _id, by, title } = second_comment[0];
     assert(_id === SECOND_COMMENT);
-    assert(by === 'fake-test@gmail.com');
+    assert(by === "fake-test@gmail.com");
     assert(title === SECOND_CASED_TITLE);
 
     print("15 recipe_20_multiple_blanks - delete recipe");
@@ -135,9 +149,8 @@ async function recipe_20_multiple_blanks() {
     print("16 recipe_20_multiple_blanks - assert no recipes");
     await checkDbRecipeCount(0);
     await checkDbCommentCount(0);
-
   } finally {
-      await stopDriver(sel_driver);
+    await stopDriver(sel_driver);
     print("17 recipe_20_multiple_blanks - finished");
   }
 }
@@ -146,7 +159,6 @@ if (!global.en_masse_selenium) {
   (async function () {
     await safeInitSelenium();
     await recipe_20_multiple_blanks();
-
   })();
 }
 

@@ -1,20 +1,25 @@
 import { createStore } from "redux";
-import {
-  PRE_reduxChangeRecipe, POST_reduxChangeRecipe
-} from './tc-recipe-store'
+import { PRE_reduxChangeRecipe, POST_reduxChangeRecipe } from "./tc-recipe-store";
 import { commentIdToRecipeId, ID_SEPARATOR } from "../import-2-require/common-2-import";
-import { type_czech } from '../import-2-require/make-Type-Czech-import.js';
+import { type_czech } from "../import-2-require/make-Type-Czech-import.js";
 import { safeRecipe } from "../import-2-require/safe-recipe-2-import";
 
 export {
-  makeReduxStore, recipeReducer, reduxChangeRecipe, reduxReTitleRecipe,
-  reduxCommentRemove, reduxNewRecipe, reduxCommentAdd, reduxDeleteRecipe, reduxFilteredRecipes
-}
+  makeReduxStore,
+  recipeReducer,
+  reduxChangeRecipe,
+  reduxReTitleRecipe,
+  reduxCommentRemove,
+  reduxNewRecipe,
+  reduxCommentAdd,
+  reduxDeleteRecipe,
+  reduxFilteredRecipes,
+};
 
 function reduxNewRecipe(state, action) {
   const next_recipes = [...state.current_recipes];
   const next_remarks = [...state.current_remarks];
-  const new_recipe = action.payload
+  const new_recipe = action.payload;
   const safe_recipe = safeRecipe(new_recipe);
   const { _id } = safe_recipe;
   let a_new_recipe = true;
@@ -42,14 +47,14 @@ function reduxReTitleRecipe(state, action) {
   const cased_title = safe_recipe.title;
   const cook = safe_recipe.cook;
   const lower_old_id = old_title.toLowerCase();
-  const old_recipe_id = cook + ID_SEPARATOR + lower_old_id + ID_SEPARATOR
+  const old_recipe_id = cook + ID_SEPARATOR + lower_old_id + ID_SEPARATOR;
   const safe_id = safe_recipe._id;
   // we dont touch the recipes, but we need to touch the remarks !!!!
   if (safe_id === old_recipe_id) {
     const same_state = { current_recipes: next_recipes, current_remarks: next_remarks };
     return same_state;
   }
-  const change_index = next_recipes.findIndex((a_recipe) => a_recipe._id === old_recipe_id)
+  const change_index = next_recipes.findIndex((a_recipe) => a_recipe._id === old_recipe_id);
   safe_recipe.comments = next_recipes[change_index].comments;
   const new_recipe_title = safe_recipe.title;
   const changed_remarks = updateCurrentRemarks(next_remarks, new_recipe_title, old_recipe_id, cased_title);
@@ -61,13 +66,13 @@ function reduxReTitleRecipe(state, action) {
   return changed_state;
 }
 
-reduxChangeRecipe = type_czech.linkUp(reduxChangeRecipe, PRE_reduxChangeRecipe, POST_reduxChangeRecipe)
+reduxChangeRecipe = type_czech.linkUp(reduxChangeRecipe, PRE_reduxChangeRecipe, POST_reduxChangeRecipe);
 function reduxChangeRecipe(state, action) {
   const next_recipes = [...state.current_recipes];
   const next_remarks = [...state.current_remarks];
   const edited_recipe = action.payload.edited_recipe;
   const edited_recipe_id = edited_recipe._id;
-  const change_index = next_recipes.findIndex((a_recipe) => a_recipe._id === edited_recipe_id)
+  const change_index = next_recipes.findIndex((a_recipe) => a_recipe._id === edited_recipe_id);
   next_recipes[change_index] = edited_recipe;
   const next_state = { current_recipes: next_recipes, current_remarks: next_remarks };
   return next_state;
@@ -75,7 +80,7 @@ function reduxChangeRecipe(state, action) {
 
 function updateCurrentRemarks(old_remarks, new_recipe_title, recipe_id, cased_title) {
   const changed_remarks = [];
-  old_remarks.forEach(a_comment => {
+  old_remarks.forEach((a_comment) => {
     const comment_id = a_comment._id;
     const comment_arr = comment_id.split(ID_SEPARATOR);
     const [cook, old_title, by, remark] = comment_arr;
@@ -83,7 +88,7 @@ function updateCurrentRemarks(old_remarks, new_recipe_title, recipe_id, cased_ti
     let changed_comment = a_comment;
     if (old_recipe_id === recipe_id) {
       const changed_id = cook + ID_SEPARATOR + new_recipe_title + ID_SEPARATOR + by + ID_SEPARATOR + remark;
-      changed_comment = { _id: changed_id, by: by, title: cased_title }
+      changed_comment = { _id: changed_id, by: by, title: cased_title };
     } else {
       changed_comment.title = cased_title;
     }
@@ -93,7 +98,7 @@ function updateCurrentRemarks(old_remarks, new_recipe_title, recipe_id, cased_ti
 }
 
 function makeReduxStore(init_redux_store) {
-  const recipe_store = createStore(recipeReducer, init_redux_store)
+  const recipe_store = createStore(recipeReducer, init_redux_store);
   return recipe_store;
 }
 
@@ -109,10 +114,10 @@ function sortRecipes(next_recipes) {
 function reduxDeleteRecipe(state, action) {
   const next_recipes = [...state.current_recipes];
   const next_remarks = [...state.current_remarks];
-  const delete_recipe_id = action.payload
+  const delete_recipe_id = action.payload;
   const delete_id_lower = delete_recipe_id.toLowerCase();
-  const remaining_recipes = next_recipes.filter(a_recipe => a_recipe._id !== delete_id_lower);
-  const remaining_remarks = next_remarks.filter(a_comment => {
+  const remaining_recipes = next_recipes.filter((a_recipe) => a_recipe._id !== delete_id_lower);
+  const remaining_remarks = next_remarks.filter((a_comment) => {
     const comment_id = a_comment._id;
     const comment_arr = comment_id.split(ID_SEPARATOR);
     const [cook, old_title, _by, _remark] = comment_arr;
@@ -134,7 +139,7 @@ function reduxFilteredRecipes(state, action) {
 function reduxCommentAdd(state, action) {
   const { recipe_id, by, remark } = action.payload;
   const embeded_comment = recipe_id + by + ID_SEPARATOR + remark;
-  let commented_recipe = state.current_recipes.find(item => item._id === recipe_id);
+  let commented_recipe = state.current_recipes.find((item) => item._id === recipe_id);
   const exist_comment_index = commented_recipe.comments.indexOf(embeded_comment);
   if (exist_comment_index === -1) {
     commented_recipe.comments.push(embeded_comment);
@@ -146,21 +151,21 @@ function reduxCommentAdd(state, action) {
 }
 
 function reduxCommentRemove(state, action) {
-  const delete_comment_id = action.payload
+  const delete_comment_id = action.payload;
   const next_recipes = [...state.current_recipes];
   const next_remarks = [...state.current_remarks];
-  const the_recipes = next_recipes.map(a_recipe => {
+  const the_recipes = next_recipes.map((a_recipe) => {
     const comment_recipe_id = commentIdToRecipeId(delete_comment_id);
     if (a_recipe._id === comment_recipe_id) {
       const old_comments = a_recipe.comments;
-      const remaining_remarks = old_comments.filter(a_comment_id => {
-        return a_comment_id !== delete_comment_id
+      const remaining_remarks = old_comments.filter((a_comment_id) => {
+        return a_comment_id !== delete_comment_id;
       });
       a_recipe.comments = remaining_remarks;
     }
     return a_recipe;
   });
-  const remaining_remarks = next_remarks.filter(a_comment => a_comment._id !== delete_comment_id);
+  const remaining_remarks = next_remarks.filter((a_comment) => a_comment._id !== delete_comment_id);
   const next_state = { current_recipes: the_recipes, current_remarks: remaining_remarks };
   return next_state;
 }
@@ -168,7 +173,7 @@ function reduxCommentRemove(state, action) {
 function reduxAjaxError(state, action) {
   const ajax_error = action.payload;
   const ajax_message = ajax_error.toString();
-  window.onerror(ajax_message)
+  window.onerror(ajax_message);
   const next_recipes = [...state.current_recipes];
   const next_remarks = [...state.current_remarks];
   const next_state = { current_recipes: next_recipes, current_remarks: next_remarks };
@@ -177,24 +182,24 @@ function reduxAjaxError(state, action) {
 
 const recipeReducer = (state, action) => {
   let next_state;
-  if (action.type === 're-title-recipe') {
+  if (action.type === "re-title-recipe") {
     next_state = reduxReTitleRecipe(state, action);
-  } else if (action.type === 'change-recipe') {
+  } else if (action.type === "change-recipe") {
     next_state = reduxChangeRecipe(state, action);
-  } else if (action.type === 'new-recipe') {
+  } else if (action.type === "new-recipe") {
     next_state = reduxNewRecipe(state, action);
-  } else if (action.type === 'delete-recipe') {
+  } else if (action.type === "delete-recipe") {
     next_state = reduxDeleteRecipe(state, action);
-  } else if (action.type === 'filtered-recipes') {
+  } else if (action.type === "filtered-recipes") {
     next_state = reduxFilteredRecipes(state, action);
-  } else if (action.type === 'add-comment') {
+  } else if (action.type === "add-comment") {
     next_state = reduxCommentAdd(state, action);
-  } else if (action.type === 'remove-comment') {
+  } else if (action.type === "remove-comment") {
     next_state = reduxCommentRemove(state, action);
-  } else if (action.type === 'ajax-error') {
+  } else if (action.type === "ajax-error") {
     next_state = reduxAjaxError(state, action);
   } else {
-    next_state = state;  // Selenium calls here for some reason
+    next_state = state; // Selenium calls here for some reason
   }
   return next_state;
-}
+};

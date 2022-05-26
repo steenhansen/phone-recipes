@@ -1,7 +1,7 @@
-import { useRef, useEffect, useCallback, useState } from 'react'
-import debounce from 'lodash.debounce';
+import { useRef, useEffect, useCallback, useState } from "react";
+import debounce from "lodash.debounce";
 
-export { TextFilter }
+export { TextFilter };
 
 function TextFilter({ filter_text, setFilterText }) {
   const [the_localFilter, setLocalFilter] = useState(filter_text);
@@ -18,17 +18,12 @@ function TextFilter({ filter_text, setFilterText }) {
     const local_text = event.target.value;
     setLocalFilter(local_text);
     debounced_filterChange(local_text);
-  }
+  };
 
   return (
     <div>
-      <span className="font-semibold" >Search</span> &nbsp;
-      <input ref={local_filter_ref} className='pl-1 w-30 base-edit ' type="text"
-        onChange={localFilterChange} value={the_localFilter} />
+      <span className="font-semibold">Search</span> &nbsp;
+      <input ref={local_filter_ref} className="pl-1 w-30 base-edit " type="text" onChange={localFilterChange} value={the_localFilter} />
     </div>
-  )
+  );
 }
-
-
-
-

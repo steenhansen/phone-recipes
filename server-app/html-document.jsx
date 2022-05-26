@@ -1,6 +1,6 @@
-import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr';
-import { ROOT_ELEMENT_ID } from '../server-app/shared-client-server';
-import { APP_TITLE, APP_DESCRIPTION } from '../import-2-require/common-2-import.js';
+import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr";
+import { ROOT_ELEMENT_ID } from "../server-app/shared-client-server";
+import { APP_TITLE, APP_DESCRIPTION } from "../import-2-require/common-2-import.js";
 
 export { htmlDocument };
 
@@ -23,7 +23,7 @@ function makeHead(server_variables) {
 }
 
 function htmlDocument(pageHtml, server_variables) {
-  const escacpeHtml = dangerouslySkipEscape(pageHtml)
+  const escacpeHtml = dangerouslySkipEscape(pageHtml);
   const head_html = makeHead(server_variables);
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">

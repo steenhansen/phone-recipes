@@ -1,12 +1,10 @@
-import React from 'react'
-import { HomePageBoundary } from '../../component-stories/Pages/HomePage'
+import React from "react";
+import { HomePageBoundary } from "../../component-stories/Pages/HomePage";
 
-import '../../tail-wind.css'
+import "../../tail-wind.css";
 
-export { Page }
+export { Page };
 
 function Page() {
-  return (
-    <HomePageBoundary></HomePageBoundary>
-  )
+  return <HomePageBoundary></HomePageBoundary>;
 }

@@ -1,14 +1,9 @@
 module.exports = {
-  content: [
-    "./pages/**/*.{js,jsx}",
-    "./component-stories/**/*.{js,jsx}"
-  ],
+  content: ["./pages/**/*.{js,jsx}", "./component-stories/**/*.{js,jsx}"],
   theme: {
     extend: {
-      colors: {
-      },
+      colors: {},
     },
   },
-  plugins: []
-}
-
+  plugins: [],
+};

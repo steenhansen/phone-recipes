@@ -13,7 +13,7 @@
 
 global.en_masse_selenium = true;
 
-const { print } = require('../import-2-require/common-2-require');
+const { print } = require("../import-2-require/common-2-require");
 const { createRecipe } = require("./create-recipe/createRecipe.sel");
 const { createRecipe_delRecipe } = require("./create-recipe/createRecipe_delRecipe.sel");
 const { createRecipe_addComment_delRecipe } = require("./create-recipe/createRecipe_addComment_delRecipe.sel");
@@ -43,14 +43,12 @@ const { safeInitSelenium } = require("./load-db-selenium");
 
   print("   .");
 
-
   print("   .");
   await reTitle();
   print("   .");
   await reTitle_delete();
   print("   .");
   await reTitle_comment_delete();
-
 
   print("   .");
   print("   .");

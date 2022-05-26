@@ -1,11 +1,11 @@
-Uncaught_coll = 'un-defined';
+Uncaught_coll = "un-defined";
 
 async function recordException(new_exception) {
   try {
     const _id = new Date().getTime();
     const uncaught_error = new_exception.browser_error;
     const uncaught_record = { _id, uncaught: uncaught_error };
-    console.log("uncaught errors", new_exception)
+    console.log("uncaught errors", new_exception);
     const recorded_exception = await Uncaught_coll.create(uncaught_record);
     return recorded_exception;
   } catch (e) {
@@ -14,6 +14,5 @@ async function recordException(new_exception) {
 }
 
 module.exports = {
-  recordException
+  recordException,
 };
-

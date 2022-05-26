@@ -1,11 +1,9 @@
-import React from 'react'
-import '../../tail-wind.css'
-import { MinimalPageBoundary } from '../../component-stories/Pages/MinimalPage'
+import React from "react";
+import "../../tail-wind.css";
+import { MinimalPageBoundary } from "../../component-stories/Pages/MinimalPage";
 
-export { Page }
+export { Page };
 
 function Page() {
-  return (
-    <MinimalPageBoundary></MinimalPageBoundary>
-  )
+  return <MinimalPageBoundary></MinimalPageBoundary>;
 }

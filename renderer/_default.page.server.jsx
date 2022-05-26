@@ -1,5 +1,5 @@
-import { htmlDocument } from '../server-app/html-document';
-import { serverRender, serverVarsToClient } from '../server-app/shared-client-server';
+import { htmlDocument } from "../server-app/html-document";
+import { serverRender, serverVarsToClient } from "../server-app/shared-client-server";
 
 const server_vars_to_client = serverVarsToClient();
 export const passToClient = server_vars_to_client;

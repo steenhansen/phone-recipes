@@ -1,27 +1,33 @@
+const { type_czech } = require("../import-2-require/make-Type-Czech-require.js");
 
-const { type_czech } = require('../import-2-require/make-Type-Czech-require.js');
-
-Comments_coll = 'un-defined';
+Comments_coll = "un-defined";
 
 const { REMOVE_RECORD_VERSION, ID_SEPARATOR, commentIdToRecipeId, safeStrip } = require("../import-2-require/common-2-require");
-const { PRE_getCookComments, POST_getCookComments,
-  PRE_removeComment, POST_removeComment,
-  PRE_deleteCommentsOnRecipe, POST_deleteCommentsOnRecipe,
-  PRE_addComment, POST_addComment,
-  PRE_getOneComment, POST_getOneComment,
-  PRE_getRecipeComments, POST_getRecipeComments,
-} = require('./tc-comment-collections');
+const {
+  PRE_getCookComments,
+  POST_getCookComments,
+  PRE_removeComment,
+  POST_removeComment,
+  PRE_deleteCommentsOnRecipe,
+  POST_deleteCommentsOnRecipe,
+  PRE_addComment,
+  POST_addComment,
+  PRE_getOneComment,
+  POST_getOneComment,
+  PRE_getRecipeComments,
+  POST_getRecipeComments,
+} = require("./tc-comment-collections");
 
 const { deVersionMongo } = require("./mongo-database");
 
-getCookComments = type_czech.linkUp(getCookComments, PRE_getCookComments, POST_getCookComments)
+getCookComments = type_czech.linkUp(getCookComments, PRE_getCookComments, POST_getCookComments);
 async function getCookComments(cook) {
   const mongo_comments = await Comments_coll.find({ by: { $eq: cook } }).select(REMOVE_RECORD_VERSION);
   const plain_comments = deVersionMongo(mongo_comments);
   return plain_comments;
 }
 
-removeComment = type_czech.linkUp(removeComment, PRE_removeComment, POST_removeComment)
+removeComment = type_czech.linkUp(removeComment, PRE_removeComment, POST_removeComment);
 async function removeComment(comment_id) {
   const the_res = await Comments_coll.deleteOne({ _id: comment_id });
   const recipe_id = commentIdToRecipeId(comment_id);
@@ -29,7 +35,7 @@ async function removeComment(comment_id) {
   if (comment_recipe[0]) {
     const edit_recipe = comment_recipe[0];
     const the_comments = edit_recipe.comments;
-    const winnnowed_comments = the_comments.filter(a_comment => a_comment !== comment_id);
+    const winnnowed_comments = the_comments.filter((a_comment) => a_comment !== comment_id);
     edit_recipe.comments = winnnowed_comments;
     const mongo_del_comment = await edit_recipe.save();
     const plain_del_comment = deVersionMongo(mongo_del_comment);
@@ -38,14 +44,14 @@ async function removeComment(comment_id) {
   return the_res;
 }
 
-deleteCommentsOnRecipe = type_czech.linkUp(deleteCommentsOnRecipe, PRE_deleteCommentsOnRecipe, POST_deleteCommentsOnRecipe)
+deleteCommentsOnRecipe = type_czech.linkUp(deleteCommentsOnRecipe, PRE_deleteCommentsOnRecipe, POST_deleteCommentsOnRecipe);
 async function deleteCommentsOnRecipe(user_recipe) {
-  const startwith_user_recipe = new RegExp("^" + user_recipe, 'i');
+  const startwith_user_recipe = new RegExp("^" + user_recipe, "i");
   const recipe_comments = await Comments_coll.deleteMany({ _id: startwith_user_recipe });
   return recipe_comments;
 }
 
-addComment = type_czech.linkUp(addComment, PRE_addComment, POST_addComment)
+addComment = type_czech.linkUp(addComment, PRE_addComment, POST_addComment);
 async function addComment(new_comment) {
   const { recipe_id, by, remark, title } = new_comment;
   const lower_id = recipe_id.toLowerCase();
@@ -56,37 +62,37 @@ async function addComment(new_comment) {
   if (already_there.length === 1) {
     return already_there[0];
   }
-  const new_record = { _id, by, title: safe_title }
+  const new_record = { _id, by, title: safe_title };
   const created_comments0 = await Comments_coll.create(new_record);
   const created_comments = deVersionMongo(created_comments0);
-  delete created_comments['__v']
+  delete created_comments["__v"];
   const old_recipe = await Recipes_coll.findOne({ _id: lower_id }).select(REMOVE_RECORD_VERSION);
   old_recipe.comments.push(_id);
   const new_recipe0 = await old_recipe.save();
   const new_recipe = deVersionMongo(new_recipe0);
-  delete new_recipe['__v'];
+  delete new_recipe["__v"];
   return new_recipe;
 }
 
-getOneComment = type_czech.linkUp(getOneComment, PRE_getOneComment, POST_getOneComment)
+getOneComment = type_czech.linkUp(getOneComment, PRE_getOneComment, POST_getOneComment);
 async function getOneComment(comment_id) {
   const mongo_comment = await Comments_coll.find({ _id: comment_id }).select(REMOVE_RECORD_VERSION);
   const plain_comment = deVersionMongo(mongo_comment);
-  return plain_comment
+  return plain_comment;
 }
 
 async function getTestComments() {
   const test_comments = await Comments_coll.find({}).select(REMOVE_RECORD_VERSION);
   const plain_comments = deVersionMongo(test_comments);
-  return plain_comments
+  return plain_comments;
 }
 
-getRecipeComments = type_czech.linkUp(getRecipeComments, PRE_getRecipeComments, POST_getRecipeComments)
+getRecipeComments = type_czech.linkUp(getRecipeComments, PRE_getRecipeComments, POST_getRecipeComments);
 async function getRecipeComments(recipe_id) {
-  const startwith_recipe_id = new RegExp("^" + recipe_id)
+  const startwith_recipe_id = new RegExp("^" + recipe_id);
   const mongo_comments = await Comments_coll.find({ _id: startwith_recipe_id }).select(REMOVE_RECORD_VERSION);
   const plain_comments = deVersionMongo(mongo_comments);
-  return plain_comments
+  return plain_comments;
 }
 
 async function countComments() {
@@ -96,9 +102,13 @@ async function countComments() {
 
 module.exports = {
   getTestComments,
-  getRecipeComments, getOneComment, removeComment,
-  addComment, getCookComments, deleteCommentsOnRecipe, countComments
+  getRecipeComments,
+  getOneComment,
+  removeComment,
+  addComment,
+  getCookComments,
+  deleteCommentsOnRecipe,
+  countComments,
 };
 
 const { getOneRecipe } = require("./recipe-collections");
-

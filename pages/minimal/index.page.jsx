@@ -1,3 +1,3 @@
-import { Page } from './minimal-page'
+import { Page } from "./minimal-page";
 
-export { Page }
+export { Page };

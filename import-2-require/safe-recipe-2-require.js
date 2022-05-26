@@ -1,15 +1,11 @@
 const { searchStrip, safeEmail, safeStrip, ID_SEPARATOR } = require("./common-2-require");
-const { type_czech } = require('../import-2-require/make-Type-Czech-require.js');
+const { type_czech } = require("../import-2-require/make-Type-Czech-require.js");
 
-const {
-  PRE_safeIngredients, POST_safeIngredients,
-  PRE_safeSearch, POST_safeSearch,
-  PRE_safeRecipe, POST_safeRecipe
-} = require('./tc-safe-recipe-2-require');
+const { PRE_safeIngredients, POST_safeIngredients, PRE_safeSearch, POST_safeSearch, PRE_safeRecipe, POST_safeRecipe } = require("./tc-safe-recipe-2-require");
 
 safeIngredients = type_czech.linkUp(safeIngredients, PRE_safeIngredients, POST_safeIngredients);
 function safeIngredients(ingredients) {
-  const safe_ingredients = ingredients.map(an_ingredient => {
+  const safe_ingredients = ingredients.map((an_ingredient) => {
     const ingredient = searchStrip(an_ingredient.ingredient);
     const amount = searchStrip(an_ingredient.amount);
     return { ingredient, amount };
@@ -20,10 +16,8 @@ function safeIngredients(ingredients) {
 safeSearch = type_czech.linkUp(safeSearch, PRE_safeSearch, POST_safeSearch);
 function safeSearch(safe_title, steps, ingredients) {
   const safe_ingredients = safeIngredients(ingredients);
-  const title_steps = ' ' + safe_title + ' ' + searchStrip(steps) + ' ';
-  const safe_search = safe_ingredients.reduce((acc, curr) =>
-    (acc + curr.ingredient + ' ' + curr.amount + ' ')
-    , title_steps)
+  const title_steps = " " + safe_title + " " + searchStrip(steps) + " ";
+  const safe_search = safe_ingredients.reduce((acc, curr) => acc + curr.ingredient + " " + curr.amount + " ", title_steps);
   return safe_search;
 }
 
@@ -51,8 +45,8 @@ function safeRecipe(new_recipe) {
     comments: [],
     internal: internal,
     minutes: int_minutes,
-    search: safe_lower_search
-  }
+    search: safe_lower_search,
+  };
   if (new_recipe.old_title) {
     const safe_old = safeStrip(new_recipe.old_title);
     safe_recipe.old_title = safe_old;
@@ -61,7 +55,5 @@ function safeRecipe(new_recipe) {
 }
 
 module.exports = {
-  safeRecipe
+  safeRecipe,
 };
-
-

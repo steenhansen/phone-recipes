@@ -10,9 +10,9 @@ npm run prod ../prod-config.js
 */
 
 let the_exports;
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   the_exports = window; // for browser environment
-} else if (typeof exports !== 'undefined') {
+} else if (typeof exports !== "undefined") {
   the_exports = exports; // for Node environment
 } else {
   the_exports = {}; // for JSX environment
@@ -20,10 +20,9 @@ if (typeof window !== 'undefined') {
 
 (function (the_exports) {
   the_exports.TypeCzech = function () {
-    the_exports.type_czech = { linkUp: (nop) => nop, isActive: (x) => false, isPruned: (y) => true };  // only place isPruned is true
+    the_exports.type_czech = { linkUp: (nop) => nop, isActive: (x) => false, isPruned: (y) => true, _from: "TypeCzech-2-import_PROD_without_type-czech" }; // only place isPruned is true
     return the_exports.type_czech;
   };
-}(the_exports));
+})(the_exports);
 
 export default the_exports; // for JSX and ESM
-

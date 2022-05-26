@@ -1,7 +1,3 @@
-
-var  PRE_RecipeEdit= undefined;
+var PRE_RecipeEdit = undefined;
 
 export { PRE_RecipeEdit };
-
-
-
