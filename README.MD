@@ -1,6 +1,5 @@
 Phone-Recipes, [https://phone-recipes.herokuapp.com/](https://phone-recipes.herokuapp.com/), exists to help prepare
-multiple dishes for a meal using a phone in the kitchen. A list of my online
-<a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com'>recipes</a>.
+multiple dishes for a meal using a phone in the kitchen. A list of my online recipes; [https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com](https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com).
 Phone-recipes shows mulitple dishes along with timers. Log in with a
 Google Account. Below are screen shots of of my
 <a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com/Pork%20Roast/steenhansen1942/gmail.com/Rice'>Pork Roast with rice</a> recipes.
