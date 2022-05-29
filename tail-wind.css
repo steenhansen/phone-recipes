@@ -40,14 +40,25 @@ button.base-button > a {
     inline-block;
 }
 
-/*      https://jfly.uni-koeln.de/color/#pallet
-  orange_41         230,159,0
+/*      https://jfly.uni-koeln.de/color/#pallet  -- color blind 
+  orange_41         230,159,0    #e69f00
   sky_blue_202      86,180,233
-  bluish-green_164  0,158,115
+  bluish-green_164  0,158,115     #009e73
   yellow_56         240,228,66
   blue_202          0,114,178
-  vermillion_27     213,94,0
-  red_purple_326    204,121,167
+  vermillion_27     213,94,0       #d55e00
+  red_purple_326    204,121,167    #cc79a7
+
+  blue_202 always is clickable
+
+Timer colors:
+  Recipe Timer, count down
+    fine = bluish-green_164
+    over = red_purple_326
+
+  Extra Timer, count up
+    always = orange_41
+
 */
 
 button.base-button > a:hover {

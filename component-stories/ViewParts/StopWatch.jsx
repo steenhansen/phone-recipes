@@ -5,7 +5,11 @@ export { StopWatch };
 
 const EXTRA_TIMER_START = -0.0001;
 
-const toHHMMSS = function (sec_num) {
+const TIMER_FINE_COLOR = "text-[#009e73]"; // bluish-green_164  0,158,115    #009e73
+const TIMER_OVER_COLOR = "text-[#cc79a7]"; // red_purple_326    204,121,167  #cc79a7
+const TIMER_EXTRA_COLOR = "text-[#e69f00]"; // orange_41         230,159,0    #e69f00
+
+const toHHMMSS = function (sec_num, num_minutes) {
   const pos_num = Math.abs(sec_num);
   const to_hours = Math.floor(pos_num / 3600);
   let to_minutes = Math.floor((pos_num - to_hours * 3600) / 60);
@@ -19,6 +23,9 @@ const toHHMMSS = function (sec_num) {
   let hh_mm_ss = to_minutes + ":" + to_seconds;
   if (to_hours > 0) {
     hh_mm_ss = to_hours + ":" + to_minutes + ":" + to_seconds;
+  }
+  if (num_minutes > 0 && sec_num < 0) {
+    hh_mm_ss = "- " + hh_mm_ss; // show negative time when counting down, extra timer is only positive
   }
   return hh_mm_ss;
 };
@@ -116,28 +123,18 @@ function pauseTimer(num_minutes, hh_mm_ss, stopWatchClick) {
   return recipe_button;
 }
 
-function finishedClear(is_paused, num_minutes, setIsPaused, clearClick) {
-  if (!is_paused) {
-    setIsPaused(true);
-  }
-  const finished_clear = (
-    <>
-      <span className="bg-red">{num_minutes} Minute Timer Finished </span>
-      <ButtonBase className="block mb-3">
-        <a onClick={clearClick}>Clear Timer</a>
-      </ButtonBase>
-    </>
-  );
-  return finished_clear;
-}
-
-function drawTimer({ countdown_seconds, is_paused, seconds_total, num_minutes, setIsPaused, clearClick, stopWatchClick, resetClick }) {
+function drawTimer({ countdown_seconds, is_paused, seconds_total, num_minutes, stopWatchClick, resetClick }) {
   let stop_watch;
-  const hh_mm_ss = toHHMMSS(countdown_seconds);
-  const timer_color = countdown_seconds < 60 ? "text-rose-600" : "";
-  if (countdown_seconds >= 0 && countdown_seconds < 1) {
-    stop_watch = finishedClear(is_paused, num_minutes, setIsPaused, clearClick);
-  } else if (countdown_seconds === seconds_total) {
+  const hh_mm_ss = toHHMMSS(countdown_seconds, num_minutes);
+
+  let timer_color = TIMER_FINE_COLOR;
+  if (num_minutes < 0) {
+    timer_color = TIMER_EXTRA_COLOR;
+  } else if (countdown_seconds < 0) {
+    timer_color = TIMER_OVER_COLOR; // only counting down timers get to be red, extra is always green
+  }
+
+  if (countdown_seconds === seconds_total) {
     stop_watch = startTimer(num_minutes, stopWatchClick);
   } else if (is_paused) {
     stop_watch = resumeReset(num_minutes, hh_mm_ss, stopWatchClick, resetClick);
@@ -194,7 +191,6 @@ function StopWatch({ num_minutes }) {
     setCountdown(seconds_total);
   };
 
-  const clearClick = () => setCountdown(seconds_total);
-  let stop_watch = drawTimer({ countdown_seconds, is_paused, seconds_total, num_minutes, setIsPaused, clearClick, stopWatchClick, resetClick });
+  let stop_watch = drawTimer({ countdown_seconds, is_paused, seconds_total, num_minutes, stopWatchClick, resetClick });
   return stop_watch;
 }
