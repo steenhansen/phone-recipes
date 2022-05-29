@@ -1,4 +1,4 @@
-[Phone-Recipes](https://phone-recipes.herokuapp.com/) exists to help prepare
+Phone-Recipes, [https://phone-recipes.herokuapp.com/](https://phone-recipes.herokuapp.com/), exists to help prepare
 multiple dishes for a meal using a phone in the kitchen. A list of my online
 <a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com'>recipes</a>.
 Phone-recipes shows mulitple dishes along with timers. Log in with a
@@ -36,6 +36,12 @@ Credentials Needed (examples in /sample-configs/)
 - Local or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2) MongoDB URI
 - Google [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2/openid-connect#appsetup) credentials
 
+Prepare Node Environment
+
+- nvm install 16.4.0
+
+- nvm use 16.4.0
+
 Run on Heroku
 
     npm run start, no Proc file needed
@@ -53,6 +59,9 @@ Local Prod Run
     npm run prod ../prod-config.js
 
 Selenium Tests
+
+- Close all FireFox windows, tests use a lot of resources. If fail try again.
+  If still fail check hard drive free space. Possibly reboot after empty trash.
 
 - terminal 1:
 

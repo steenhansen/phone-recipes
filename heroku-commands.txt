@@ -2,7 +2,7 @@
 
 
 
-Launch form Heroku:
+Launch from Heroku:
   git add .
   git commit -am 'abc'
   git push heroku main
@@ -11,5 +11,5 @@ https://phone-recipes.herokuapp.com/
 
 
 Check errors:
-  heroku logs --tail
+  heroku logs --tail --app phone-recipes
 
