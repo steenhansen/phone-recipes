@@ -11,6 +11,7 @@ function PRE_CookRecipes(the_props, _extra_react_obj_1, _extra_react_obj_2) {
   const the_params = [the_props, _extra_react_obj_1, _extra_react_obj_2];
   const props_signature = {
     is_visible_array: "array",
+    setVisibleRecipes: "function",
   };
   if (isNode()) {
     const node_signature = [props_signature, "object", "object"];

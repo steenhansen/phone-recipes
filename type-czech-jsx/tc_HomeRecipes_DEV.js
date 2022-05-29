@@ -12,6 +12,7 @@ function PRE_HomeRecipes(the_props, _extra_react_obj_1, _extra_react_obj_2) {
   const props_signature = {
     is_visible_array: "array",
     is_story_book_environment: "boolean",
+    setVisibleRecipes: "function",
   };
   if (isNode()) {
     const node_signature = [props_signature, "object", "object"];

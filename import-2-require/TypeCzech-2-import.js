@@ -779,8 +779,29 @@ type_czech.typeProtos(new Object());
       
        */
       function deClassify(classified_object) {
-        const string_class = JSON.stringify(classified_object);
-        const classless_object = JSON.parse(string_class);
+        if (typeof classified_object !== "object") {
+          return classified_object;
+        }
+        if (classified_object && classified_object.constructor === RegExp) {
+          return classified_object;
+        }
+        if (classified_object instanceof Date) {
+          return classified_object;
+        }
+        let classless_object;
+        if (Array.isArray(classified_object)) {
+          classless_object = [];
+          for (let array_index = 0; array_index < classified_object.length; array_index++) {
+            const class_value = classified_object[array_index];
+            classless_object[array_index] = deClassify(class_value);
+          }
+        } else {
+          classless_object = classified_object;
+          if (typeFinal(classified_object) !== "object") {
+            const string_class = JSON.stringify(classified_object);
+            classless_object = JSON.parse(string_class);
+          }
+        }
         return classless_object;
       }
 
