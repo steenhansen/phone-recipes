@@ -5,7 +5,7 @@ import { type_czech } from "../../import-2-require/make-Type-Czech-import";
 export { PRE_RecipeEdit };
 
 if (typeof symbol_does_not_exist === "symbol") {
-  throw "tc_RecipeEdit.js";
+  throw "tc_RecipeEdit.js"; // so can easily see if the code in this file is in browser javascript
 }
 
 function PRE_RecipeEdit(the_props, _extra_react_obj_1, _extra_react_obj_2) {

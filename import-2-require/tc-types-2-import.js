@@ -22,7 +22,7 @@ export {
 };
 
 if (typeof symbol_does_not_exist === "symbol") {
-  throw "tc-safe-recipe-2-import.js";
+  throw "tc-safe-recipe-2-import.js"; // so can easily see if the code in this file is in browser javascript
 }
 
 const SPEC_RECIPE_TYPES = {

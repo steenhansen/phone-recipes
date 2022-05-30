@@ -5,7 +5,7 @@ import { SPEC_POST_TO_DB_TYPE, SPEC_RECIPE_TYPES, SPEC_RECIPE_EMPTIES } from "..
 export { PRE_databasePost, POST_databasePost, PRE_databaseGet, POST_databaseGet };
 
 if (typeof symbol_does_not_exist === "symbol") {
-  throw "tc-ajax-calls.js";
+  throw "tc-ajax-calls.js"; // so can easily see if the code in this file is in browser javascript
 }
 
 function PRE_databasePost(db_request, shared_csrfToken, json_data) {

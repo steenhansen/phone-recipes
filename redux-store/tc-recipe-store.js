@@ -4,7 +4,7 @@ import { type_czech } from "../import-2-require/make-Type-Czech-import";
 export { PRE_reduxChangeRecipe, POST_reduxChangeRecipe };
 
 if (typeof symbol_does_not_exist === "symbol") {
-  throw "tc-recipe-store.js";
+  throw "tc-recipe-store.js"; // so can easily see if the code in this file is in browser javascript
 }
 
 function POST_reduxChangeRecipe(result) {
