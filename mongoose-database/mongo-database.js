@@ -28,6 +28,7 @@ function getMongoCred(the_dirname, credentials_file) {
       MONGO_URI = HIDDEN_CREDENTIALS.MONGO_URI;
     }
   }
+  print("MONGO_URI = ", MONGO_URI);
   return MONGO_URI;
 }
 

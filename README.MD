@@ -35,11 +35,13 @@ Credentials Needed (examples in /sample-configs/)
 - Local or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2) MongoDB URI
 - Google [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2/openid-connect#appsetup) credentials
 
-Prepare Node Environment
+Prepare Node Environment, Sqlite3 issue on Windows issue if try Node 18
 
-- nvm install 16.4.0
+- nvm install 16.14.0
 
-- nvm use 16.4.0
+- nvm use 16.14.0
+
+- npm install
 
 Run on Heroku
 
