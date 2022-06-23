@@ -84,5 +84,6 @@ Mocha Node.js tests
 
     npm run test-node
 
-<a id="show-storybook"></a>Storybook
+<a id="show-storybook"></a>
+Storybook
     npm run show-storybook
