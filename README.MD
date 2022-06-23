@@ -59,6 +59,8 @@ Local Prod Run
 
     npm run prod ../prod-config.js
 
+<a id="test-section"></a>
+
 Selenium Tests
 
 - Close all FireFox windows, tests use a lot of resources. If fail try again.
