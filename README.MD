@@ -84,6 +84,5 @@ Mocha Node.js tests
 
     npm run test-node
 
-[Storybook](#show-storybook)
-
+<a id="show-storybook"></a>Storybook
     npm run show-storybook
