@@ -84,6 +84,6 @@ Mocha Node.js tests
 
     npm run test-node
 
-Storybook
+[Storybook](#show-storybook)
 
     npm run show-storybook
