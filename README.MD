@@ -84,6 +84,14 @@ Mocha Node.js tests
 
     npm run test-node
 
-Storybook
+Storybook Local
 
     npm run show-storybook
+
+Upload Storybook to Chromatic.com
+
+    npm run upload-storybook -- --project-token=your-abc123xyz-token
+
+View phone-recipes online storybook on Chromatic.com
+
+    https://www.chromatic.com/library?appId=6269af43d179dc004af9a1ec&inviteToken=5fd55d68b13f4f51bc57632bcad949ba
