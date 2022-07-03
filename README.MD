@@ -59,6 +59,8 @@ Local Prod Run
 
     npm run prod ../prod-config.js
 
+<a id="test-section"></a>
+
 Selenium Tests
 
 - Close all FireFox windows, tests use a lot of resources. If fail try again.
@@ -84,6 +86,8 @@ Mocha Node.js tests
 
     npm run test-node
 
+<a id="show-storybook"></a>
+
 Storybook Local
 
     npm run show-storybook
@@ -95,3 +99,4 @@ Upload Storybook to Chromatic.com
 View phone-recipes online storybook on Chromatic.com
 
     https://www.chromatic.com/library?appId=6269af43d179dc004af9a1ec&inviteToken=5fd55d68b13f4f51bc57632bcad949ba
+
