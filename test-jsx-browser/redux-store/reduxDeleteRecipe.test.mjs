@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 //  npx vitest /test-jsx-browser/redux-store/reduxDeleteRecipe.test.mjs  --silent
 
 //  npx vitest /test-jsx-browser --silent

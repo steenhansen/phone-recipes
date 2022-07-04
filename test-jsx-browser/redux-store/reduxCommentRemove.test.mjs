@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 //  npx vitest /test-jsx-browser/redux-store/reduxCommentRemove.test.mjs  --silent
 //  npx vitest /test-jsx-browser/redux-store/reduxCommentRemove.test.mjs
 
@@ -36,7 +36,6 @@ describe("Recipe-Collections", () => {
   describe("#removeComment", () => {
     it("#removeComment", () => {
       expect(actual_state).toEqual(expected_state);
-      //expect(actual_state).toEqual(expected_state);
     });
   });
 });

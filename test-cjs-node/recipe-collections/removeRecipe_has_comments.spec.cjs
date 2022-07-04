@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 //  npm run test-single -- test-cjs-node/**/removeRecipe_has_comments.spec.cjs
 // npm run test-node
 

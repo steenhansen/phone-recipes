@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 //  npm run test-single -- test-cjs-node/**/deleteComment.spec.cjs
 //  npm run test-node
 

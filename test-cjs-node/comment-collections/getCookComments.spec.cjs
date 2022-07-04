@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 //  npm run test-single -- test-cjs-node/**/getCookComments.spec.cjs
 //  npm run test-node
 

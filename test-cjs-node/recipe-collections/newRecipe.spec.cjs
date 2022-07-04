@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 //  npm run test-single -- test-cjs-node/**/newRecipe.spec.cjs
 // npm run test-node
 

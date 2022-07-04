@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 // npm run test-node
 //  npm run test-single -- test-cjs-node/**/reTitleRecipe_has_comments.spec.cjs
 

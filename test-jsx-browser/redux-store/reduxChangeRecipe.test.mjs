@@ -1,4 +1,4 @@
-//  cd rs
+//  cd /
 //  npx vitest /test-jsx-browser/redux-store/reduxChangeRecipe.test.mjs  --silent
 
 //  npx vitest /test-jsx-browser --silent
@@ -45,7 +45,7 @@ const action = {
       _id: "ewq142@gmail.com~the-title~",
       cook: "ewq142@gmail.com",
       title: "the-TITLE",
-      steps: "str",
+      steps: "ABC-def-GHI-1234567890",
       serves: "str",
       time: "str",
       meal: "str",
@@ -67,7 +67,7 @@ const expected_state = {
       _id: "ewq142@gmail.com~the-title~",
       cook: "ewq142@gmail.com",
       title: "the-TITLE",
-      steps: "str",
+      steps: "ABC-def-GHI-1234567890",
       serves: "str",
       time: "str",
       meal: "str",
