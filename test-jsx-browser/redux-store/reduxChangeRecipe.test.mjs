@@ -17,7 +17,7 @@ const state = {
       _id: "ewq142@gmail.com~the-title~",
       cook: "ewq142@gmail.com",
       title: "the-TITLE",
-      steps: "str",
+      steps: "str", /// test is change steps to  "ABC-def-GHI-1234567890"
       serves: "str",
       time: "str",
       meal: "str",

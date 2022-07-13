@@ -22,7 +22,7 @@ const start_recipe = {
   steps: "steps",
   serves: "serves",
   time: "time",
-  meal: "Lunch",
+  meal: "Lunch", // lunch to breakfast
   cuisine: "French",
   diet: "Vegan",
   ingredients: [],

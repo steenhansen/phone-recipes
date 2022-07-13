@@ -1,7 +1,7 @@
 Phone-Recipes, [https://phone-recipes.herokuapp.com/](https://phone-recipes.herokuapp.com/), exists to help prepare
 multiple dishes for a meal using a phone in the kitchen. A list of my online recipes; [https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com](https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com).
 Phone-recipes shows mulitple dishes along with timers. Log in with a
-Google Account. Below are screen shots of of my
+Google Account. The React components are [online with Storybook](https://www.chromatic.com/library?appId=6269af43d179dc004af9a1ec&inviteToken=5fd55d68b13f4f51bc57632bcad949ba). Below are screen shots of of my
 <a href='https://phone-recipes.herokuapp.com/steenhansen1942/gmail.com/Pork%20Roast/steenhansen1942/gmail.com/Rice'>Pork Roast with rice</a> recipes.
 
 ![User to kitchen](pages/images/readme-arrow.png)
@@ -99,4 +99,3 @@ Upload Storybook to Chromatic.com
 View phone-recipes online storybook on Chromatic.com
 
     https://www.chromatic.com/library?appId=6269af43d179dc004af9a1ec&inviteToken=5fd55d68b13f4f51bc57632bcad949ba
-
