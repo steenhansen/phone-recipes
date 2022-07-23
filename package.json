@@ -9,9 +9,9 @@
     "prod": "npm run make-prod && npm run server-start",
     "make-rollup": "vite build && vite build --ssr",
     "server-start": "cross-env NODE_ENV=production node server-app/index.js",
-    "test-node": "mocha test-cjs-node/**/*.spec.cjs --exit",
+    "txexst-node": "mocha test-cjs-node/**/*.spec.cjs --exit",
     "test": "npx vitest /test-jsx-browser",
-    "test-single": "mocha",
+    "txexst-single": "mocha",
     "show-storybook": "node ./make_DEV && start-storybook -p 6006",
     "upload-storybook": "node ./make_PROD && build-storybook && npx chromatic --exit-zero-on-changes -d storybook-static/"
   },
