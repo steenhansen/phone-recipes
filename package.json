@@ -14,6 +14,9 @@
     "show-storybook": "node ./make_DEV && start-storybook -p 6006",
     "upload-storybook": "node ./make_PROD && build-storybook && npx chromatic --exit-zero-on-changes -d storybook-static/"
   },
+  "engines": {
+    "node": "16.16.0"
+  },
   "overrides": {
     "ip": "1.1.8"
   },

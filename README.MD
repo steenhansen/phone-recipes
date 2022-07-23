@@ -38,9 +38,9 @@ Credentials Needed (examples in /sample-configs/)
 
 Prepare Node Environment, Sqlite3 issue on Windows issue if try Node 18
 
-- nvm install 16.14.0
+- nvm install 16.16.0
 
-- nvm use 16.14.0
+- nvm use 16.16.0
 
 - npm install
 
