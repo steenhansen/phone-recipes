@@ -14,8 +14,8 @@ jobs:
         with:
           node-version: "16.16.0"
       - name: Install ci
-        run: npm install
+        run: npm install  asdasdasd asdsad 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci  asdasd asd asd
       - name: Run test
         run: npm test
