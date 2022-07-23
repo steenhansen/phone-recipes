@@ -6,7 +6,6 @@ export { Page };
 function Page(_my_vars) {
   return (
     <div>
-
       <div className="flex flex-wrap">
         <div className="flex-auto ml-1 text-xs w-[130px]">1 lb = 0.45 kg</div>
         <div className="flex-auto ml-1 text-xs w-[130px]">5 ml = 1 teaspoon</div>
@@ -17,8 +16,8 @@ function Page(_my_vars) {
         <div className="flex-auto ml-1 text-xs w-[130px]">1 qt = 4 cups = 0.95 L</div>
         <div className="flex-auto ml-1 text-xs w-[130px]">240 ml = 1 cup</div>
       </div>
-<br />
-  <div className="flex flex-wrap">
+      <br />
+      <div className="flex flex-wrap">
         <div className="flex-auto mb-2 text-xs font-thin">
           <img src="cow.png" alt="https://www.flaticon.com/free-icons/cow" title="Cow icons created by Freepik - Flaticon" width="68" height="68" />
           <div className="w-[68px]">Roast/Steak 145f/65c Ground 160f/70c</div>
@@ -59,16 +58,6 @@ function Page(_my_vars) {
           <div className="w-[68px]">Salmon 125f Halibut 130f Lobster 140f Scallops 130f Shrimp 120f</div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
       This program exists to help prepare multiple dishes for a meal using a phone in the kitchen. A list of my online{" "}
       <a href="/steenhansen1942/gmail.com" className="base-link">
         recipes
@@ -86,9 +75,6 @@ function Page(_my_vars) {
       meal.
       <img className="mx-auto" src="about-kitchen.png" alt="Kitchen View" width="278" height="586" />
       <br />
-
-
-
       <div id="filter-bottom-" className="flex justify-between clear-left ">
         <div>
           <a href="https://github.com/steenhansen/phone-recipes" className="base-link">
@@ -103,11 +89,6 @@ function Page(_my_vars) {
         </span>
       </div>
       <br />
-
-    
-
-
-
       <div className="leading-3">
         <a href="https://www.flaticon.com/free-icons/bison" title="Bison icons" className="flaticon">
           Bison icon created by Freepik - Flaticon
@@ -148,6 +129,7 @@ function Page(_my_vars) {
         <a href="https://www.flaticon.com/free-icons/tap" title="Tap icons" className="flaticon-2">
           Tap icon created by Zlatko Najdenovski - Flaticon
         </a>
+        node-19.js.yml
       </div>
     </div>
   );
