@@ -7,9 +7,9 @@ nor committing changes will change the yml workflow file.
 
 I seems to me that the file is made once, and then cached.
 
-To signal a new file change the versions as they are consol logged.
+To verify a new workflow file, change the versions, v2-v3, as they are console logged.
   - uses: actions/checkout@v2
   - uses: actions/checkout@v3
 
 
-Workflow can be disabled. 
+Old workflows can be disabled. 
