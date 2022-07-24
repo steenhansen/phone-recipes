@@ -129,7 +129,6 @@ function Page(_my_vars) {
         <a href="https://www.flaticon.com/free-icons/tap" title="Tap icons" className="flaticon-2">
           Tap icon created by Zlatko Najdenovski - Flaticon
         </a>
-        node-19.js.yml
       </div>
     </div>
   );
