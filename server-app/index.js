@@ -7,6 +7,7 @@ googleCreds(prog_root, process.argv[2]);
 
 const { postToDb, getFromDb } = require("../redux-store/ajax-execute.js");
 const express = require("express");
+const cors = require('cors');
 const favicon = require("express-favicon");
 const { createPageRenderer } = require("vite-plugin-ssr");
 const { dbConnect } = require("../mongoose-database/mongo-database");
@@ -28,6 +29,10 @@ startServer();
 
 //   <a href="https://www.flaticon.com/free-icons/food" title="food icons">Food icons created by Freepik - Flaticon</a>
 app.use(favicon(FAVICON_FLATICON));
+
+app.use(cors({
+    origin: '*'
+}));
 
 process.on("uncaughtException", function (err) {
   const { recordException } = require("../mongoose-database/uncaught-collections");
