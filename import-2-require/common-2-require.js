@@ -15,7 +15,11 @@ const MONGO_CONNECT_TIMEOUT = 4000;
 const REMOVE_RECORD_VERSION = "-__v";
 const NON_URL_CHAR_REPLACE = "-";
 const MONGO_AUTO_INDEX = true;
+
 const FILTER_FIRST_SECTION = "get-api";
+
+const USER_GET_RECIPES = "user-api";
+
 const VALID_REDUCERS = ["record-error", "re-title-recipe", "change-recipe", "new-recipe", "delete-recipe", "filtered-recipes", "add-comment", "remove-comment"];
 const DEFAULT_CONFIG = {
   G_SELENIUM_TESTING: false,
@@ -171,6 +175,7 @@ module.exports = {
   DEFAULT_CONFIG,
   FAKE_TEST_GMAIL,
   FILTER_FIRST_SECTION,
+  USER_GET_RECIPES,
   HTTP_PORT,
   ID_SEPARATOR,
   MAX_RECIPES_SHOWN,

@@ -1,5 +1,13 @@
 const { getOneComment, removeComment, addComment } = require("../mongoose-database/comment-collections");
-const { newRecipe, reTitleRecipe, deleteRecipe, changeRecipe, getOneRecipe, getFilteredRecipes } = require("../mongoose-database/recipe-collections");
+const {
+  newRecipe,
+  reTitleRecipe,
+  deleteRecipe,
+  changeRecipe,
+  getOneRecipe,
+  getFilteredRecipes,
+  getCooksRecipes,
+} = require("../mongoose-database/recipe-collections");
 const { getLoggedIn } = require("../passport-auth/auth-consts");
 const { FAKE_TEST_GMAIL } = require("../import-2-require/common-2-require");
 const {
@@ -146,4 +154,12 @@ async function getFromDb(req) {
   return my_json;
 }
 
-module.exports = { postToDb, getFromDb };
+//    https://phone-recipes.herokuapp.com/user-api/steenhansen1942@gmail.com
+async function getUserFromDb(req) {
+  const the_url = req.originalUrl;
+  const [_, _user_api_, cook_email] = the_url.split("/");
+  const my_json = await getCooksRecipes(cook_email);
+  return my_json;
+}
+
+module.exports = { postToDb, getFromDb, getUserFromDb };

@@ -5,9 +5,9 @@ global.GLOBAL_CONFIG = herokuEnvOrConfigFile(prog_root);
 const { googleCreds } = require("../passport-auth/init-google");
 googleCreds(prog_root, process.argv[2]);
 
-const { postToDb, getFromDb } = require("../redux-store/ajax-execute.js");
+const { postToDb, getFromDb, getUserFromDb } = require("../redux-store/ajax-execute.js");
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const favicon = require("express-favicon");
 const { createPageRenderer } = require("vite-plugin-ssr");
 const { dbConnect } = require("../mongoose-database/mongo-database");
@@ -18,7 +18,7 @@ try {
   throw "Heroku env vars are not set. (MONGO_URI/GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET/SESSION_SECRET) " + e;
 }
 const { getLoggedIn } = require("../passport-auth/auth-consts");
-const { FILTER_FIRST_SECTION } = require("../import-2-require/common-2-require");
+const { FILTER_FIRST_SECTION, USER_GET_RECIPES } = require("../import-2-require/common-2-require");
 const isProduction = process.env.NODE_ENV === "production";
 const the_collections = dbConnect(prog_root, process.argv[2]);
 global.GLOBAL_CONFIG.G_RECIPES_COLLECTION = the_collections.Recipes_coll;
@@ -30,9 +30,11 @@ startServer();
 //   <a href="https://www.flaticon.com/free-icons/food" title="food icons">Food icons created by Freepik - Flaticon</a>
 app.use(favicon(FAVICON_FLATICON));
 
-app.use(cors({
-    origin: '*'
-}));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 process.on("uncaughtException", function (err) {
   const { recordException } = require("../mongoose-database/uncaught-collections");
@@ -84,6 +86,27 @@ async function startServer() {
       next();
     }
   });
+
+  //////////////////////////////////////////////////
+
+  //      https://phone-recipes.herokuapp.com/get-api////
+
+  //        https://phone-recipes.herokuapp.com/user-api/steenhansen1942@gmail.com
+
+  const get_user_url = "/" + USER_GET_RECIPES + "/*";
+  app.get(get_user_url, async (req, res, next) => {
+    try {
+      const the_recipes = await getUserFromDb(req);
+      const the_json = JSON.stringify(the_recipes);
+      res.send(the_json);
+    } catch (err) {
+      // catches errors both in fetch and response.json
+      print("get-error", err);
+      next();
+    }
+  });
+
+  /////////////////
 
   app.get("*", async (req, res, next) => {
     const shared_csrfToken = res.locals.shared_csrfToken;
