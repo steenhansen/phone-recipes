@@ -112,6 +112,7 @@ async function startServer() {
         `?client_id=${facebook_app_id}` +
         `&redirect_uri=${facebook_redirect_uri}` +
         `&client_secret=${facebook_secret}` +
+        `&code_verifier=a_cantankerous_crimson_jabberwalky_juggled_some_kittens` +
         `&code=${facebook_mobile_code}`;
       console.log("XXXX facebook_check_code", facebook_check_code);
       const json_token = await fetch(facebook_check_code);
