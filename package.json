@@ -40,6 +40,7 @@
     "lodash.debounce": "^4.0.8",
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.4",
+    "node-fetch": "^2.6.7",
     "passport": "^0.6.0",
     "passport-google-oidc": "^0.1.0",
     "postcss": "^8.4.4",

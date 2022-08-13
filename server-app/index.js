@@ -25,6 +25,8 @@ global.GLOBAL_CONFIG.G_RECIPES_COLLECTION = the_collections.Recipes_coll;
 global.GLOBAL_CONFIG.G_COMMENTS_COLLECTION = the_collections.Comments_coll;
 global.GLOBAL_CONFIG.G_UNCAUGHT_COLLECTION = the_collections.Uncaught_coll;
 
+const fetch = require("node-fetch");
+
 startServer();
 
 //   <a href="https://www.flaticon.com/free-icons/food" title="food icons">Food icons created by Freepik - Flaticon</a>
@@ -75,13 +77,11 @@ async function startServer() {
   const renderPage = createPageRenderer({ viteDevServer, isProduction, root: prog_root });
   app.post("*", postData);
 
+  //////////////////////////////////////////////////
 
-//////////////////////////////////////////////////
+  // FROM   https://derk-jan.com/2020/05/expo-facebook-login/
 
-// FROM   https://derk-jan.com/2020/05/expo-facebook-login/
-
-
-/*
+  /*
   1. on mobile we call facebook to get a code, which has no name
     const [request, response, promptAsync] = Facebook.useAuthRequest({
     clientId: FACEBOOK_APP_ID,
@@ -101,33 +101,31 @@ async function startServer() {
   const server_facebook_validate = "/facebook-check/*";
   app.get(server_facebook_validate, async (req, res, next) => {
     try {
-      const facebook_app_id = process.env['FACEBOOK_APP_ID'];           
-      const facebook_redirect_uri= process.env['FACEBOOK_REDIRECT_URI'];
-      const facebook_secret = process.env['FACEBOOK_SECRET'];           
+      const facebook_app_id = process.env["FACEBOOK_APP_ID"];
+      const facebook_redirect_uri = process.env["FACEBOOK_REDIRECT_URI"];
+      const facebook_secret = process.env["FACEBOOK_SECRET"];
       const the_url = req.originalUrl;
       const [_, _facebook_check_, facebook_mobile_code] = the_url.split("/");
-      
-      const facebook_check_code = `https://graph.facebook.com/v7.0/oauth/access_token` +
-                                  `?client_id=${facebook_app_id}` +
-                                  `&redirect_uri=${facebook_redirect_uri}` +
-                                  `&client_secret=${facebook_secret} ` +
-                                  `&code=${facebook_mobile_code}`;
-      console.log('XXXX facebook_check_code', facebook_check_code);
+
+      const facebook_check_code =
+        `https://graph.facebook.com/v7.0/oauth/access_token` +
+        `?client_id=${facebook_app_id}` +
+        `&redirect_uri=${facebook_redirect_uri}` +
+        `&client_secret=${facebook_secret} ` +
+        `&code=${facebook_mobile_code}`;
+      console.log("XXXX facebook_check_code", facebook_check_code);
       const json_token = await fetch(facebook_check_code);
       const facebook_token = await json_token.json();
-      console.log('XXXX facebook_token', facebook_token);
+      console.log("XXXX facebook_token", facebook_token);
       const facebook_user = { facebook_name: facebook_token.name };
       const the_json = JSON.stringify(facebook_user);
-      console.log('XXXX the_json', the_json);
+      console.log("XXXX the_json", the_json);
       res.send(the_json);
     } catch (err) {
       print("facebook-check-error", err);
       next();
     }
   });
-
-
-
 
   const get_filter_url = "/" + FILTER_FIRST_SECTION + "/*";
   app.get(get_filter_url, async (req, res, next) => {
