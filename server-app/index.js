@@ -111,7 +111,7 @@ async function startServer() {
         `https://graph.facebook.com/v7.0/oauth/access_token` +
         `?client_id=${facebook_app_id}` +
         `&redirect_uri=${facebook_redirect_uri}` +
-        `&client_secret=${facebook_secret} ` +
+        `&client_secret=${facebook_secret}` +
         `&code=${facebook_mobile_code}`;
       console.log("XXXX facebook_check_code", facebook_check_code);
       const json_token = await fetch(facebook_check_code);
