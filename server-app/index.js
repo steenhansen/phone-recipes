@@ -106,13 +106,13 @@ async function startServer() {
       const facebook_secret = process.env["FACEBOOK_SECRET"];
       const the_url = req.originalUrl;
       const [_, _facebook_check_, facebook_mobile_code] = the_url.split("/");
-
+      //https://developers.facebook.com/docs/facebook-login/guides/advanced/manual-flow#confirm
       const facebook_check_code =
-        `https://graph.facebook.com/v7.0/oauth/access_token` +
+        `https://graph.facebook.com/v14.0/oauth/access_token` +
         `?client_id=${facebook_app_id}` +
         `&redirect_uri=${facebook_redirect_uri}` +
         `&client_secret=${facebook_secret}` +
-        `&code_verifier=a_cantankerous_crimson_jabberwalky_juggled_some_kittens` +
+        //        `&code_verifier=a_cantankerous_crimson_jabberwalky_juggled_some_kittens` +   something to do with v.7 in old example
         `&code=${facebook_mobile_code}`;
       console.log("XXXX facebook_check_code", facebook_check_code);
       const json_token = await fetch(facebook_check_code);
