@@ -87,7 +87,8 @@ async function verifyIdToken(id_token) {
 
 app.get("/validate-token/*", async (req, res) => {
   const the_url = req.originalUrl;
-  const [_, id_token] = the_url.split("/");
+    print("the_url", the_url);
+  const [_1, _2, id_token] = the_url.split("/");
   print("validate-token", id_token);
   const user_id = await verifyIdToken(id_token).catch(console.error);
   print("user_id", user_id);
