@@ -66,12 +66,34 @@ app.get(/%20$/, (req, res) => {
   res.redirect(trimmed_url);
 });
 
+////////////////////////////////////////////////////////////////////////////////
+//   https://phone-recipes.herokuapp.com/validate-token/9876543210
+const { OAuth2Client } = require('google-auth-library');
+const web_Client_Id = "703366983526-rqp153lgutts5rhlhit133tuv77p0pja.apps.googleusercontent.com";
+const oauth2client = new OAuth2Client(web_Client_Id);
+
+async function verifyIdToken(id_token) {
+  const oauth_ticket = await oauth2client.verifyIdToken({
+    idToken: id_token,
+    audience: web_Client_Id
+  });
+  const oauth_payload = oauth_ticket.getPayload();
+  const user_id = oauth_payload['sub'];
+  console.log('user_id google:', user_id);
+  return user_id;
+  // If request specified a G Suite domain:
+  // const domain = payload['hd'];
+}
+
 app.get("/validate-token/*", (req, res) => {
   const the_url = req.originalUrl;
   const [_, id_token] = the_url.split("/");
   print("validate-token", id_token);
+  const user_id = await verifyIdToken(id_token).catch(console.error);
+  print("user_id", user_id);
   res.send('abcd');
 });
+////////////////////////////////////////////////////////////////////////////////
 
 async function postData(req, res) {
   const post_res = await postToDb(req, res);
