@@ -67,7 +67,8 @@ app.get(/%20$/, (req, res) => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////
-//   https://phone-recipes.herokuapp.com/validate-token/9876543210
+// https://phone-recipes.herokuapp.com/validate-token/abcdefghijklmonpqrstuvwxyz234567890
+
 const { OAuth2Client } = require('google-auth-library');
 const web_Client_Id = "703366983526-rqp153lgutts5rhlhit133tuv77p0pja.apps.googleusercontent.com";
 const oauth2client = new OAuth2Client(web_Client_Id);
@@ -79,19 +80,20 @@ async function verifyIdToken(id_token) {
   });
   const oauth_payload = oauth_ticket.getPayload();
   const user_id = oauth_payload['sub'];
-  console.log('user_id google:', user_id);
-  return user_id;
-  // If request specified a G Suite domain:
-  // const domain = payload['hd'];
+  if (Number.isInteger(user_id) && user_id > 1234567890) {
+    return user_id;                                // ex 123456789012345678901
+  }
+  return 'OAuth Failed';
 }
 
 app.get("/validate-token/*", async (req, res) => {
   const the_url = req.originalUrl;
-    print("the_url", the_url);
   const [_1, _2, id_token] = the_url.split("/");
-  print("validate-token", id_token);
-  const user_id = await verifyIdToken(id_token).catch(console.error);
-  print("user_id", user_id);
+  const trimmed_token = id_token.trim();
+  let user_id = 'Invalid Token';
+  if (trimmed_token !== '') {
+    user_id = await verifyIdToken(trimmed_token).catch(console.error);
+  }
   res.send(user_id);
 });
 ////////////////////////////////////////////////////////////////////////////////
