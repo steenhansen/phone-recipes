@@ -85,7 +85,7 @@ async function verifyIdToken(id_token) {
   // const domain = payload['hd'];
 }
 
-app.get("/validate-token/*", (req, res) => {
+app.get("/validate-token/*", async (req, res) => {
   const the_url = req.originalUrl;
   const [_, id_token] = the_url.split("/");
   print("validate-token", id_token);
