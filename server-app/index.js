@@ -66,7 +66,7 @@ app.get(/%20$/, (req, res) => {
   res.redirect(trimmed_url);
 });
 
-app.get("validate-token", (req, res) => {
+app.get("/validate-token/", (req, res) => {
   const req_body = req.body;
   print("validate-token", req_body);
   res.send(req_body);
