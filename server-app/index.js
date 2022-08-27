@@ -66,6 +66,13 @@ app.get(/%20$/, (req, res) => {
   res.redirect(trimmed_url);
 });
 
+
+app.post("validate-token", (req, res) => {
+  const req_body = req.body;
+  print("validate-token", req_body);
+  res.send(req_body);
+});
+
 async function postData(req, res) {
   const post_res = await postToDb(req, res);
   res.send(post_res);
