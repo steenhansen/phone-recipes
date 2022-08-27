@@ -66,10 +66,11 @@ app.get(/%20$/, (req, res) => {
   res.redirect(trimmed_url);
 });
 
-app.get("/validate-token/", (req, res) => {
-  const req_body = req.body;
-  print("validate-token", req_body);
-  res.send(req_body);
+app.get("/validate-token/*", (req, res) => {
+  const the_url = req.originalUrl;
+  const [_, id_token] = the_url.split("/");
+  print("validate-token", id_token);
+  res.send('abcd');
 });
 
 async function postData(req, res) {
