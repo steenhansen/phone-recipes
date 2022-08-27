@@ -92,7 +92,7 @@ app.get("/validate-token/*", async (req, res) => {
   print("validate-token", id_token);
   const user_id = await verifyIdToken(id_token).catch(console.error);
   print("user_id", user_id);
-  res.send('abcd');
+  res.send(user_id);
 });
 ////////////////////////////////////////////////////////////////////////////////
 
