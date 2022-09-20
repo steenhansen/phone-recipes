@@ -1,9 +1,11 @@
-const { print, herokuEnvOrConfigFile, FAKE_TEST_GMAIL, HTTP_PORT, DEFAULT_CONFIG, FAVICON_FLATICON } = require("../import-2-require/common-2-require");
+const { print, herokuEnvOrConfigFile, FAKE_TEST_GMAIL, HTTP_PORT, DEFAULT_CONFIG, FAVICON_FLATICON }
+  = require("../import-2-require/common-2-require");
 global.GLOBAL_CONFIG = DEFAULT_CONFIG;
 const prog_root = `${__dirname}/..`;
 global.GLOBAL_CONFIG = herokuEnvOrConfigFile(prog_root);
 const { googleCreds } = require("../passport-auth/init-google");
 googleCreds(prog_root, process.argv[2]);
+const fs = require("fs");
 
 const { postToDb, getFromDb, getUserFromDb } = require("../redux-store/ajax-execute.js");
 const express = require("express");
@@ -96,6 +98,13 @@ app.get("/validate-token/*", async (req, res) => {
   }
   res.send(user_id);
 });
+
+app.get("/privacy-policy", async (req, res) => {
+  const privacy_html = fs.readFileSync('./server-app/app-privacy.html');
+  res.set('Content-Type', 'text/html');
+  res.send(privacy_html);
+});
+
 ////////////////////////////////////////////////////////////////////////////////
 
 async function postData(req, res) {
