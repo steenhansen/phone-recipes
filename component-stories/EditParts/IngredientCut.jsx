@@ -5,7 +5,7 @@ export { IngredientCut };
 function IngredientCut({ the_ingredients, clickCutIngred }) {
   const cutIngredientClick = (event) => {
     const delete_ingred_id = event.target.id;
-    const [_, delete_index] = delete_ingred_id.split("-");
+    const [_1, _2,delete_index] = delete_ingred_id.split("--");   // Cut bug fix, was splitting '-' not '--' getting wrong index
     clickCutIngred(delete_index);
   };
 
