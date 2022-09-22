@@ -93,7 +93,7 @@ const expected_state = {
 describe("Recipe-Collections", () => {
   describe("#changeRecipe", () => {
     it("#changeRecipe", () => {
-      expect(actual_state).toEqual(expected_state);
+     expect(actual_state).toEqual(expected_state);
     });
   });
 });

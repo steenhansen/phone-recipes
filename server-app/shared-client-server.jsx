@@ -22,9 +22,12 @@ function saveExceptionsToDb() {
       }
     } else {
       if (!type_czech.isPruned()) {
-        print("~");
-        print("~ ERROR TypeCzech-2-import.js IS NOT small 30 line pruned file for Type-Czech to be turned off in browser.");
-        print("~");
+      //print("~");
+      //          
+      // Better to have type checking for Selenium also, in case catch empty errors like ''
+      //
+      // print("~ ERROR TypeCzech-2-import.js IS NOT small 30 line pruned file for Type-Czech to be turned off in browser.");
+      // print("~");
       }
     }
   } else {

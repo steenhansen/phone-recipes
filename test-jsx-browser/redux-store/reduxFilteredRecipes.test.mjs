@@ -1,5 +1,6 @@
 //  cd /
 //  npx vitest /test-jsx-browser/redux-store/reduxFilteredRecipes.test.mjs  --silent
+//  npx vitest /test-jsx-browser/redux-store/reduxFilteredRecipes.test.mjs
 
 //  npx vitest /test-jsx-browser --silent
 
@@ -52,6 +53,8 @@ const expected_state = {
       cook: "threeox@gmail.com",
       title: "the-three",
       search: "str",
+      comments: [],
+      ingredients: []
     },
   ],
   current_remarks: [],

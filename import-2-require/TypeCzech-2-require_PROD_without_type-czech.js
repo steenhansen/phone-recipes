@@ -18,15 +18,13 @@ if (typeof window !== 'undefined') {
   the_exports = {}; // for JSX environment
 }
 
+
+
 (function (the_exports) {
   the_exports.TypeCzech = function () {
     the_exports.type_czech = { linkUp: (nop) => nop, isActive: (x) => false, isPruned: (y) => true, _from: 'TypeCzech-2-require_PROD_without_type-czech' };
   };  // only place isPruned is true
   return the_exports.type_czech;
-};
-}(the_exports));
+})(the_exports);
 
 module.exports.the_exports;  // for CJS
-
-
-

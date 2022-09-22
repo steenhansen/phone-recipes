@@ -62,14 +62,13 @@ const expected_state = {
       ingredients: [],
     },
   ],
-  current_remarks: [], // comments are added on home page. Cook's page has the cook's commets
+  current_remarks: [], // comments are added on home page. Cook's page has the cook's comments
 };
 
 describe("Recipe-Collections", () => {
   describe("#addComment", () => {
     it("#addComment", () => {
       expect(actual_state).toEqual(expected_state);
-      //expect(actual_state).toEqual(expected_state);
     });
   });
 });

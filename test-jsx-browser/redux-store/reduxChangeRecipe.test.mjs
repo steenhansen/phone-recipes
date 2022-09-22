@@ -34,6 +34,7 @@ const state = {
     {
       _id: "bve815@gmail.com~asdsad44445555~bve815@gmail.com~dddddddddddd",
       by: "bve815@gmail.com",
+      title:"bve-title"
     },
   ],
 };
@@ -84,6 +85,7 @@ const expected_state = {
     {
       _id: "bve815@gmail.com~asdsad44445555~bve815@gmail.com~dddddddddddd",
       by: "bve815@gmail.com",
+      title:"bve-title"
     },
   ],
 };
