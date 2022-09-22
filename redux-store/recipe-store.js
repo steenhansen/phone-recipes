@@ -21,7 +21,12 @@ const cloneIngredients = ingredient_list => Array.from(ingredient_list, cloneAnI
 
 const cloneRecipe = a_recipe => {
   let recipe_clone = Object.assign({}, a_recipe);
-  recipe_clone.comments = [...a_recipe.comments];
+
+  if (Array.isArray(a_recipe.comments)) {
+    recipe_clone.comments = [...a_recipe.comments];
+  } else {
+    recipe_clone.comments =[];
+  }
   recipe_clone.ingredients = cloneIngredients(a_recipe.ingredients);
   return recipe_clone;
 };
