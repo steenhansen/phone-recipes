@@ -17,7 +17,17 @@ export {
 };
 
 const cloneAnIngredient = an_ingredient => { return { ingredient: an_ingredient.ingredient, amount: an_ingredient.amount } };
-const cloneIngredients = ingredient_list => Array.from(ingredient_list, cloneAnIngredient);
+
+
+//const cloneIngredients = ingredient_list => Array.from(ingredient_list, cloneAnIngredient);
+
+const cloneIngredients = ingredient_list => {
+  if (Array.isArray(ingredient_list)) {
+    return Array.from(ingredient_list, cloneAnIngredient);
+  } else {
+    return [];
+  }
+}
 
 const cloneRecipe = a_recipe => {
   let recipe_clone = Object.assign({}, a_recipe);
