@@ -16,9 +16,27 @@ export {
   reduxFilteredRecipes,
 };
 
+const cloneAnIngredient = an_ingredient => { return { ingredient: an_ingredient.ingredient, amount: an_ingredient.amount } };
+const cloneIngredients = ingredient_list => Array.from(ingredient_list, cloneAnIngredient);
+
+const cloneRecipe = a_recipe => {
+  let recipe_clone = Object.assign({}, a_recipe);
+  recipe_clone.comments = [...a_recipe.comments];
+  recipe_clone.ingredients = cloneIngredients(a_recipe.ingredients);
+  return recipe_clone;
+};
+
+const cloneRecipeList = a_recipe_list => {
+  if (a_recipe_list === null) return [];
+  return Array.from(a_recipe_list, cloneRecipe);
+}
+
+
+
+
 function reduxNewRecipe(state, action) {
-  const next_recipes = [...state.current_recipes];
-  const next_remarks = [...state.current_remarks];
+  const next_recipes = cloneRecipeList(state.current_recipes);
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const new_recipe = action.payload;
   const safe_recipe = safeRecipe(new_recipe);
   const { _id } = safe_recipe;
@@ -40,8 +58,8 @@ function reduxNewRecipe(state, action) {
 }
 
 function reduxReTitleRecipe(state, action) {
-  const next_recipes = [...state.current_recipes];
-  const next_remarks = [...state.current_remarks];
+  const next_recipes = cloneRecipeList(state.current_recipes);
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const { re_titled_recipe, old_title } = action.payload;
   const safe_recipe = safeRecipe(re_titled_recipe);
   const cased_title = safe_recipe.title;
@@ -68,8 +86,8 @@ function reduxReTitleRecipe(state, action) {
 
 reduxChangeRecipe = type_czech.linkUp(reduxChangeRecipe, PRE_reduxChangeRecipe, POST_reduxChangeRecipe);
 function reduxChangeRecipe(state, action) {
-  const next_recipes = [...state.current_recipes];
-  const next_remarks = [...state.current_remarks];
+  const next_recipes = cloneRecipeList(state.current_recipes);
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const edited_recipe = action.payload.edited_recipe;
   const edited_recipe_id = edited_recipe._id;
   const change_index = next_recipes.findIndex((a_recipe) => a_recipe._id === edited_recipe_id);
@@ -112,8 +130,8 @@ function sortRecipes(next_recipes) {
 }
 
 function reduxDeleteRecipe(state, action) {
-  const next_recipes = [...state.current_recipes];
-  const next_remarks = [...state.current_remarks];
+  const next_recipes = cloneRecipeList(state.current_recipes);
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const delete_recipe_id = action.payload;
   const delete_id_lower = delete_recipe_id.toLowerCase();
   const remaining_recipes = next_recipes.filter((a_recipe) => a_recipe._id !== delete_id_lower);
@@ -131,7 +149,7 @@ function reduxDeleteRecipe(state, action) {
 function reduxFilteredRecipes(state, action) {
   const { count_recipes, sorted_recipes } = action.payload;
   const next_recipes = sorted_recipes;
-  const next_remarks = [...state.current_remarks];
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const next_state = { current_recipes: next_recipes, current_remarks: next_remarks, current_count: count_recipes };
   return next_state;
 }
@@ -144,16 +162,16 @@ function reduxCommentAdd(state, action) {
   if (exist_comment_index === -1) {
     commented_recipe.comments.push(embeded_comment);
   }
-  const next_recipes = [...state.current_recipes];
-  const next_remarks = [...state.current_remarks];
+  const next_recipes = cloneRecipeList(state.current_recipes);
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const next_state = { current_recipes: next_recipes, current_remarks: next_remarks };
   return next_state;
 }
 
 function reduxCommentRemove(state, action) {
   const delete_comment_id = action.payload;
-  const next_recipes = [...state.current_recipes];
-  const next_remarks = [...state.current_remarks];
+  const next_recipes = cloneRecipeList(state.current_recipes);
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const the_recipes = next_recipes.map((a_recipe) => {
     const comment_recipe_id = commentIdToRecipeId(delete_comment_id);
     if (a_recipe._id === comment_recipe_id) {
@@ -174,8 +192,8 @@ function reduxAjaxError(state, action) {
   const ajax_error = action.payload;
   const ajax_message = ajax_error.toString();
   window.onerror(ajax_message);
-  const next_recipes = [...state.current_recipes];
-  const next_remarks = [...state.current_remarks];
+  const next_recipes = cloneRecipeList(state.current_recipes);
+  const next_remarks = cloneRecipeList(state.current_remarks);
   const next_state = { current_recipes: next_recipes, current_remarks: next_remarks };
   return next_state;
 }
