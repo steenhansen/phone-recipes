@@ -62,7 +62,7 @@ Local Prod Run
 
 <a id="test-section"></a>
 
-Selenium Tests
+**8 Selenium** Tests
 
 - Close all FireFox windows, tests use a lot of resources. If fail try again.
   If still fail check hard drive free space. Possibly reboot after empty trash.
@@ -79,11 +79,11 @@ Selenium Tests
 - NB, close Firefox windows after every test as gigabytes of hard
   drive space are used
 
-Vitest JSX tests
+**8 Vitest** JSX tests
 
     npx vitest /test-jsx-browser
 
-Mocha Node.js tests
+**12 Mocha** Node.js tests
 
     npm run test-node
 
