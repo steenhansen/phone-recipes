@@ -1,6 +1,8 @@
 <a name="fast-start"></a>
 <a name="s"></a>
 
+## Web & Mobile Recipes App
+
 <img src="pages/images/tall-phone-web.gif" width="400">
 
 Phone-Recipes, [https://phone-recipes.herokuapp.com/](https://phone-recipes.herokuapp.com/), exists to help prepare
