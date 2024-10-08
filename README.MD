@@ -13,6 +13,11 @@ Google Account. The React components are [online with Storybook](https://www.chr
 
 ![User to kitchen](pages/images/readme-arrow.png)
 
+
+## Selenium Test Run
+
+<img src="https://evening-eyrie-25210-f2edb2eac607.herokuapp.com/images/selenium.webp" width="400">
+
 Rescources
 
 - [vite-plugin-ssr](https://vite-plugin-ssr.com/) for Server-Side-Rending and Hot-Module-Replacement

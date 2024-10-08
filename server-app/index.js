@@ -219,7 +219,7 @@ async function startServer() {
     res.status(statusCode).type(contentType).send(body);
   });
 
-  const port_used = process.env.PORT || HTTP_PORT;
+  const port_used = HTTP_PORT || process.env.PORT ;
   app.listen(port_used);
   print(`Server running at http://localhost:${port_used}`);
 }
